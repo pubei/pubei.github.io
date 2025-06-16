@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浦北装修设计 - 专业室内装修解决方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #e74c3c;
+        }
+        .hero {
+            height: 100vh;
+            background: url('https://example.com/hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 80px;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .portfolio {
+            background: #f5f5f5;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color: #e74c3c;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">浦北装修设计</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#services">服务</a></li>
+                        <li><a href="#portfolio">案例</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>打造您的梦想空间</h1>
+                <p>专业室内设计团队，10年行业经验，为您提供一站式装修解决方案</p>
+                <a href="#contact" class="btn">免费咨询</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container">
+        <div class="section-title">
+            <h2>我们的服务</h2>
+            <p>从设计到施工，全程无忧服务</p>
+        </div>
+        <div class="services">
+            <div class="service-card">
+                <img src="https://example.com/design-icon.png" alt="设计服务">
+                <h3>室内设计</h3>
+                <p>专业设计师团队，根据您的需求定制个性化空间设计方案</p>
+            </div>
+            <div class="service-card">
+                <img src="https://example.com/renovation-icon.png" alt="装修服务">
+                <h3>全包装修</h3>
+                <p>从硬装到软装，一站式服务，省心省力</p>
+            </div>
+            <div class="service-card">
+                <img src="https://example.com/consulting-icon.png" alt="咨询服务">
+                <h3>装修咨询</h3>
+                <p>专业顾问为您解答装修疑问，提供合理建议</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>成功案例</h2>
+                <p>我们引以为傲的作品</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://example.com/project1.jpg" alt="现代简约风格">
+                    <div class="portfolio-overlay">
+                        <h3>现代简约风格</h3>
+                        <p>120平米三居室</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://example.com/project2.jpg" alt="北欧风格">
+                    <div class="portfolio-overlay">
+                        <h3>北欧风格</h3>
+                        <p>90平米两居室</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://example.com/project3.jpg" alt="新中式风格">
+                    <div class="portfolio-overlay">
+                        <h3>新中式风格</h3>
+                        <p>150平米四居室</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="section-title">
+            <h2>关于我们</h2>
+            <p>专业、创新、诚信</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p>浦北装修设计成立于2015年，拥有10年专业室内设计装修经验。我们致力于为客户提供高品质的室内设计和装修服务，始终坚持"客户至上"的服务理念，已为超过1000个家庭打造了理想居住空间。</p>
+            <p>我们的团队由资深设计师和专业施工人员组成，采用环保材料，严格把控施工质量，确保每个项目都能按时按质完成。</p>
+        </div>
+    </section>
+
+    <section id="contact" style="background: #f5f5f5;">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+                <p>随时为您服务</p>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <form>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px;">您的姓名</label>
+                        <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px;">联系电话</label>
+                        <input type="tel" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px;">咨询内容</label>
+                        <textarea style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; height: 120px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="border: none; cursor: pointer;">提交咨询</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>浦北装修</h3>
+                    <p>专业室内设计与装修服务商，为您打造理想居住空间。</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#services">服务</a></li>
+                        <li><a href="#portfolio">案例</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li>电话：134-1227-7880</li>
+                        <li>邮箱：175114486@qq.com</li>
+                        <li>地址：浦北金浦大道</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 浦北装修设计有限公司 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
