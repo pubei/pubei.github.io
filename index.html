@@ -196,4 +196,128 @@
     <script src="./index.js"></script>
 </body>
 
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有趣的鼠标效果</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+        * {
+        box-sizing: border-box;
+        }
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --sz: clamp(10px, min(2vw, 3vh), 24px);
+            font-size: var(--sz);
+            --fz: 10rem;
+            --exp: 24deg;
+            --per: 54deg;
+            --tilt: 10deg;
+        }
+        body {
+            display: grid;
+            place-items: center;
+            background: #e0e0e0;
+            color: #444;
+        }
+        body,
+        .base,
+        .base * {
+            transform-style: preserve-3d;
+            perspective: 2000px;
+            font-weight: 100;
+            transition: all 1s ease-in-out;
+            font-family: "Playfair Display", serif;
+        }
+        body > h2 {
+            transition: all 1s ease-in-out;
+            position: absolute;
+            font-size: var(--fz);
+            transform: rotateX(var(--per));
+            font-weight: 100;
+        }
+        body:has(.base:hover) > h2 {
+            transform: rotateX(calc(var(--per) + var(--tilt)));
+        }
+
+        .base {
+            transform: rotateX(var(--per));
+            width: 10rem;
+            height: 15rem;
+            border: 1px solid #fff;
+            position: relative;
+            box-shadow: 0 0 0 0.6rem #000c, inset 10rem 0 10rem -5rem #000a,
+                inset 0 0 0 0.6rem #fff, 0 0 0 0 #000a;
+            background: url("https://img0.baidu.com/it/u=283204948,2024515402&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800");
+            background-size: cover;
+            cursor: pointer;
+        }
+        .base:hover {
+            transform: rotateX(calc(var(--per) + var(--tilt)));
+            box-shadow: 0 0 0 0.6rem #000c, inset 10rem 0 10rem -5rem #000a,
+                inset 0 0 0 0.6rem #fff, 2rem -2rem 5rem 0 #000a;
+        }
+        .pane {
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 0 0.6rem #fff;
+            display: grid;
+            place-items: center;
+        }
+        .base > .pane {
+            transform-origin: 0 50%;
+            background: url("https://img0.baidu.com/it/u=283204948,2024515402&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800");
+            background-size: cover;
+            box-shadow: inset -10rem 0 10rem -5rem #0004, inset 0 0 0 0.6rem #fff;
+        }
+        .base > .pane > .pane {
+            transform-origin: 100% 50%;
+            background: url("https://img0.baidu.com/it/u=283204948,2024515402&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800");
+            background-size: cover;
+            box-shadow: inset 10rem 0 10rem -5rem #000a, inset 0 0 0 0.6rem #fff;
+        }
+        .base > .pane > .pane > .pane {
+            transform-origin: 0 50%;
+            background: #e0e0e0;
+            overflow: hidden;
+            position: relative;
+        h2 {
+            font-size: var(--fz);
+            text-align: center;
+            position: absolute;
+            white-space: nowrap;
+        }
+        }
+        .base:hover > .pane {
+            transform: rotateY(calc(-1 * var(--exp)));
+        }
+        .base:hover > .pane > .pane {
+            transform: rotateY(calc(2 * var(--exp)));
+        }
+        .base:hover > .pane > .pane > .pane {
+            transform: rotateY(calc(-1 * var(--exp)));
+        }
+
+    </style>
+</head>
+<body>
+    <h2>喜欢你</h2>
+    <div class="base">
+        <div class="pane">
+            <div class="pane">
+                <div class="pane">
+                    <h2>喜欢你</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    
 </html>
