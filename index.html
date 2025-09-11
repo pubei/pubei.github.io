@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>浦北装修设计 | 科技感后台管理系统</title>
+    <title>Nexus Admin | 科技感后台管理系统</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -40,8 +39,19 @@
             position: absolute;
             border-radius: 50%;
             background: rgba(99, 102, 241, 0.5);
-            box-shadow: 0010pxrgba(99, 102, 241, 0.8);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
             animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* 主容器 */
@@ -62,9 +72,7 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(99, 102, 241, 0.3);
-            box-shadow:
-                010px30pxrgba(0, 0, 0, 0.3),
-                0020pxrgba(99, 102, 241, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.1);
             padding: 2.5rem;
             position: relative;
             overflow: hidden;
@@ -82,7 +90,7 @@
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, #8b5cf6, #6366f1, #0ea5e9);
-            box-shadow: 0010pxrgba(139, 92, 246, 0.7);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
         }
 
         .logo {
@@ -90,7 +98,7 @@
             margin-bottom: 2rem;
         }
 
-        .logoh1 {
+        .logo h1 {
             font-size: 2.2rem;
             background: linear-gradient(90deg, #8b5cf6, #6366f1, #0ea5e9);
             -webkit-background-clip: text;
@@ -101,7 +109,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .logop {
+        .logo p {
             color: #94a3b8;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
@@ -117,7 +125,7 @@
         .tab {
             flex: 1;
             text-align: center;
-            padding: 1rem0;
+            padding: 1rem 0;
             cursor: pointer;
             position: relative;
             font-weight: 600;
@@ -183,7 +191,7 @@
             position: relative;
         }
 
-        .input-grouplabel {
+        .input-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
@@ -193,45 +201,42 @@
         .input-icon {
             position: absolute;
             left: 15px;
-            top: 42px;
-            color: #6366f1;
+            top: 40px;
+            color: #64748b;
+            font-size: 1rem;
         }
 
-        .input-groupinput {
+        .input-field {
             width: 100%;
-            padding: 14px14px14px45px;
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 10px;
+            padding: 12px 15px 12px 40px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
             color: #e2e8f0;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
-        .input-groupinput:focus {
+        .input-field:focus {
             outline: none;
             border-color: #6366f1;
-            box-shadow: 0003pxrgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
         }
 
-        .input-groupinput:hover {
-            border-color: #818cf8;
-        }
-
-        .options {
+        .remember-forgot {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        .remember {
+        .remember-me {
             display: flex;
             align-items: center;
         }
 
-        .rememberinput {
+        .remember-me input {
             margin-right: 8px;
             accent-color: #6366f1;
         }
@@ -239,201 +244,140 @@
         .forgot-password {
             color: #818cf8;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.2s ease;
         }
 
         .forgot-password:hover {
             color: #6366f1;
-            text-decoration: underline;
         }
 
-        .btn {
-            width: 100%;
-            padding: 14px;
+        .submit-btn {
             background: linear-gradient(90deg, #8b5cf6, #6366f1);
-            border: none;
-            border-radius: 10px;
             color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            box-shadow: 04px15pxrgba(99, 102, 241, 0.3);
-            margin-top: auto;
+            margin-bottom: 1.5rem;
         }
 
-        .btn:hover {
-            background: linear-gradient(90deg, #7c3aed, #4f46e5);
+        .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 06px20pxrgba(99, 102, 241, 0.4);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
         }
 
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .divider {
+        .social-login {
             text-align: center;
-            margin: 1.5rem0;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-login p {
             position: relative;
             color: #94a3b8;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
         }
 
-        .divider::before,
-        .divider::after {
+        .social-login p::before,
+        .social-login p::after {
             content: '';
             position: absolute;
             top: 50%;
-            width: 40%;
+            width: 30%;
             height: 1px;
             background: rgba(99, 102, 241, 0.2);
         }
 
-        .divider::before {
+        .social-login p::before {
             left: 0;
         }
 
-        .divider::after {
+        .social-login p::after {
             right: 0;
         }
 
-        .social-login {
+        .social-icons {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
         }
 
-        .social-btn {
-            width: 45px;
-            height: 45px;
+        .social-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            color: #94a3b8;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.5);
+            color: #e2e8f0;
+            border: 1px solid rgba(99, 102, 241, 0.2);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .social-btn:hover {
-            background: rgba(99, 102, 241, 0.1);
-            color: #e2e8f0;
+        .social-icon:hover {
+            background: rgba(99, 102, 241, 0.2);
             transform: translateY(-3px);
-            border-color: #6366f1;
         }
 
-        .signup-link {
+        .switch-form {
             text-align: center;
-            margin-top: 1.5rem;
             font-size: 0.9rem;
             color: #94a3b8;
+            margin-top: auto;
         }
 
-        .signup-linka {
+        .switch-form a {
             color: #818cf8;
             text-decoration: none;
-            margin-left: 5px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: color 0.2s ease;
         }
 
-        .signup-linka:hover {
+        .switch-form a:hover {
             color: #6366f1;
-            text-decoration: underline;
         }
 
-        /* 响应式设计 */
-        @media (max-width:480px) {
-            .container {
-                padding: 0;
-                width: 95%;
-                min-height: 95vh;
-            }
-
+        /* 响应式调整 */
+        @media (max-width: 480px) {
             .card {
                 padding: 1.5rem;
             }
-
-            .logoh1 {
+            
+            .logo h1 {
                 font-size: 1.8rem;
             }
-
-            .options {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
+            
+            .input-field {
+                padding: 10px 12px 10px 40px;
             }
-
-            .forgot-password {
-                margin-left: auto;
-            }
-
-            .social-login {
-                gap: 0.8rem;
-            }
-        }
-
-        /* 动画效果 */
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0.2;
-            }
-
-            100% {
-                transform: translateY(-100vh) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0000rgba(99, 102, 241, 0.4);
-            }
-
-            70% {
-                box-shadow: 00010pxrgba(99, 102, 241, 0);
-            }
-
-            100% {
-                box-shadow: 0000rgba(99, 102, 241, 0);
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.8rem;
-            color: #64748b;
         }
     </style>
 </head>
-
 <body>
     <!-- 粒子背景 -->
     <div class="particles" id="particles"></div>
-
+    
+    <!-- 主容器 -->
     <div class="container">
         <div class="card">
+            <!-- Logo和标题 -->
             <div class="logo">
                 <h1>NEXUS ADMIN</h1>
                 <p>下一代智能后台管理系统</p>
             </div>
-
+            
+            <!-- 登录/注册选项卡 -->
             <div class="tabs">
-                <div class="tab active" data-tab="login">登录</div>
-                <div class="tab" data-tab="register">注册</div>
+                <div class="tab active" onclick="switchTab('login')">登录</div>
+                <div class="tab" onclick="switchTab('register')">注册</div>
             </div>
-
+            
+            <!-- 表单容器 -->
             <div class="form-container">
                 <!-- 登录表单 -->
                 <form class="form active" id="login-form">
@@ -441,230 +385,185 @@
                         <div class="input-group">
                             <label for="login-email">邮箱</label>
                             <i class="fas fa-envelope input-icon"></i>
-                            <input type="email" id="login-email" placeholder="your@email.com" required>
+                            <input type="email" id="login-email" class="input-field" placeholder="请输入您的邮箱" required>
                         </div>
-
+                        
                         <div class="input-group">
                             <label for="login-password">密码</label>
                             <i class="fas fa-lock input-icon"></i>
-                            <input type="password" id="login-password" placeholder="输入密码" required>
+                            <input type="password" id="login-password" class="input-field" placeholder="请输入您的密码" required>
                         </div>
-
-                        <div class="options">
-                            <div class="remember">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">记住我</label>
+                        
+                        <div class="remember-forgot">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember-me">
+                                <label for="remember-me">记住我</label>
                             </div>
                             <a href="#" class="forgot-password">忘记密码?</a>
                         </div>
-
-                        <div class="divider">或使用以下方式登录</div>
-
+                        
+                        <button type="submit" class="submit-btn">登录</button>
+                        
                         <div class="social-login">
-                            <div class="social-btn">
-                                <i class="fab fa-google"></i>
+                            <p>或使用以下方式登录</p>
+                            <div class="social-icons">
+                                <div class="social-icon">
+                                    <i class="fab fa-google"></i>
+                                </div>
+                                <div class="social-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="social-icon">
+                                    <i class="fab fa-weixin"></i>
+                                </div>
                             </div>
-                            <div class="social-btn">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="social-btn">
-                                <i class="fab fa-microsoft"></i>
-                            </div>
-                            <div class="social-btn">
-                                <i class="fab fa-apple"></i>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn pulse">登录系统</button>
-
-                        <div class="signup-link">
-                            还没有账号? <a href="#" id="show-register">立即注册</a>
                         </div>
                     </div>
+                    
+                    <div class="switch-form">
+                        还没有账号? <a href="#" onclick="switchTab('register')">立即注册</a>
+                    </div>
                 </form>
-
+                
                 <!-- 注册表单 -->
                 <form class="form" id="register-form">
                     <div class="form-content">
                         <div class="input-group">
-                            <label for="register-name">姓名</label>
+                            <label for="register-name">用户名</label>
                             <i class="fas fa-user input-icon"></i>
-                            <input type="text" id="register-name" placeholder="您的姓名" required>
+                            <input type="text" id="register-name" class="input-field" placeholder="请输入您的用户名" required>
                         </div>
-
+                        
                         <div class="input-group">
                             <label for="register-email">邮箱</label>
                             <i class="fas fa-envelope input-icon"></i>
-                            <input type="email" id="register-email" placeholder="your@email.com" required>
+                            <input type="email" id="register-email" class="input-field" placeholder="请输入您的邮箱" required>
                         </div>
-
+                        
                         <div class="input-group">
                             <label for="register-password">密码</label>
                             <i class="fas fa-lock input-icon"></i>
-                            <input type="password" id="register-password" placeholder="设置密码" required>
+                            <input type="password" id="register-password" class="input-field" placeholder="请输入密码(至少8位)" required minlength="8">
                         </div>
-
+                        
                         <div class="input-group">
                             <label for="register-confirm">确认密码</label>
                             <i class="fas fa-lock input-icon"></i>
-                            <input type="password" id="register-confirm" placeholder="确认密码" required>
+                            <input type="password" id="register-confirm" class="input-field" placeholder="请再次输入密码" required minlength="8">
                         </div>
-
-                        <div class="options">
-                            <div class="remember">
-                                <input type="checkbox" id="terms">
-                                <label for="terms">我同意服务条款</label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn">创建账号</button>
-
-                        <div class="signup-link">
-                            已有账号? <a href="#" id="show-login">立即登录</a>
-                        </div>
+                        
+                        <button type="submit" class="submit-btn">注册</button>
+                    </div>
+                    
+                    <div class="switch-form">
+                        已有账号? <a href="#" onclick="switchTab('login')">立即登录</a>
                     </div>
                 </form>
             </div>
         </div>
-
-        <div class="footer">
-            <p>© 2023 Nexus Admin System. 保留所有权利</p>
-        </div>
     </div>
-
+    
     <script>
+        // 切换登录/注册表单
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            const forms = document.querySelectorAll('.form');
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            forms.forEach(f => f.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelector('.tab:nth-child(1)').classList.add('active');
+                document.getElementById('login-form').classList.add('active');
+            } else {
+                document.querySelector('.tab:nth-child(2)').classList.add('active');
+                document.getElementById('register-form').classList.add('active');
+            }
+        }
+        
         // 创建粒子背景
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 30;
-
+            
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-
+                
                 // 随机大小
-                const size = Math.random() * 5 + 1;
+                const size = Math.random() * 5 + 2;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
-
+                
                 // 随机位置
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.top = `${Math.random() * 100}%`;
-
+                
                 // 随机动画延迟
                 particle.style.animationDelay = `${Math.random() * 15}s`;
-
+                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                
                 particlesContainer.appendChild(particle);
             }
         }
-
-        // 表单切换功能
-        function setupFormTabs() {
-            const tabs = document.querySelectorAll('.tab');
-            const forms = document.querySelectorAll('.form');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // 更新标签状态
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-
-                    // 显示对应的表单
-                    const targetForm = tab.getAttribute('data-tab');
-                    forms.forEach(form => {
-                        form.classList.remove('active');
-                        if (form.id === `${targetForm}-form`) {
-                            form.classList.add('active');
-                        }
-                    });
-                });
-            });
-
-            // 注册和登录链接切换
-            document.getElementById('show-register').addEventListener('click', (e) => {
+        
+        // 表单验证
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+            
+            if (password !== confirm) {
                 e.preventDefault();
-                tabs[1].click();
-            });
-
-            document.getElementById('show-login').addEventListener('click', (e) => {
-                e.preventDefault();
-                tabs[0].click();
-            });
-        }
-
-        // 表单提交处理
-        function setupFormSubmit() {
-            document.getElementById('login-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value;
-                const password = document.getElementById('login-password').value;
-
-                // 这里添加实际的登录逻辑
-                console.log('登录尝试:', email, password);
-                alert('登录功能演示 - 实际应用中这里会发送请求到服务器');
-            });
-
-            document.getElementById('register-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('register-name').value;
-                const email = document.getElementById('register-email').value;
-                const password = document.getElementById('register-password').value;
-                const confirm = document.getElementById('register-confirm').value;
-
-                if (password !== confirm) {
-                    alert('两次输入的密码不一致');
-                    return;
-                }
-
-                // 这里添加实际的注册逻辑
-                console.log('注册信息:', name, email, password);
-                alert('注册功能演示 - 实际应用中这里会发送请求到服务器');
-            });
-        }
-
+                alert('两次输入的密码不一致！');
+            }
+        });
+        
         // 初始化
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = function() {
             createParticles();
             setupFormTabs();
             setupFormSubmit();
 
-            // 添加社交按钮悬停效果
-            const socialButtons = document.querySelectorAll('.social-btn');
-            socialButtons.forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    const icon = button.querySelector('i');
-                    if (icon.classList.contains('fa-google')) {
-                        button.style.background = 'rgba(219, 68, 55, 0.1)';
-                        button.style.borderColor = '#db4437';
-                    } elseif (icon.classList.contains('fa-github')) {
-                        button.style.background = 'rgba(0, 0, 0, 0.1)';
-                        button.style.borderColor = '#000';
-                    } elseif (icon.classList.contains('fa-microsoft')) {
-                        button.style.background = 'rgba(0, 120, 212, 0.1)';
-                        button.style.borderColor = '#0078d4';
-                    } elseif (icon.classList.contains('fa-apple')) {
-                        button.style.background = 'rgba(128, 128, 128, 0.1)';
-                        button.style.borderColor = '#808080';
-                    }
-                });
-
-                button.addEventListener('mouseleave', () => {
-                    button.style.background = 'rgba(30, 41, 59, 0.7)';
-                    button.style.borderColor = 'rgba(99, 102, 241, 0.3)';
-                });
-
-                button.addEventListener('click', () => {
-                    const icon = button.querySelector('i');
-                    let provider = '';
-                    if (icon.classList.contains('fa-google')) provider = 'Google';
-                    elseif (icon.classList.contains('fa-github')) provider = 'GitHub';
-                    elseif (icon.classList.contains('fa-microsoft')) provider = 'Microsoft';
-                    elseif (icon.classList.contains('fa-apple')) provider = 'Apple';
-
-                    alert(`使用 ${provider} 登录功能演示`);
-                });
-            });
+    // 添加社交按钮悬停效果
+    const socialButtons = document.querySelectorAll('.social-btn');
+    socialButtons.forEach(button => {
+        // 鼠标悬停效果
+        button.addEventListener('mouseenter', () => {
+            const icon = button.querySelector('i');
+            if (icon.classList.contains('fa-google')) {
+                button.style.background = 'rgba(219, 68, 55, 0.1)';
+                button.style.borderColor = '#db4437';
+            } else if (icon.classList.contains('fa-github')) {
+                button.style.background = 'rgba(0, 0, 0, 0.1)';
+                button.style.borderColor = '#000';
+            } else if (icon.classList.contains('fa-microsoft')) {
+                button.style.background = 'rgba(0, 120, 212, 0.1)';
+                button.style.borderColor = '#0078d4';
+            } else if (icon.classList.contains('fa-apple')) {
+                button.style.background = 'rgba(128, 128, 128, 0.1)';
+                button.style.borderColor = '#808080';
+            }
         });
+
+        // 鼠标离开效果
+        button.addEventListener('mouseleave', () => {
+            button.style.background = 'rgba(30, 41, 59, 0.7)';
+            button.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+        });
+
+        // 点击事件处理
+        button.addEventListener('click', () => {
+            const icon = button.querySelector('i');
+            let provider = '';
+            if (icon.classList.contains('fa-google')) provider = 'Google';
+            else if (icon.classList.contains('fa-github')) provider = 'GitHub';
+            else if (icon.classList.contains('fa-microsoft')) provider = 'Microsoft';
+            else if (icon.classList.contains('fa-apple')) provider = 'Apple';
+
+            alert(`使用 ${provider} 登录功能演示`);
+        });
+    });
+});
     </script>
 </body>
 
