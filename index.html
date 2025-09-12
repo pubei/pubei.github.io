@@ -1,803 +1,672 @@
-{\rtf1\ansi\ansicpg936\cocoartf2639
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Monaco;\f1\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;\red155\green162\blue177;\red81\green156\blue233;\red30\green33\blue39;
-\red214\green85\blue98;\red197\green136\blue83;\red136\green185\blue102;\red223\green180\blue104;\red74\green80\blue93;
-\red184\green93\blue213;}
-{\*\expandedcolortbl;;\cssrgb\c67059\c69804\c74902;\cssrgb\c38039\c68235\c93333;\cssrgb\c15686\c17255\c20392;
-\cssrgb\c87843\c42353\c45882;\cssrgb\c81961\c60392\c40000;\cssrgb\c59608\c76471\c47451;\cssrgb\c90196\c75294\c48235;\cssrgb\c36078\c38824\c43922;
-\cssrgb\c77647\c47059\c86667;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\parhyphenfactor20\partightenfactor0
 
-\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
-\
-\pard\pardeftab720\parhyphenfactor20\partightenfactor0
-\cf3 \cb4 <!DOCTYPE\'a0html>\cf2 \cb1 \
-\pard\pardeftab720\parhyphenfactor20\partightenfactor0
-\cf2 \cb4 <\cf5 html\cf2 \'a0\cf6 lang\cf2 =\cf7 "zh-CN"\cf2 >\cb1 \
-\
-\cb4 <\cf5 head\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0<\cf5 meta\cf2 \'a0\cf6 charset\cf2 =\cf7 "UTF-8"\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0<\cf5 meta\cf2 \'a0\cf6 name\cf2 =\cf7 "viewport"\cf2 \'a0\cf6 content\cf2 =\cf7 "width=device-width, initial-scale=1.0"\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0<\cf5 title\cf2 >Nexus Admin | 
-\f1 \'bf\'c6\'bc\'bc\'b8\'d0\'ba\'f3\'cc\'a8\'b9\'dc\'c0\'ed\'cf\'b5\'cd\'b3
-\f0 </\cf5 title\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0<\cf5 link\cf2 \'a0\cf6 rel\cf2 =\cf7 "stylesheet"\cf2 \'a0\cf6 href\cf2 =\cf7 "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0<\cf5 style\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 * \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-sizing\cf2 : border-box;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-family\cf2 :\'a0\cf7 'Segoe UI'\cf2 , Tahoma, Geneva, Verdana, sans-serif;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf5 body\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 linear-gradient\cf2 (\cf6 135deg\cf2 , #\cf6 0\cf2 f172a, #\cf6 1\cf2 e293b);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #e2e8f0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 min-height\cf2 :\'a0\cf6 100vh\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 justify-content\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 align-items\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 overflow\cf2 : hidden;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 20px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'c1\'a3\'d7\'d3\'b1\'b3\'be\'b0\'d0\'a7\'b9\'fb
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .particles\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 top\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 left\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 height\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 z-index\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .particle\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-radius\cf2 :\'a0\cf6 50%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.5\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 0010px\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.8\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 animation\cf2 : float\'a0\cf6 15s\cf2 \'a0infinite linear;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'d6\'f7\'c8\'dd\'c6\'f7
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .container\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 z-index\cf2 :\'a0\cf6 10\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 90%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 max-width\cf2 :\'a0\cf6 450px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 min-height\cf2 :\'a0\cf6 90vh\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex-direction\cf2 : column;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 justify-content\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'bf\'a8\'c6\'ac\'d1\'f9\'ca\'bd
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .card\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 rgba\cf2 (\cf6 15\cf2 ,\'a0\cf6 23\cf2 ,\'a0\cf6 42\cf2 ,\'a0\cf6 0.7\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 backdrop-filter\cf2 :\'a0\cf8 blur\cf2 (\cf6 10px\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-radius\cf2 :\'a0\cf6 20px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border\cf2 :\'a0\cf6 1px\cf2 \'a0solid\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.3\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 010px30px\cf8 rgba\cf2 (\cf6 0\cf2 ,\'a0\cf6 0\cf2 ,\'a0\cf6 0\cf2 ,\'a0\cf6 0.3\cf2 ),\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 0020px\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.1\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 2.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 overflow\cf2 : hidden;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.4s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex-direction\cf2 : column;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'b6\'a5\'b2\'bf\'d7\'b0\'ca\'ce\'cf\'df
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .card::before\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 content\cf2 :\'a0\cf7 ''\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 top\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 left\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 height\cf2 :\'a0\cf6 4px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 linear-gradient\cf2 (\cf6 90deg\cf2 , #\cf6 8\cf2 b5cf6, #\cf6 6366\cf2 f1, #\cf6 0\cf2 ea5e9);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 0010px\cf8 rgba\cf2 (\cf6 139\cf2 ,\'a0\cf6 92\cf2 ,\'a0\cf6 246\cf2 ,\'a0\cf6 0.7\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .logo\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-align\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 2rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .logo\cf5 h1\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 2.2rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 linear-gradient\cf2 (\cf6 90deg\cf2 , #\cf6 8\cf2 b5cf6, #\cf6 6366\cf2 f1, #\cf6 0\cf2 ea5e9);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 -webkit-background-clip\cf2 : text;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 -webkit-text-fill-color\cf2 : transparent;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background-clip\cf2 : text;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-weight\cf2 :\'a0\cf6 800\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 letter-spacing\cf2 :\'a0\cf6 1px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 0.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .logo\cf5 p\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #94a3b8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 0.9rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 letter-spacing\cf2 :\'a0\cf6 0.5px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'b1\'ed\'b5\'a5\'c7\'d0\'bb\'bb
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .tabs\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-bottom\cf2 :\'a0\cf6 1px\cf2 \'a0solid\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.2\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .tab\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex\cf2 :\'a0\cf6 1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-align\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 1rem0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 cursor\cf2 : pointer;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-weight\cf2 :\'a0\cf6 600\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #94a3b8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.3s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .tab.active\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #e2e8f0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .tab.active::after\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 content\cf2 :\'a0\cf7 ''\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 bottom\cf2 : -\cf6 1px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 left\cf2 :\'a0\cf6 50%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateX\cf2 (-\cf6 50%\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 80%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 height\cf2 :\'a0\cf6 3px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 linear-gradient\cf2 (\cf6 90deg\cf2 , #\cf6 8\cf2 b5cf6, #\cf6 6366\cf2 f1);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-radius\cf2 :\'a0\cf6 3px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'b1\'ed\'b5\'a5\'d1\'f9\'ca\'bd
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .form-container\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex\cf2 :\'a0\cf6 1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 min-height\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex-direction\cf2 : column;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 overflow\cf2 : hidden;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .form\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 top\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 left\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 height\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 opacity\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateX\cf2 (\cf6 30px\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 pointer-events\cf2 : none;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.5s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex-direction\cf2 : column;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .form.active\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 opacity\cf2 :\'a0\cf6 1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateX\cf2 (\cf6 0\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 pointer-events\cf2 : all;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .form-content\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex\cf2 :\'a0\cf6 1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex-direction\cf2 : column;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .input-group\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .input-group\cf5 label\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : block;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 0.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 0.9rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #cbd5e1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .input-icon\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 left\cf2 :\'a0\cf6 15px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 top\cf2 :\'a0\cf6 42px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #6366f1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .input-group\cf5 input\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 14px14px14px45px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 rgba\cf2 (\cf6 30\cf2 ,\'a0\cf6 41\cf2 ,\'a0\cf6 59\cf2 ,\'a0\cf6 0.7\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border\cf2 :\'a0\cf6 1px\cf2 \'a0solid\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.3\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-radius\cf2 :\'a0\cf6 10px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #e2e8f0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 1rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.3s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .input-group\cf5 input\cf6 :focus\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 outline\cf2 : none;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-color\cf2 :\'a0\cf6 #6366f1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 0003px\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.2\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .input-group\cf5 input\cf6 :hover\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-color\cf2 :\'a0\cf6 #818cf8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .options\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 justify-content\cf2 : space-between;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 align-items\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 0.9rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .remember\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 align-items\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .remember\cf5 input\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-right\cf2 :\'a0\cf6 8px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 accent-color\cf2 :\'a0\cf6 #6366f1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .forgot-password\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #818cf8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-decoration\cf2 : none;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.3s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .forgot-password:hover\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #6366f1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-decoration\cf2 : underline;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .btn\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 100%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 14px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 linear-gradient\cf2 (\cf6 90deg\cf2 , #\cf6 8\cf2 b5cf6, #\cf6 6366\cf2 f1);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border\cf2 : none;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-radius\cf2 :\'a0\cf6 10px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 : white;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 1rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-weight\cf2 :\'a0\cf6 600\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 cursor\cf2 : pointer;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.3s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 letter-spacing\cf2 :\'a0\cf6 0.5px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 04px15px\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.3\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-top\cf2 : auto;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .btn:hover\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 linear-gradient\cf2 (\cf6 90deg\cf2 , #\cf6 7\cf2 c3aed, #\cf6 4\cf2 f46e5);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateY\cf2 (-\cf6 2px\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 06px20px\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.4\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .btn:active\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateY\cf2 (\cf6 0\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .divider\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-align\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin\cf2 :\'a0\cf6 1.5rem0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : relative;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #94a3b8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 0.9rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .divider::before\cf2 ,\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .divider::after\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 content\cf2 :\'a0\cf7 ''\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 position\cf2 : absolute;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 top\cf2 :\'a0\cf6 50%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 40%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 height\cf2 :\'a0\cf6 1px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.2\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .divider::before\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 left\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .divider::after\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 right\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .social-login\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 justify-content\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 gap\cf2 :\'a0\cf6 1rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-bottom\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .social-btn\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 45px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 height\cf2 :\'a0\cf6 45px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-radius\cf2 :\'a0\cf6 50%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 display\cf2 : flex;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 justify-content\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 align-items\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 rgba\cf2 (\cf6 30\cf2 ,\'a0\cf6 41\cf2 ,\'a0\cf6 59\cf2 ,\'a0\cf6 0.7\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border\cf2 :\'a0\cf6 1px\cf2 \'a0solid\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.3\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #94a3b8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 cursor\cf2 : pointer;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.3s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .social-btn:hover\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 background\cf2 :\'a0\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.1\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #e2e8f0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateY\cf2 (-\cf6 3px\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 border-color\cf2 :\'a0\cf6 #6366f1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .signup-link\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-align\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-top\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 0.9rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #94a3b8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .signup-link\cf5 a\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #818cf8\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-decoration\cf2 : none;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-left\cf2 :\'a0\cf6 5px\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-weight\cf2 :\'a0\cf6 600\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transition\cf2 : all\'a0\cf6 0.3s\cf2 \'a0ease;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .signup-link\cf5 a\cf6 :hover\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #6366f1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-decoration\cf2 : underline;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'cf\'ec\'d3\'a6\'ca\'bd\'c9\'e8\'bc\'c6
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf10 @media\cf2 \'a0(\cf7 max-width:\cf6 480px\cf2 ) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .container\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 width\cf2 :\'a0\cf6 95%\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 min-height\cf2 :\'a0\cf6 95vh\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .card\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 padding\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .logo\cf5 h1\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 1.8rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .options\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 flex-direction\cf2 : column;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 align-items\cf2 : flex-start;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 gap\cf2 :\'a0\cf6 0.8rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .forgot-password\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-left\cf2 : auto;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .social-login\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 gap\cf2 :\'a0\cf6 0.8rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 /* 
-\f1 \'b6\'af\'bb\'ad\'d0\'a7\'b9\'fb
-\f0  */\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf10 @keyframes\cf2 \'a0float \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 0% \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateY\cf2 (\cf6 0\cf2 )\'a0\cf8 translateX\cf2 (\cf6 0\cf2 )\'a0\cf8 rotate\cf2 (\cf6 0deg\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 opacity\cf2 :\'a0\cf6 0.2\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 100% \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 transform\cf2 :\'a0\cf8 translateY\cf2 (-\cf6 100vh\cf2 )\'a0\cf8 translateX\cf2 (\cf6 100px\cf2 )\'a0\cf8 rotate\cf2 (\cf6 360deg\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 opacity\cf2 :\'a0\cf6 0\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf10 @keyframes\cf2 \'a0pulse \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 0% \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 0000\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0.4\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 70% \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 00010px\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 100% \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 box-shadow\cf2 :\'a0\cf6 0000\cf8 rgba\cf2 (\cf6 99\cf2 ,\'a0\cf6 102\cf2 ,\'a0\cf6 241\cf2 ,\'a0\cf6 0\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .pulse\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 animation\cf2 : pulse\'a0\cf6 2s\cf2 \'a0infinite;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf6 .footer\cf2 \'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 text-align\cf2 : center;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 margin-top\cf2 :\'a0\cf6 1.5rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 font-size\cf2 :\'a0\cf6 0.8rem\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf7 color\cf2 :\'a0\cf6 #64748b\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0\'a0</\cf5 style\cf2 >\cb1 \
-\cb4 </\cf5 head\cf2 >\cb1 \
-\
-\cb4 <\cf5 body\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0\cf9 <!-- 
-\f1 \'c1\'a3\'d7\'d3\'b1\'b3\'be\'b0
-\f0  -->\cf2 \cb1 \
-\cb4 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "particles"\cf2 \'a0\cf6 id\cf2 =\cf7 "particles"\cf2 ></\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "container"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "card"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "logo"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 h1\cf2 >NEXUS ADMIN</\cf5 h1\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 p\cf2 >
-\f1 \'cf\'c2\'d2\'bb\'b4\'fa\'d6\'c7\'c4\'dc\'ba\'f3\'cc\'a8\'b9\'dc\'c0\'ed\'cf\'b5\'cd\'b3
-\f0 </\cf5 p\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "tabs"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "tab active"\cf2 \'a0\cf6 data-tab\cf2 =\cf7 "login"\cf2 >
-\f1 \'b5\'c7\'c2\'bc
-\f0 </\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "tab"\cf2 \'a0\cf6 data-tab\cf2 =\cf7 "register"\cf2 >
-\f1 \'d7\'a2\'b2\'e1
-\f0 </\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "form-container"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 <!-- 
-\f1 \'b5\'c7\'c2\'bc\'b1\'ed\'b5\'a5
-\f0  -->\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 form\cf2 \'a0\cf6 class\cf2 =\cf7 "form active"\cf2 \'a0\cf6 id\cf2 =\cf7 "login-form"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "form-content"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "input-group"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "login-email"\cf2 >
-\f1 \'d3\'ca\'cf\'e4
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fas fa-envelope input-icon"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "email"\cf2 \'a0\cf6 id\cf2 =\cf7 "login-email"\cf2 \'a0\cf6 placeholder\cf2 =\cf7 "your@email.com"\cf2 \'a0\cf6 required\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "input-group"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "login-password"\cf2 >
-\f1 \'c3\'dc\'c2\'eb
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fas fa-lock input-icon"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "password"\cf2 \'a0\cf6 id\cf2 =\cf7 "login-password"\cf2 \'a0\cf6 placeholder\cf2 =\cf7 "
-\f1 \'ca\'e4\'c8\'eb\'c3\'dc\'c2\'eb
-\f0 "\cf2 \'a0\cf6 required\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "options"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "remember"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "checkbox"\cf2 \'a0\cf6 id\cf2 =\cf7 "remember"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "remember"\cf2 >
-\f1 \'bc\'c7\'d7\'a1\'ce\'d2
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 a\cf2 \'a0\cf6 href\cf2 =\cf7 "#"\cf2 \'a0\cf6 class\cf2 =\cf7 "forgot-password"\cf2 >
-\f1 \'cd\'fc\'bc\'c7\'c3\'dc\'c2\'eb
-\f0 ?</\cf5 a\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "divider"\cf2 >
-\f1 \'bb\'f2\'ca\'b9\'d3\'c3\'d2\'d4\'cf\'c2\'b7\'bd\'ca\'bd\'b5\'c7\'c2\'bc
-\f0 </\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "social-login"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "social-btn"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fab fa-google"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "social-btn"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fab fa-github"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "social-btn"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fab fa-microsoft"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "social-btn"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fab fa-apple"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 button\cf2 \'a0\cf6 type\cf2 =\cf7 "submit"\cf2 \'a0\cf6 class\cf2 =\cf7 "btn pulse"\cf2 >
-\f1 \'b5\'c7\'c2\'bc\'cf\'b5\'cd\'b3
-\f0 </\cf5 button\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "signup-link"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
-\f1 \'bb\'b9\'c3\'bb\'d3\'d0\'d5\'cb\'ba\'c5
-\f0 ?\'a0<\cf5 a\cf2 \'a0\cf6 href\cf2 =\cf7 "#"\cf2 \'a0\cf6 id\cf2 =\cf7 "show-register"\cf2 >
-\f1 \'c1\'a2\'bc\'b4\'d7\'a2\'b2\'e1
-\f0 </\cf5 a\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 form\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 <!-- 
-\f1 \'d7\'a2\'b2\'e1\'b1\'ed\'b5\'a5
-\f0  -->\cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 form\cf2 \'a0\cf6 class\cf2 =\cf7 "form"\cf2 \'a0\cf6 id\cf2 =\cf7 "register-form"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "form-content"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "input-group"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "register-name"\cf2 >
-\f1 \'d0\'d5\'c3\'fb
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fas fa-user input-icon"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "text"\cf2 \'a0\cf6 id\cf2 =\cf7 "register-name"\cf2 \'a0\cf6 placeholder\cf2 =\cf7 "
-\f1 \'c4\'fa\'b5\'c4\'d0\'d5\'c3\'fb
-\f0 "\cf2 \'a0\cf6 required\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "input-group"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "register-email"\cf2 >
-\f1 \'d3\'ca\'cf\'e4
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fas fa-envelope input-icon"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "email"\cf2 \'a0\cf6 id\cf2 =\cf7 "register-email"\cf2 \'a0\cf6 placeholder\cf2 =\cf7 "your@email.com"\cf2 \'a0\cf6 required\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "input-group"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "register-password"\cf2 >
-\f1 \'c3\'dc\'c2\'eb
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fas fa-lock input-icon"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "password"\cf2 \'a0\cf6 id\cf2 =\cf7 "register-password"\cf2 \'a0\cf6 placeholder\cf2 =\cf7 "
-\f1 \'c9\'e8\'d6\'c3\'c3\'dc\'c2\'eb
-\f0 "\cf2 \'a0\cf6 required\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "input-group"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "register-confirm"\cf2 >
-\f1 \'c8\'b7\'c8\'cf\'c3\'dc\'c2\'eb
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 i\cf2 \'a0\cf6 class\cf2 =\cf7 "fas fa-lock input-icon"\cf2 ></\cf5 i\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "password"\cf2 \'a0\cf6 id\cf2 =\cf7 "register-confirm"\cf2 \'a0\cf6 placeholder\cf2 =\cf7 "
-\f1 \'c8\'b7\'c8\'cf\'c3\'dc\'c2\'eb
-\f0 "\cf2 \'a0\cf6 required\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "options"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "remember"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 input\cf2 \'a0\cf6 type\cf2 =\cf7 "checkbox"\cf2 \'a0\cf6 id\cf2 =\cf7 "terms"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 label\cf2 \'a0\cf6 for\cf2 =\cf7 "terms"\cf2 >
-\f1 \'ce\'d2\'cd\'ac\'d2\'e2\'b7\'fe\'ce\'f1\'cc\'f5\'bf\'ee
-\f0 </\cf5 label\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 button\cf2 \'a0\cf6 type\cf2 =\cf7 "submit"\cf2 \'a0\cf6 class\cf2 =\cf7 "btn"\cf2 >
-\f1 \'b4\'b4\'bd\'a8\'d5\'cb\'ba\'c5
-\f0 </\cf5 button\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "signup-link"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
-\f1 \'d2\'d1\'d3\'d0\'d5\'cb\'ba\'c5
-\f0 ?\'a0<\cf5 a\cf2 \'a0\cf6 href\cf2 =\cf7 "#"\cf2 \'a0\cf6 id\cf2 =\cf7 "show-login"\cf2 >
-\f1 \'c1\'a2\'bc\'b4\'b5\'c7\'c2\'bc
-\f0 </\cf5 a\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 form\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 div\cf2 \'a0\cf6 class\cf2 =\cf7 "footer"\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0<\cf5 p\cf2 >\'a9 2023 Nexus Admin System. 
-\f1 \'b1\'a3\'c1\'f4\'cb\'f9\'d3\'d0\'c8\'a8\'c0\'fb
-\f0 </\cf5 p\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\cb4 \'a0 \'a0\'a0</\cf5 div\cf2 >\cb1 \
-\
-\cb4 \'a0 \'a0\'a0<\cf5 script\cf2 >\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'b4\'b4\'bd\'a8\'c1\'a3\'d7\'d3\'b1\'b3\'be\'b0
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf10 function\cf2 \'a0\cf3 createParticles\cf2 ()\'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0particlesContainer =\'a0\cf8 document\cf2 .getElementById(\cf7 'particles'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0particleCount =\'a0\cf6 30\cf2 ;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 for\cf2 \'a0(\cf10 let\cf2 \'a0i =\'a0\cf6 0\cf2 ; i < particleCount; i++) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0particle =\'a0\cf8 document\cf2 .createElement(\cf7 'div'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particle.classList.add(\cf7 'particle'\cf2 );\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'cb\'e6\'bb\'fa\'b4\'f3\'d0\'a1
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0size =\'a0\cf8 Math\cf2 .random() *\'a0\cf6 5\cf2 \'a0+\'a0\cf6 1\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particle.style.width =\'a0\cf7 `\cf5 $\{size\}\cf7 px`\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particle.style.height =\'a0\cf7 `\cf5 $\{size\}\cf7 px`\cf2 ;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'cb\'e6\'bb\'fa\'ce\'bb\'d6\'c3
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particle.style.left =\'a0\cf7 `\cf5 $\{\cf8 Math\cf5 .random() *\'a0\cf6 100\cf5 \}\cf7 %`\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particle.style.top =\'a0\cf7 `\cf5 $\{\cf8 Math\cf5 .random() *\'a0\cf6 100\cf5 \}\cf7 %`\cf2 ;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'cb\'e6\'bb\'fa\'b6\'af\'bb\'ad\'d1\'d3\'b3\'d9
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particle.style.animationDelay =\'a0\cf7 `\cf5 $\{\cf8 Math\cf5 .random() *\'a0\cf6 15\cf5 \}\cf7 s`\cf2 ;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 particlesContainer.appendChild(particle);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'b1\'ed\'b5\'a5\'c7\'d0\'bb\'bb\'b9\'a6\'c4\'dc
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf10 function\cf2 \'a0\cf3 setupFormTabs\cf2 ()\'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0tabs =\'a0\cf8 document\cf2 .querySelectorAll(\cf7 '.tab'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0forms =\'a0\cf8 document\cf2 .querySelectorAll(\cf7 '.form'\cf2 );\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 tabs.forEach(tab\'a0=>\'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 tab.addEventListener(\cf7 'click'\cf2 , () => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'b8\'fc\'d0\'c2\'b1\'ea\'c7\'a9\'d7\'b4\'cc\'ac
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 tabs.forEach(t\'a0=>\'a0t.classList.remove(\cf7 'active'\cf2 ));\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 tab.classList.add(\cf7 'active'\cf2 );\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'cf\'d4\'ca\'be\'b6\'d4\'d3\'a6\'b5\'c4\'b1\'ed\'b5\'a5
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0targetForm = tab.getAttribute(\cf7 'data-tab'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 forms.forEach(form\'a0=>\'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 form.classList.remove(\cf7 'active'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 if\cf2 \'a0(form.id ===\'a0\cf7 `\cf5 $\{targetForm\}\cf7 -form`\cf2 ) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 form.classList.add(\cf7 'active'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'d7\'a2\'b2\'e1\'ba\'cd\'b5\'c7\'c2\'bc\'c1\'b4\'bd\'d3\'c7\'d0\'bb\'bb
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf8 document\cf2 .getElementById(\cf7 'show-register'\cf2 ).addEventListener(\cf7 'click'\cf2 , (e) => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 e.preventDefault();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 tabs[\cf6 1\cf2 ].click();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf8 document\cf2 .getElementById(\cf7 'show-login'\cf2 ).addEventListener(\cf7 'click'\cf2 , (e) => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 e.preventDefault();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 tabs[\cf6 0\cf2 ].click();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'b1\'ed\'b5\'a5\'cc\'e1\'bd\'bb\'b4\'a6\'c0\'ed
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf10 function\cf2 \'a0\cf3 setupFormSubmit\cf2 ()\'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf8 document\cf2 .getElementById(\cf7 'login-form'\cf2 ).addEventListener(\cf7 'submit'\cf2 , (e) => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 e.preventDefault();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0email =\'a0\cf8 document\cf2 .getElementById(\cf7 'login-email'\cf2 ).value;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0password =\'a0\cf8 document\cf2 .getElementById(\cf7 'login-password'\cf2 ).value;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'d5\'e2\'c0\'ef\'cc\'ed\'bc\'d3\'ca\'b5\'bc\'ca\'b5\'c4\'b5\'c7\'c2\'bc\'c2\'df\'bc\'ad
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf8 console\cf2 .log(\cf7 '
-\f1 \'b5\'c7\'c2\'bc\'b3\'a2\'ca\'d4
-\f0 :'\cf2 , email, password);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 alert(\cf7 '
-\f1 \'b5\'c7\'c2\'bc\'b9\'a6\'c4\'dc\'d1\'dd\'ca\'be
-\f0  - 
-\f1 \'ca\'b5\'bc\'ca\'d3\'a6\'d3\'c3\'d6\'d0\'d5\'e2\'c0\'ef\'bb\'e1\'b7\'a2\'cb\'cd\'c7\'eb\'c7\'f3\'b5\'bd\'b7\'fe\'ce\'f1\'c6\'f7
-\f0 '\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf8 document\cf2 .getElementById(\cf7 'register-form'\cf2 ).addEventListener(\cf7 'submit'\cf2 , (e) => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 e.preventDefault();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0name =\'a0\cf8 document\cf2 .getElementById(\cf7 'register-name'\cf2 ).value;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0email =\'a0\cf8 document\cf2 .getElementById(\cf7 'register-email'\cf2 ).value;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0password =\'a0\cf8 document\cf2 .getElementById(\cf7 'register-password'\cf2 ).value;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0confirm =\'a0\cf8 document\cf2 .getElementById(\cf7 'register-confirm'\cf2 ).value;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 if\cf2 \'a0(password !== confirm) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 alert(\cf7 '
-\f1 \'c1\'bd\'b4\'ce\'ca\'e4\'c8\'eb\'b5\'c4\'c3\'dc\'c2\'eb\'b2\'bb\'d2\'bb\'d6\'c2
-\f0 '\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 return\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'d5\'e2\'c0\'ef\'cc\'ed\'bc\'d3\'ca\'b5\'bc\'ca\'b5\'c4\'d7\'a2\'b2\'e1\'c2\'df\'bc\'ad
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf8 console\cf2 .log(\cf7 '
-\f1 \'d7\'a2\'b2\'e1\'d0\'c5\'cf\'a2
-\f0 :'\cf2 , name, email, password);\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 alert(\cf7 '
-\f1 \'d7\'a2\'b2\'e1\'b9\'a6\'c4\'dc\'d1\'dd\'ca\'be
-\f0  - 
-\f1 \'ca\'b5\'bc\'ca\'d3\'a6\'d3\'c3\'d6\'d0\'d5\'e2\'c0\'ef\'bb\'e1\'b7\'a2\'cb\'cd\'c7\'eb\'c7\'f3\'b5\'bd\'b7\'fe\'ce\'f1\'c6\'f7
-\f0 '\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'b3\'f5\'ca\'bc\'bb\'af
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0\'a0\cf8 document\cf2 .addEventListener(\cf7 'DOMContentLoaded'\cf2 , () => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 createParticles();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 setupFormTabs();\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 setupFormSubmit();\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf9 // 
-\f1 \'cc\'ed\'bc\'d3\'c9\'e7\'bd\'bb\'b0\'b4\'c5\'a5\'d0\'fc\'cd\'a3\'d0\'a7\'b9\'fb
-\f0 \cf2 \cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0socialButtons =\'a0\cf8 document\cf2 .querySelectorAll(\cf7 '.social-btn'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 socialButtons.forEach(button\'a0=>\'a0\{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.addEventListener(\cf7 'mouseenter'\cf2 , () => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0icon = button.querySelector(\cf7 'i'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 if\cf2 \'a0(icon.classList.contains(\cf7 'fa-google'\cf2 )) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.background =\'a0\cf7 'rgba(219, 68, 55, 0.1)'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.borderColor =\'a0\cf7 '#db4437'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\'a0\cf10 elseif\cf2 \'a0(icon.classList.contains(\cf7 'fa-github'\cf2 )) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.background =\'a0\cf7 'rgba(0, 0, 0, 0.1)'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.borderColor =\'a0\cf7 '#000'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\'a0\cf10 elseif\cf2 \'a0(icon.classList.contains(\cf7 'fa-microsoft'\cf2 )) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.background =\'a0\cf7 'rgba(0, 120, 212, 0.1)'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.borderColor =\'a0\cf7 '#0078d4'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\'a0\cf10 elseif\cf2 \'a0(icon.classList.contains(\cf7 'fa-apple'\cf2 )) \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.background =\'a0\cf7 'rgba(128, 128, 128, 0.1)'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.borderColor =\'a0\cf7 '#808080'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \}\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.addEventListener(\cf7 'mouseleave'\cf2 , () => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.background =\'a0\cf7 'rgba(30, 41, 59, 0.7)'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.style.borderColor =\'a0\cf7 'rgba(99, 102, 241, 0.3)'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 button.addEventListener(\cf7 'click'\cf2 , () => \{\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 const\cf2 \'a0icon = button.querySelector(\cf7 'i'\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 let\cf2 \'a0provider =\'a0\cf7 ''\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 if\cf2 \'a0(icon.classList.contains(\cf7 'fa-google'\cf2 )) provider =\'a0\cf7 'Google'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 elseif\cf2 \'a0(icon.classList.contains(\cf7 'fa-github'\cf2 )) provider =\'a0\cf7 'GitHub'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 elseif\cf2 \'a0(icon.classList.contains(\cf7 'fa-microsoft'\cf2 )) provider =\'a0\cf7 'Microsoft'\cf2 ;\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\cf10 elseif\cf2 \'a0(icon.classList.contains(\cf7 'fa-apple'\cf2 )) provider =\'a0\cf7 'Apple'\cf2 ;\cb1 \
-\
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 alert(\cf7 `
-\f1 \'ca\'b9\'d3\'c3
-\f0 \'a0\cf5 $\{provider\}\cf7 \'a0
-\f1 \'b5\'c7\'c2\'bc\'b9\'a6\'c4\'dc\'d1\'dd\'ca\'be
-\f0 `\cf2 );\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0 \'a0 \'a0 \});\cb1 \
-\cb4 \'a0 \'a0\'a0</\cf5 script\cf2 >\cb1 \
-\cb4 </\cf5 body\cf2 >\cb1 \
-\
-\cb4 </\cf5 html\cf2 >}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Admin | 科技感后台管理系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* 粒子背景效果 */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+            animation: float 15s infinite linear;
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 450px;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(99, 102, 241, 0.1);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 顶部装饰线 */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1, #0ea5e9);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 表单切换 */
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #e2e8f0;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1);
+            border-radius: 3px;
+        }
+
+        /* 表单样式 */
+        .form-container {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .form {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: translateX(30px);
+            pointer-events: none;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+            position: relative;
+        }
+
+        .form-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 42px;
+            color: #6366f1;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .input-group input:hover {
+            border-color: #818cf8;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember input {
+            margin-right: 8px;
+            accent-color: #6366f1;
+        }
+
+        .forgot-password {
+            color: #818cf8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #6366f1;
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            margin-top: auto;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #7c3aed, #4f46e5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #e2e8f0;
+            transform: translateY(-3px);
+            border-color: #6366f1;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .signup-link a {
+            color: #818cf8;
+            text-decoration: none;
+            margin-left: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #6366f1;
+            text-decoration: underline;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0;
+                width: 95%;
+                min-height: 95vh;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
+            .options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .forgot-password {
+                margin-left: auto;
+            }
+
+            .social-login {
+                gap: 0.8rem;
+            }
+        }
+
+        /* 动画效果 */
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 粒子背景 -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <h1>NEXUS ADMIN</h1>
+                <p>下一代智能后台管理系统</p>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" data-tab="login">登录</div>
+                <div class="tab" data-tab="register">注册</div>
+            </div>
+
+            <div class="form-container">
+                <!-- 登录表单 -->
+                <form class="form active" id="login-form">
+                    <div class="form-content">
+                        <div class="input-group">
+                            <label for="login-email">邮箱</label>
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="login-email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="login-password">密码</label>
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="login-password" placeholder="输入密码" required>
+                        </div>
+
+                        <div class="options">
+                            <div class="remember">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">记住我</label>
+                            </div>
+                            <a href="#" class="forgot-password">忘记密码?</a>
+                        </div>
+
+                        <div class="divider">或使用以下方式登录</div>
+
+                        <div class="social-login">
+                            <div class="social-btn">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="social-btn">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="social-btn">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="social-btn">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn pulse">登录系统</button>
+
+                        <div class="signup-link">
+                            还没有账号? <a href="#" id="show-register">立即注册</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 注册表单 -->
+                <form class="form" id="register-form">
+                    <div class="form-content">
+                        <div class="input-group">
+                            <label for="register-name">姓名</label>
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="register-name" placeholder="您的姓名" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="register-email">邮箱</label>
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="register-email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="register-password">密码</label>
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="register-password" placeholder="设置密码" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="register-confirm">确认密码</label>
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="register-confirm" placeholder="确认密码" required>
+                        </div>
+
+                        <div class="options">
+                            <div class="remember">
+                                <input type="checkbox" id="terms">
+                                <label for="terms">我同意服务条款</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn">创建账号</button>
+
+                        <div class="signup-link">
+                            已有账号? <a href="#" id="show-login">立即登录</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2023 Nexus Admin System. 保留所有权利</p>
+        </div>
+    </div>
+
+    <script>
+        // 创建粒子背景
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // 随机大小
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // 随机位置
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+
+                // 随机动画延迟
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // 表单切换功能
+        function setupFormTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            const forms = document.querySelectorAll('.form');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 更新标签状态
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    // 显示对应的表单
+                    const targetForm = tab.getAttribute('data-tab');
+                    forms.forEach(form => {
+                        form.classList.remove('active');
+                        if (form.id === `${targetForm}-form`) {
+                            form.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // 注册和登录链接切换
+            document.getElementById('show-register').addEventListener('click', (e) => {
+                e.preventDefault();
+                tabs[1].click();
+            });
+
+            document.getElementById('show-login').addEventListener('click', (e) => {
+                e.preventDefault();
+                tabs[0].click();
+            });
+        }
+
+        // 表单提交处理
+        function setupFormSubmit() {
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                // 这里添加实际的登录逻辑
+                console.log('登录尝试:', email, password);
+                alert('登录功能演示 - 实际应用中这里会发送请求到服务器');
+            });
+
+            document.getElementById('register-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirm = document.getElementById('register-confirm').value;
+
+                if (password !== confirm) {
+                    alert('两次输入的密码不一致');
+                    return;
+                }
+
+                // 这里添加实际的注册逻辑
+                console.log('注册信息:', name, email, password);
+                alert('注册功能演示 - 实际应用中这里会发送请求到服务器');
+            });
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setupFormTabs();
+            setupFormSubmit();
+
+            // 添加社交按钮悬停效果
+            const socialButtons = document.querySelectorAll('.social-btn');
+            socialButtons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    const icon = button.querySelector('i');
+                    if (icon.classList.contains('fa-google')) {
+                        button.style.background = 'rgba(219, 68, 55, 0.1)';
+                        button.style.borderColor = '#db4437';
+                    } else if (icon.classList.contains('fa-github')) {
+                        button.style.background = 'rgba(0, 0, 0, 0.1)';
+                        button.style.borderColor = '#000';
+                    } else if (icon.classList.contains('fa-microsoft')) {
+                        button.style.background = 'rgba(0, 120, 212, 0.1)';
+                        button.style.borderColor = '#0078d4';
+                    } else if (icon.classList.contains('fa-apple')) {
+                        button.style.background = 'rgba(128, 128, 128, 0.1)';
+                        button.style.borderColor = '#808080';
+                    }
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    button.style.background = 'rgba(30, 41, 59, 0.7)';
+                    button.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+                });
+
+                button.addEventListener('click', () => {
+                    const icon = button.querySelector('i');
+                    let provider = '';
+                    if (icon.classList.contains('fa-google')) provider = 'Google';
+                    else if (icon.classList.contains('fa-github')) provider = 'GitHub';
+                    else if (icon.classList.contains('fa-microsoft')) provider = 'Microsoft';
+                    else if (icon.classList.contains('fa-apple')) provider = 'Apple';
+
+                    alert(`使用 ${provider} 登录功能演示`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
