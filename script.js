@@ -379,29 +379,29 @@ const Restaurants = () => {
 const Movies = () => {
     const getMovies = () => {
         return [{
-                desc: "仪表盘统计",
+                desc: "家居定制",
                 id: 1,
                 icon: "fa-solid fa-battery-full",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/11.jpg",
                 title: "Tesla Powerwall"
             }, {
-                desc: "能源生产",
+                desc: "衣柜定制",
                 id: 2,
                 icon: "fa-solid fa-solar-panel",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/12.jpg",
-                title: "太阳能发电"
+                title: "智能家居"
             }, {
-                desc: "电动车充电统计",
+                desc: "全屋定制智能产品",
                 id: 3,
                 icon: "fa-solid fa-charging-station",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/13.jpg",
-                title: "充电站"
+                title: "毛皮改造"
             }, {
-                desc: "家庭安全概览",
+                desc: "房屋翻新",
                 id: 4,
                 icon: "fa-solid fa-camera-security",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/14.jpg",
-                title: "家庭安全系统"
+                title: "水电安装"
             }].map((movie) => {
             const styles = {
                 backgroundImage: `url(${movie.image})`
