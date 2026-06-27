@@ -210,13 +210,16 @@ const QuickNav = () => {
                 label: "智能家居"
             }, {
                 id: 2,
-                label: "温度调节"
+                label: "全屋定制"
             }, {
                 id: 3,
-                label: "全屋灯光"
+                label: "装修设计"
             }, {
                 id: 4,
-                label: "晚安模式"
+                label: "上门服务"
+            }, {
+                id: 5,
+                label: "免费量房"
             }].map((item) => {
             return (React.createElement("div", { key: item.id, className: "quick-nav-item clear-button" },
                 React.createElement("span", { className: "quick-nav-item-label" }, item.label)));
