@@ -395,7 +395,7 @@ const Movies = () => {
                 id: 3,
                 icon: "fa-solid fa-charging-station",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/13.jpg",
-                title: "毛皮改造"
+                title: "毛坯房改造"
             }, {
                 desc: "房屋翻新",
                 id: 4,
