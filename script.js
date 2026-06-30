@@ -210,16 +210,13 @@ const QuickNav = () => {
                 label: "智能家居"
             }, {
                 id: 2,
-                label: "全屋定制"
+                label: "温度调节"
             }, {
                 id: 3,
-                label: "装修设计"
+                label: "全屋灯光"
             }, {
                 id: 4,
-                label: "上门服务"
-            }, {
-                id: 5,
-                label: "免费量房"
+                label: "晚安模式"
             }].map((item) => {
             return (React.createElement("div", { key: item.id, className: "quick-nav-item clear-button" },
                 React.createElement("span", { className: "quick-nav-item-label" }, item.label)));
@@ -339,7 +336,7 @@ const Tools = () => {
                     React.createElement("i", { className: classNames(tool.icon, "tool-card-icon") }))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-solid fa-rectangles-mixed", id: "tools-section", title: "全屋智能" }, getTools()));
+    return (React.createElement(MenuSection, { icon: "fa-solid fa-rectangles-mixed", id: "tools-section", title: "其他控制" }, getTools()));
 };
 const Restaurants = () => {
     const getRestaurants = () => {
@@ -374,34 +371,34 @@ const Restaurants = () => {
                         React.createElement("span", { className: "restaurant-card-desc" }, restaurant.desc)))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-regular fa-lightbulb", id: "restaurants-section", title: "全屋定制" }, getRestaurants()));
+    return (React.createElement(MenuSection, { icon: "fa-regular fa-lightbulb", id: "restaurants-section", title: "家庭灯光控制" }, getRestaurants()));
 };
 const Movies = () => {
     const getMovies = () => {
         return [{
-                desc: "家居定制",
+                desc: "仪表盘统计",
                 id: 1,
                 icon: "fa-solid fa-battery-full",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/11.jpg",
                 title: "Tesla Powerwall"
             }, {
-                desc: "衣柜定制",
+                desc: "能源生产",
                 id: 2,
                 icon: "fa-solid fa-solar-panel",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/12.jpg",
-                title: "智能家居"
+                title: "太阳能发电"
             }, {
-                desc: "全屋定制智能产品",
+                desc: "电动车充电统计",
                 id: 3,
                 icon: "fa-solid fa-charging-station",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/13.jpg",
-                title: "毛坯房改造"
+                title: "充电站"
             }, {
-                desc: "房屋翻新",
+                desc: "家庭安全概览",
                 id: 4,
                 icon: "fa-solid fa-camera-security",
                 image: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/14.jpg",
-                title: "水电安装"
+                title: "家庭安全系统"
             }].map((movie) => {
             const styles = {
                 backgroundImage: `url(${movie.image})`
@@ -416,7 +413,7 @@ const Movies = () => {
                     React.createElement("i", { className: movie.icon }))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-solid fa-battery-bolt", id: "movies-section", scrollable: true, title: "装修装饰" }, getMovies()));
+    return (React.createElement(MenuSection, { icon: "fa-solid fa-battery-bolt", id: "movies-section", scrollable: true, title: "其他仪表盘" }, getMovies()));
 };
 const UserStatusButton = (props) => {
     const { userStatus, setUserStatusTo } = React.useContext(AppContext);
