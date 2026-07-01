@@ -1,0 +1,17 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "现代简约公寓",
+      "description": "开放式厨房与客厅连接，采用木质与灰白配色，营造温暖氛围。",
+      "image": "https://images.unsplash.com/photo-1560185127-6b3a9aa8f6f4?w=1200"
+    },
+    {
+      "id": 2,
+      "title": "北欧风别墅",
+      "description": "清爽配色、自然采光，注重功能与美学的平衡。",
+      "image": "https://images.unsplash.com/photo-1505691723518-36a9f0d2b6f6?w=1200"
+    }
+  ],
+  "messages": []
+}
