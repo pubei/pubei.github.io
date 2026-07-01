@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>后台管理 - 浦北装修设计公司</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script defer src="/js/admin.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">浦北装修设计公司</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="container glass content-card" id="adminArea">
+      <h2>后台管理</h2>
+
+      <div id="loginBox">
+        <p>请输入后台密码（演示）</p>
+        <input id="adminPassword" type="password" placeholder="密码" />
+        <button id="btnLogin" class="btn">登录</button>
+        <div id="loginResult" class="result"></div>
+      </div>
+
+      <div id="manageBox" style="display:none;">
+        <h3>新增作品</h3>
+        <label>标题<input id="projTitle" /></label>
+        <label>图片 URL<input id="projImage" /></label>
+        <label>描述<textarea id="projDesc"></textarea></label>
+        <button id="btnAddProj" class="btn">新增</button>
+        <h3>留言列表</h3>
+        <div id="messagesList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 浦北装修设计公司 · 版权所有</p>
+    </div>
+  </footer>
+</body>
+</html>
