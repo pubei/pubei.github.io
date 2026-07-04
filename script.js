@@ -65,24 +65,6 @@ const useCurrentDateEffect = () => {
     }, [date]);
     return date;
 };
-const RouterContext = React.createContext(null);
-const useRouter = () => React.useContext(RouterContext);
-const RouterProvider = ({ children }) => {
-    const [route, setRouteTo] = React.useState(() => {
-        return window.location.hash.slice(1) || '/';
-    });
-    React.useEffect(() => {
-        const handleHashChange = () => {
-            setRouteTo(window.location.hash.slice(1) || '/');
-        };
-        window.addEventListener('hashchange', handleHashChange);
-        return () => window.removeEventListener('hashchange', handleHashChange);
-    }, []);
-    const navigate = (path) => {
-        window.location.hash = path;
-    };
-    return React.createElement(RouterContext.Provider, { value: { route, navigate } }, children);
-};
 const ScrollableComponent = (props) => {
     const ref = React.useRef(null);
     const [state, setStateTo] = React.useState({
@@ -443,7 +425,6 @@ const UserStatusButton = (props) => {
 };
 const Navigation = () => {
     const [isHidden, setIsHidden] = React.useState(false);
-    const { route, navigate } = useRouter();
     const scrollTimeoutRef = React.useRef(null);
     React.useEffect(() => {
         const handleScroll = () => {
@@ -463,19 +444,17 @@ const Navigation = () => {
             }
         };
     }, []);
-    const navLinks = [
-        { label: '首页', path: '/' },
-        { label: '公司介绍', path: '/about' },
-        { label: '全屋定制', path: '/custom' },
-        { label: '案例展示', path: '/cases' },
-        { label: '在线预约', path: '/booking' },
-        { label: '关于我们', path: '/contact' }
-    ];
     return (React.createElement("div", { id: "app-navbar", className: classNames({ hidden: isHidden }) },
         React.createElement("div", { id: "app-navbar-logo" },
             React.createElement("img", { id: "app-navbar-logo-image", src: "https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/logo.png", alt: "Logo" }),
             React.createElement("span", { id: "app-navbar-logo-text" }, "浦北装修设计")),
-        React.createElement("div", { id: "app-navbar-links" }, navLinks.map((link) => (React.createElement("span", { key: link.path, className: classNames("app-navbar-link", { active: route === link.path }), onClick: () => navigate(link.path) }, link.label)))));
+        React.createElement("div", { id: "app-navbar-links" },
+            React.createElement("span", { className: "app-navbar-link" }, "首页"),
+            React.createElement("span", { className: "app-navbar-link" }, "公司介绍"),
+            React.createElement("span", { className: "app-navbar-link" }, "全屋定制"),
+            React.createElement("span", { className: "app-navbar-link" }, "案例展示"),
+            React.createElement("span", { className: "app-navbar-link" }, "在线预约"),
+            React.createElement("span", { className: "app-navbar-link" }, "关于我们"))));
 };
 const Menu = () => {
     return (React.createElement("div", { id: "app-menu" },
@@ -507,217 +486,24 @@ const Loading = () => {
     return (React.createElement("div", { id: "app-loading-icon" },
         React.createElement("i", { className: "fa-solid fa-spinner-third" })));
 };
-const AboutPage = () => {
-    return React.createElement("div", { className: "page-content" },
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h2", null, "公司介绍"),
-            React.createElement("p", null, "浦北装修设计有限公司成立于2010年，是一家专注于高端家居设计与全屋定制的专业机构。"),
-            React.createElement("p", null, "我们拥有经验丰富的设计团队，致力于为客户提供个性化、高品质的家居解决方案。从空间规划到细节设计，从材料选择到施工监理，我们全程把控每一个环节，确保交付完美的作品。")),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h3", null, "我们的理念"),
-            React.createElement("ul", null,
-                React.createElement("li", null, "以客户需求为核心，创造舒适宜居的空间"),
-                React.createElement("li", null, "坚持原创设计，拒绝千篇一律"),
-                React.createElement("li", null, "注重环保材料，守护家人健康"),
-                React.createElement("li", null, "精益求精，追求卓越品质"))),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h3", null, "团队实力"),
-            React.createElement("p", null, "公司现有设计团队20余人，平均从业经验超过10年，多次获得行业设计大奖。")));
-};
-const CustomPage = () => {
-    return React.createElement("div", { className: "page-content" },
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h2", null, "全屋定制"),
-            React.createElement("p", null, "我们提供一站式全屋定制服务，涵盖厨房、卧室、客厅、书房等各个空间。")),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h3", null, "定制流程"),
-            React.createElement("div", { className: "process-steps" },
-                React.createElement("div", { className: "process-step" },
-                    React.createElement("i", { className: "fa-solid fa-pencil" }),
-                    React.createElement("span", null, "免费咨询")),
-                React.createElement("div", { className: "process-step" },
-                    React.createElement("i", { className: "fa-solid fa-ruler-combined" }),
-                    React.createElement("span", null, "上门测量")),
-                React.createElement("div", { className: "process-step" },
-                    React.createElement("i", { className: "fa-solid fa-desktop" }),
-                    React.createElement("span", null, "方案设计")),
-                React.createElement("div", { className: "process-step" },
-                    React.createElement("i", { className: "fa-solid fa-hammer" }),
-                    React.createElement("span", null, "施工安装")),
-                React.createElement("div", { className: "process-step" },
-                    React.createElement("i", { className: "fa-solid fa-check-circle" }),
-                    React.createElement("span", null, "验收交付")))),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h3", null, "定制优势"),
-            React.createElement("ul", null,
-                React.createElement("li", null, "个性化设计，满足独特需求"),
-                React.createElement("li", null, "环保板材，E0级标准"),
-                React.createElement("li", null, "专业安装团队，确保质量"),
-                React.createElement("li", null, "5年质保，终身维护"))));
-};
-const CasesPage = () => {
-    return React.createElement("div", { className: "page-content" },
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h2", null, "案例展示"),
-            React.createElement("p", null, "精选优质案例，展示不同风格的设计作品"))),
-        React.createElement("div", { className: "cases-grid" },
-            React.createElement("div", { className: "case-card" },
-                React.createElement("div", { className: "case-card-image", style: { backgroundImage: 'url(https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/7.jpg)' } }),
-                React.createElement("div", { className: "case-card-content" },
-                    React.createElement("h4", null, "现代简约风格"),
-                    React.createElement("p", null, "客厅设计案例"))),
-            React.createElement("div", { className: "case-card" },
-                React.createElement("div", { className: "case-card-image", style: { backgroundImage: 'url(https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/8.jpg)' } }),
-                React.createElement("div", { className: "case-card-content" },
-                    React.createElement("h4", null, "北欧风格"),
-                    React.createElement("p", null, "主卧室设计案例"))),
-            React.createElement("div", { className: "case-card" },
-                React.createElement("div", { className: "case-card-image", style: { backgroundImage: 'url(https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/9.jpg)' } }),
-                React.createElement("div", { className: "case-card-content" },
-                    React.createElement("h4", null, "新中式风格"),
-                    React.createElement("p", null, "厨房设计案例"))),
-            React.createElement("div", { className: "case-card" },
-                React.createElement("div", { className: "case-card-image", style: { backgroundImage: 'url(https://raw.githubusercontent.com/pubei/pubei.github.io/refs/heads/main/image/10.jpg)' } }),
-                React.createElement("div", { className: "case-card-content" },
-                    React.createElement("h4", null, "轻奢风格"),
-                    React.createElement("p", null, "书房设计案例")))));
-};
-const BookingPage = () => {
-    const [formData, setFormData] = React.useState({
-        name: '',
-        phone: '',
-        email: '',
-        type: 'design',
-        message: ''
-    });
-    const [submitted, setSubmitted] = React.useState(false);
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setSubmitted(true);
-    };
-    if (submitted) {
-        return React.createElement("div", { className: "page-content" },
-            React.createElement("div", { className: "page-section" },
-                React.createElement("h2", null, "预约成功"),
-                React.createElement("p", null, "感谢您的预约，我们的设计师将在24小时内与您联系。")));
-    }
-    return React.createElement("div", { className: "page-content" },
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h2", null, "在线预约"),
-            React.createElement("p", null, "填写以下信息，我们将为您安排专业的设计咨询服务")),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("form", { onSubmit: handleSubmit, className: "booking-form" },
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", null, "姓名"),
-                    React.createElement("input", { type: "text", name: "name", value: formData.name, onChange: handleChange, required: true })),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", null, "电话"),
-                    React.createElement("input", { type: "tel", name: "phone", value: formData.phone, onChange: handleChange, required: true })),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", null, "邮箱"),
-                    React.createElement("input", { type: "email", name: "email", value: formData.email, onChange: handleChange })),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", null, "服务类型"),
-                    React.createElement("select", { name: "type", value: formData.type, onChange: handleChange },
-                        React.createElement("option", { value: "design" }, "设计咨询"),
-                        React.createElement("option", { value: "custom" }, "全屋定制"),
-                        React.createElement("option", { value: "renovation" }, "装修施工"),
-                        React.createElement("option", { value: "consult" }, "免费测量"))),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", null, "留言"),
-                    React.createElement("textarea", { name: "message", value: formData.message, onChange: handleChange, rows: 4 })),
-                React.createElement("button", { type: "submit", className: "submit-button" }, "提交预约"))));
-};
-const ContactPage = () => {
-    return React.createElement("div", { className: "page-content" },
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h2", null, "关于我们"),
-            React.createElement("p", null, "浦北装修设计有限公司，您身边的家居设计专家"))),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h3", null, "联系方式"),
-            React.createElement("div", { className: "contact-info" },
-                React.createElement("div", { className: "contact-item" },
-                    React.createElement("i", { className: "fa-solid fa-map-marker-alt" }),
-                    React.createElement("span", null, "广西浦北县小江街道xxx路xxx号")),
-                React.createElement("div", { className: "contact-item" },
-                    React.createElement("i", { className: "fa-solid fa-phone" }),
-                    React.createElement("span", null, "0777-xxx-xxxx")),
-                React.createElement("div", { className: "contact-item" },
-                    React.createElement("i", { className: "fa-solid fa-mobile-screen" }),
-                    React.createElement("span", null, "138-xxxx-xxxx")),
-                React.createElement("div", { className: "contact-item" },
-                    React.createElement("i", { className: "fa-solid fa-envelope" }),
-                    React.createElement("span", null, "contact@pubei-design.com")))),
-        React.createElement("div", { className: "page-section" },
-            React.createElement("h3", null, "营业时间"),
-            React.createElement("p", null, "周一至周六：09:00 - 18:00"),
-            React.createElement("p", null, "周日：10:00 - 17:00"))));
-};
 const AppContext = React.createContext(null);
 const App = () => {
     const [userStatus, setUserStatusTo] = React.useState(UserStatus.LoggedOut);
-    const { route } = useRouter();
     const getStatusClass = () => {
         return userStatus.replace(/\s+/g, "-").toLowerCase();
     };
     const showNavbar = () => {
         return userStatus === UserStatus.LoggedIn;
     };
-    const renderPage = () => {
-        switch (route) {
-            case '/about':
-                return React.createElement(AboutPage, null);
-            case '/custom':
-                return React.createElement(CustomPage, null);
-            case '/cases':
-                return React.createElement(CasesPage, null);
-            case '/booking':
-                return React.createElement(BookingPage, null);
-            case '/contact':
-                return React.createElement(ContactPage, null);
-            default:
-                return React.createElement(Menu, null);
-        }
-    };
-    return (React.createElement(RouterProvider, null,
-        React.createElement(AppContext.Provider, { value: { userStatus, setUserStatusTo } },
-            React.createElement("div", { id: "app", className: getStatusClass() },
-                showNavbar() && React.createElement(Navigation, null),
-                React.createElement(Info, { id: "app-info" }),
-                React.createElement(Pin, null),
-                renderPage(),
-                React.createElement(Background, null),
-                React.createElement("div", { id: "sign-in-button-wrapper" },
-                    React.createElement(UserStatusButton, { icon: "fa-solid fa-arrow-right", id: "sign-in-button", userStatus: UserStatus.LoggingIn })),
-                React.createElement(Loading, null)))));
+    return (React.createElement(AppContext.Provider, { value: { userStatus, setUserStatusTo } },
+        React.createElement("div", { id: "app", className: getStatusClass() },
+            showNavbar() && React.createElement(Navigation, null),
+            React.createElement(Info, { id: "app-info" }),
+            React.createElement(Pin, null),
+            React.createElement(Menu, null),
+            React.createElement(Background, null),
+            React.createElement("div", { id: "sign-in-button-wrapper" },
+                React.createElement(UserStatusButton, { icon: "fa-solid fa-arrow-right", id: "sign-in-button", userStatus: UserStatus.LoggingIn })),
+            React.createElement(Loading, null))));
 };
 ReactDOM.render(React.createElement(App, null), document.getElementById("root"));
-
-/*
-  Inspired by: "Error, 404"
-  By: Sujeet Mishra
-  Link: https://dribbble.com/shots/4571035-Error-404
-*/
-
-let oh = document.querySelector('.circle.oh');
-
-document.addEventListener('mousemove', event => {
-  let domainX = [0, document.body.clientWidth],
-  domainY = [0, document.body.clientHeight],
-  range = [-10, 10];
-
-  let translate = {
-    x: range[0] + (event.clientX - domainX[0]) * (range[1] - range[0]) / (domainX[1] - domainX[0]),
-    y: range[0] + (event.clientY - domainY[0]) * (range[1] - range[0]) / (domainY[1] - domainY[0]) };
-
-
-  oh.style.animation = 'none';
-  oh.style.transform = `translate(${translate.x}px, ${translate.y}px)`;
-});
-
-document.addEventListener('mouseleave', event => {
-  oh.style.animation = 'floating 3s linear infinite';
-});
