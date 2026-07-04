@@ -371,7 +371,7 @@ const Restaurants = () => {
                         React.createElement("span", { className: "restaurant-card-desc" }, restaurant.desc)))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-regular fa-lightbulb", id: "restaurants-section", title: "家庭灯光控制" }, getRestaurants()));
+    return (React.createElement(MenuSection, { icon: "fa-regular fa-lightbulb", id: "restaurants-section", title: "全屋定制" }, getRestaurants()));
 };
 const Movies = () => {
     const getMovies = () => {
