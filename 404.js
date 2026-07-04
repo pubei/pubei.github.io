@@ -23,3 +23,20 @@ document.addEventListener('mousemove', event => {
 document.addEventListener('mouseleave', event => {
   oh.style.animation = 'floating 3s linear infinite';
 });
+
+// Ensure the "返回首页" control navigates home.
+// Preferred: use the anchor's default behavior. As a fallback (if the element
+// is still a non-anchor with id 'home-button' or 'index.html'), attach a click
+// handler that navigates to the homepage.
+(function() {
+  const home = document.getElementById('home-button') || document.getElementById('index.html');
+  if (!home) return;
+  // If it's an anchor, do nothing and let the browser handle the navigation.
+  if (home.tagName && home.tagName.toUpperCase() === 'A') return;
+  // Otherwise, attach a click handler to navigate to the site root or index page.
+  home.addEventListener('click', function() {
+    // Use absolute root path to be safe on GitHub Pages; falls back to './index.html'
+    const target = '/';
+    window.location.href = target;
+  });
+})();
