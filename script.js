@@ -336,7 +336,7 @@ const Tools = () => {
                     React.createElement("i", { className: classNames(tool.icon, "tool-card-icon") }))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-solid fa-rectangles-mixed", id: "tools-section", title: "其他控制" }, getTools()));
+    return (React.createElement(MenuSection, { icon: "fa-solid fa-rectangles-mixed", id: "tools-section", title: "全屋智能" }, getTools()));
 };
 const Restaurants = () => {
     const getRestaurants = () => {
