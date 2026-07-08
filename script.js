@@ -99,7 +99,7 @@ const WeatherSnap = () => {
 };
 const Reminder = () => {
     return (React.createElement("div", { className: "reminder" },
-        React.createElement("span", { className: "reminder-text" }, "欢迎使用您的智能家居")));
+        React.createElement("span", { className: "reminder-text" }, "欢迎来到浦北装修设计")));
 };
 const Time = () => {
     const date = useCurrentDateEffect();
