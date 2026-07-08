@@ -216,7 +216,7 @@ const QuickNav = () => {
                 label: "装修设计"
             }, {
                 id: 4,
-                label: "浦北装修"
+                label: "专业的装修设计服务，为您打造理想家园。全屋定制、智能家居、环保材料，一站式解决方案。"
             }].map((item) => {
             return (React.createElement("div", { key: item.id, className: "quick-nav-item clear-button" },
                 React.createElement("span", { className: "quick-nav-item-label" }, item.label)));
