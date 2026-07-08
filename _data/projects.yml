@@ -1,0 +1,53 @@
+- id: 1
+  name: 阳光城现代简约风格
+  category: 新房装修
+  area: 128㎡
+  budget: 18万
+  status: 已完成
+  description: 现代简约风格，以白色和灰色为主色调，搭配木质元素，营造温馨舒适的居住氛围。
+  images: 🏠
+
+- id: 2
+  name: 碧桂园轻奢风格
+  category: 全屋定制
+  area: 145㎡
+  budget: 25万
+  status: 已完成
+  description: 轻奢风格设计，金属线条与大理石纹理相结合，展现精致高雅的生活品质。
+  images: 🏠
+
+- id: 3
+  name: 恒大名都北欧风格
+  category: 新房装修
+  area: 98㎡
+  budget: 12万
+  status: 已完成
+  description: 北欧风格，浅色系搭配绿色植物，打造清新自然的居住空间。
+  images: 🏠
+
+- id: 4
+  name: 老城小区旧房翻新
+  category: 旧房翻新
+  area: 75㎡
+  budget: 8万
+  status: 已完成
+  description: 老旧小区改造，保留原有结构的同时，优化空间布局，提升居住舒适度。
+  images: 🏠
+
+- id: 5
+  name: 万达公寓现代风格
+  category: 软装设计
+  area: 65㎡
+  budget: 5万
+  status: 进行中
+  description: 小户型公寓软装设计，合理利用空间，打造功能齐全的温馨小家。
+  images: 🏠
+
+- id: 6
+  name: 锦绣花园智能家居
+  category: 智能家居
+  area: 168㎡
+  budget: 35万
+  status: 进行中
+  description: 全屋智能系统安装，实现灯光、空调、安防等设备的智能控制。
+  images: 🏠

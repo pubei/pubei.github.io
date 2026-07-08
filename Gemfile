@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+gem "jekyll", "3.9.3"
+gem "minima", "2.5.1"
+gem "ffi", "1.15.5"
+gem "nokogiri", "1.13.10"
+gem "ruby_dep", "1.5.0"

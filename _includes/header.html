@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">
+        <h1><a href="{{ site.baseurl }}/">浦北装修设计</a></h1>
+        <p class="logo-tagline">专业装修 · 品质生活</p>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          {% for item in site.navigation %}
+            <li class="nav-item">
+              <a href="{{ item.url | relative_url }}" 
+                 {% if page.url == item.url %}class="active"{% endif %}>
+                {{ item.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      
+      <div class="header-contact">
+        <a href="tel:0777-8212345" class="contact-phone">
+          <span class="icon">📞</span>
+          <span>0777-8212345</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

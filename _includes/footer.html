@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>浦北装修设计</h3>
+        <p>专业的装修设计服务，为您打造理想家园。我们致力于提供高品质、个性化的装修解决方案。</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>快速链接</h4>
+        <ul>
+          {% for item in site.navigation %}
+            <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>联系方式</h4>
+        <p>📞 电话：0777-8212345</p>
+        <p>📱 手机：13877788888</p>
+        <p>📍 地址：浦北县小江街道XX路XX号</p>
+        <p>📧 邮箱：contact@pboo.top</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ site.time | date: '%Y' }} 浦北装修设计公司 版权所有</p>
+    </div>
+  </div>
+</footer>

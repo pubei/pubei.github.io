@@ -1,0 +1,33 @@
+title: 浦北装修设计公司
+description: 专业的装修设计服务，为您打造理想家园
+url: "https://pboo.top"
+baseurl: ""
+
+markdown: kramdown
+theme: minima
+
+collections:
+  services:
+    output: true
+    permalink: /services/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+navigation:
+  - name: 首页
+    url: /
+  - name: 关于我们
+    url: /about/
+  - name: 装修案例
+    url: /projects/
+  - name: 服务项目
+    url: /services/
+  - name: 在线预约
+    url: /contact/
