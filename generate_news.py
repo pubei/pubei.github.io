@@ -140,7 +140,7 @@ def generate_news():
     return news_html
 
 
-def insert_news_to_page(news_html):
+def insert_news_to_page(news_html, force=False):
     """将新闻插入到news.html页面中"""
     with open(NEWS_FILE, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -156,9 +156,10 @@ def insert_news_to_page(news_html):
     # 找到marker后的换行符
     insert_pos = content.find('\n', pos) + 1
 
-    # 检查今天的新闻是否已存在
+    # 检查今天的新闻是否已存在（精确匹配日期标签）
     today_str = datetime.now().strftime('%Y-%m-%d')
-    if today_str in content:
+    date_marker = f'<span class="news-date">{today_str}</span>'
+    if date_marker in content and not force:
         print(f"News for {today_str} already exists, skipping...")
         return False
 
@@ -198,6 +199,8 @@ def update_sidebar_latest(news_title, news_id):
 
 
 def main():
+    import sys
+    force = '--force' in sys.argv
     print("=== 开始生成公司新闻 ===")
 
     # 生成新闻
@@ -211,7 +214,7 @@ def main():
     news_id = datetime.now().strftime('%Y%m%d')
 
     # 插入新闻到页面
-    success = insert_news_to_page(news_html)
+    success = insert_news_to_page(news_html, force=force)
 
     if success:
         # 更新侧边栏
