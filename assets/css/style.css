@@ -1674,6 +1674,18 @@ body::after {
   background-position: center;
 }
 
+.bg-electrical-service {
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=electrical%20wiring%20installation%20professional%20electrician%20tools%20circuit%20breaker%20construction%20site&image_size=landscape_4_3');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-supervision-service {
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=construction%20supervision%20inspection%20professional%20engineer%20checklist%20quality%20control%20building%20site&image_size=landscape_4_3');
+  background-size: cover;
+  background-position: center;
+}
+
 .service-card-link {
   display: block;
   text-decoration: none;
