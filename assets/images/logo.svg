@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="fbRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff4d4d"/>
+      <stop offset="20%" style="stop-color:#ff3333"/>
+      <stop offset="50%" style="stop-color:#ff1a1a"/>
+      <stop offset="80%" style="stop-color:#e60000"/>
+      <stop offset="100%" style="stop-color:#cc0000"/>
+    </linearGradient>
+    <linearGradient id="fbRedLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6666"/>
+      <stop offset="50%" style="stop-color:#ff3333"/>
+      <stop offset="100%" style="stop-color:#ff1a1a"/>
+    </linearGradient>
+    <linearGradient id="fbShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#990000"/>
+      <stop offset="100%" style="stop-color:#660000"/>
+    </linearGradient>
+    <filter id="fb3d" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="4" dy="4" stdDeviation="2" flood-color="#330000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <g filter="url(#fb3d)">
+    <path d="M72 20 Q88 20 88 38 L88 85 Q88 90 83 90 L53 90 Q48 90 48 85 L48 45 Q48 38 55 32 L72 20 Z" fill="url(#fbShadow)" transform="translate(2, 2)"/>
+    <path d="M70 18 Q86 18 86 36 L86 83 Q86 88 81 88 L51 88 Q46 88 46 83 L46 43 Q46 36 53 30 L70 18 Z" fill="url(#fbRed)"/>
+    <path d="M60 28 L52 35 L52 83 L81 83 L81 38 Q81 28 60 28 Z" fill="#ffffff" opacity="0.1"/>
+    <rect x="60" y="52" width="16" height="8" fill="#ffffff" opacity="0.15"/>
+    
+    <path d="M47 8 L47 92 L18 92 L18 18 Q18 8 30 8 L47 8 Z" fill="url(#fbShadow)" transform="translate(2, 2)"/>
+    <path d="M45 6 L45 90 L16 90 L16 16 Q16 6 28 6 L45 6 Z" fill="url(#fbRedLight)"/>
+    <path d="M30 16 L42 16 L42 88 L30 88 Z" fill="#ffffff" opacity="0.12"/>
+    <rect x="30" y="28" width="10" height="6" fill="#ffffff" opacity="0.18"/>
+  </g>
+</svg>
