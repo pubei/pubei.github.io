@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add news.html
+          git add news.html assets/data/news-data.json
           git diff --staged --quiet || (git commit -m "📝 自动发布公司新闻 $(date '+%Y-%m-%d')" && git push)
           echo "新闻发布完成！"

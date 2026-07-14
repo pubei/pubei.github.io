@@ -4,10 +4,13 @@
 """
 
 import os
+import json
 import random
 from datetime import datetime, timedelta
 
-NEWS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'news.html')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+NEWS_FILE = os.path.join(BASE_DIR, 'news.html')
+NEWS_DATA_FILE = os.path.join(BASE_DIR, 'assets', 'data', 'news-data.json')
 
 # 新闻模板库 - 涵盖全屋定制、装修知识、公司动态、行业资讯等
 NEWS_TEMPLATES = [
@@ -117,8 +120,11 @@ def generate_news():
     # 生成图片URL
     image_url = f"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt={template['image_prompt']}&image_size=landscape_16_9"
 
-    # 生成新闻ID（使用日期）
-    news_id = datetime.now().strftime('%Y%m%d')
+    # 生成新闻ID（使用日期+随机数避免重复）
+    news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
+
+    # 生成完整文章内容
+    content = generate_article_content(template, title)
 
     # 生成新闻HTML
     news_html = f'''          <article class="news-card">
@@ -137,7 +143,49 @@ def generate_news():
           </article>
 '''
 
-    return news_html
+    # 生成新闻数据（用于JSON）
+    news_data = {
+        "id": news_id,
+        "date": today,
+        "category": template["category"],
+        "title": title,
+        "image": image_url,
+        "excerpt": excerpt,
+        "content": content
+    }
+
+    return news_html, news_data
+
+
+def generate_article_content(template, title):
+    """根据模板生成完整的文章内容"""
+    category = template["category"]
+
+    intros = [
+        f"今天为大家带来一篇关于{category}的精彩内容，希望对您有所帮助。",
+        f"作为浦北装修设计的专业团队，我们持续关注{category}领域的最新动态。",
+        f"本期话题聚焦{category}，为您分享实用的装修知识和经验。",
+    ]
+
+    body = [
+        f"**{title}**",
+        random.choice(intros),
+        f"浦北装修设计一直致力于为客户提供专业、优质的装修服务。在{category}方面，我们拥有丰富的经验和专业的团队。",
+        f"我们始终坚持以客户为中心，以品质为根基，以创新为动力。不断学习和引进新的设计理念和技术，为客户提供更好的服务体验。",
+        f"如果您对我们的服务感兴趣，欢迎拨打咨询热线：134-1227-7880，或到店参观体验。地址：浦北县小江街道XX路XX号。",
+    ]
+
+    # 根据分类添加特定内容
+    if category == "全屋定制":
+        body.insert(2, "全屋定制是现代装修的重要趋势，它能够根据客户的实际需求和空间特点，量身定制个性化的家具和收纳方案。我们使用环保板材，搭配精致的五金配件，确保每一件定制家具都兼具美观和实用。")
+    elif category == "装修知识":
+        body.insert(2, "装修是一门学问，很多细节需要提前了解。我们建议业主在装修前多做功课，了解基本的装修流程和注意事项，这样才能避免踩坑，确保装修顺利进行。")
+    elif category == "公司动态":
+        body.insert(2, "感谢广大客户对浦北装修设计的信任与支持。我们将继续提升服务品质，为客户带来更好的装修体验。近期我们还推出了多项服务升级，欢迎咨询了解。")
+    elif category == "行业资讯":
+        body.insert(2, "装修行业在不断发展变化，新材料、新工艺、新设计理念层出不穷。我们紧跟行业趋势，为客户推荐最合适的装修方案和材料选择。")
+
+    return body
 
 
 def insert_news_to_page(news_html, force=False):
@@ -198,25 +246,48 @@ def update_sidebar_latest(news_title, news_id):
         f.write(new_content)
 
 
+def update_news_data_json(news_data):
+    """将新闻数据添加到news-data.json文件中"""
+    with open(NEWS_DATA_FILE, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # 检查是否已存在同ID的新闻
+    exists = any(item['id'] == news_data['id'] for item in data)
+    if exists:
+        print(f"News data {news_data['id']} already exists in JSON, skipping...")
+        return False
+
+    # 在列表顶部插入新新闻
+    data.insert(0, news_data)
+
+    with open(NEWS_DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    print(f"News data {news_data['id']} added to JSON")
+    return True
+
+
 def main():
     import sys
     force = '--force' in sys.argv
     print("=== 开始生成公司新闻 ===")
 
     # 生成新闻
-    news_html = generate_news()
+    news_html, news_data = generate_news()
 
     # 提取标题用于侧边栏更新
     import re
     title_match = re.search(r'<h2 class="news-card-title">(.*?)</h2>', news_html)
     title = title_match.group(1) if title_match else "新文章"
 
-    news_id = datetime.now().strftime('%Y%m%d')
+    news_id = news_data['id']
 
     # 插入新闻到页面
     success = insert_news_to_page(news_html, force=force)
 
     if success:
+        # 更新JSON数据文件
+        update_news_data_json(news_data)
         # 更新侧边栏
         update_sidebar_latest(title, news_id)
         print(f"=== 新闻生成完成: {title} ===")
