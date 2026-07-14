@@ -847,8 +847,16 @@ body::after {
   transform: translateX(8px);
 }
 
+.footer-contact ul li:hover,
+.footer-promises ul li:hover {
+  color: #00d4ff;
+  transform: translateX(8px);
+}
+
 .footer-links ul li a:hover .footer-link-icon,
-.footer-services ul li a:hover .footer-link-icon {
+.footer-services ul li a:hover .footer-link-icon,
+.footer-contact ul li:hover .footer-link-icon,
+.footer-promises ul li:hover .footer-link-icon {
   opacity: 1;
   color: #00d4ff;
   background: rgba(0, 212, 255, 0.15);
