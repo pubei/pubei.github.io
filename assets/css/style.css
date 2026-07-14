@@ -763,13 +763,22 @@ body::after {
 }
 
 .footer-links ul,
-.footer-services ul {
+.footer-services ul,
+.footer-contact ul,
+.footer-promises ul {
   list-style: none;
 }
 
 .footer-links ul li,
-.footer-services ul li {
+.footer-services ul li,
+.footer-contact ul li,
+.footer-promises ul li {
   margin-bottom: var(--spacing-sm);
+  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
 }
 
 .footer-links ul li a,
