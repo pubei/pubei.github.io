@@ -3742,6 +3742,14 @@ body::after {
   background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=partial%20home%20remodeling%20bathroom%20kitchen%20renovation%20modern%20design&image_size=landscape_4_3');
 }
 
+.service-card-7 .service-card-bg {
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=electrical%20plumbing%20installation%20professional%20workers%20pipes%20wires%20construction&image_size=landscape_4_3');
+}
+
+.service-card-8 .service-card-bg {
+  background-image: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=construction%20supervision%20inspection%20quality%20control%20professional%20engineer%20checklist&image_size=landscape_4_3');
+}
+
 .service-card-new:hover {
   transform: translateY(-8px) scale(1.02);
   border-color: var(--color-border-hover);
