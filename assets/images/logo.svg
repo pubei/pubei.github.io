@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff2227"/><stop offset="100%" style="stop-color:#ff4449"/></linearGradient><filter id="logoGlow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M30 10 L55 10 L55 35 L70 35 L70 10 L90 10 L90 100 L30 100 Z" fill="url(#logoGrad)" filter="url(#logoGlow)"/><path d="M35 25 L50 25 L50 90 L35 90 Z" fill="#ffffff" opacity="0.15"/><path d="M55 25 L65 25 L65 45 L85 45 L85 55 L65 55 L65 90 L55 90 Z" fill="#ffffff" opacity="0.15"/><text x="60" y="70" text-anchor="middle" font-size="32" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">pb</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="pbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff2227"/>
+      <stop offset="100%" style="stop-color:#ff4449"/>
+    </linearGradient>
+    <filter id="pbGlow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#pbGrad)" filter="url(#pbGlow)"/>
+  <text x="32" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">pb</text>
+</svg>
