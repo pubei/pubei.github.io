@@ -12,23 +12,23 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 NEWS_FILE = os.path.join(BASE_DIR, 'news.html')
 NEWS_DATA_FILE = os.path.join(BASE_DIR, 'assets', 'data', 'news-data.json')
 
-# 装修相关图片URL库 - 使用picsum.photos稳定服务，通过不同seed确保图片多样性
+# 装修相关图片URL库 - 使用本地SVG图片，确保图片稳定显示且与装修设计相关
 INTERIOR_IMAGES = [
-    "https://picsum.photos/id/1048/800/450",
-    "https://picsum.photos/id/1049/800/450",
-    "https://picsum.photos/id/1050/800/450",
-    "https://picsum.photos/id/1051/800/450",
-    "https://picsum.photos/id/1052/800/450",
-    "https://picsum.photos/id/1053/800/450",
-    "https://picsum.photos/id/1054/800/450",
-    "https://picsum.photos/id/1055/800/450",
-    "https://picsum.photos/id/1067/800/450",
-    "https://picsum.photos/id/1068/800/450",
-    "https://picsum.photos/id/1074/800/450",
-    "https://picsum.photos/id/1077/800/450",
-    "https://picsum.photos/id/1082/800/450",
-    "https://picsum.photos/id/1084/800/450",
-    "https://picsum.photos/id/1086/800/450"
+    "assets/images/news-bg-1.svg",
+    "assets/images/news-bg-2.svg",
+    "assets/images/news-bg-3.svg",
+    "assets/images/news-bg-4.svg",
+    "assets/images/news-bg-1.svg",
+    "assets/images/news-bg-2.svg",
+    "assets/images/news-bg-3.svg",
+    "assets/images/news-bg-4.svg",
+    "assets/images/news-bg-1.svg",
+    "assets/images/news-bg-2.svg",
+    "assets/images/news-bg-3.svg",
+    "assets/images/news-bg-4.svg",
+    "assets/images/news-bg-1.svg",
+    "assets/images/news-bg-2.svg",
+    "assets/images/news-bg-3.svg"
 ]
 
 # 新闻模板库 - 涵盖全屋定制、装修知识、公司动态、行业资讯等

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f0f0"/>
+      <stop offset="100%" style="stop-color:#e0e0e0"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff2227"/>
+      <stop offset="100%" style="stop-color:#ff4449"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#grad1)"/>
+  <ellipse cx="400" cy="225" rx="350" ry="200" fill="url(#grad2)" opacity="0.03"/>
+  <rect x="80" y="60" width="200" height="260" rx="12" fill="white" stroke="#ddd"/>
+  <rect x="110" y="90" width="140" height="100" rx="6" fill="url(#grad2)" opacity="0.6"/>
+  <rect x="110" y="210" width="70" height="50" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+  <rect x="190" y="210" width="60" height="50" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+  <rect x="310" y="80" width="160" height="220" rx="10" fill="white" stroke="#ddd"/>
+  <rect x="340" y="110" width="100" height="80" rx="4" fill="url(#grad2)" opacity="0.4"/>
+  <rect x="340" y="210" width="100" height="60" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+  <rect x="500" y="50" width="250" height="280" rx="14" fill="white" stroke="#ddd"/>
+  <rect x="530" y="80" width="190" height="120" rx="8" fill="url(#grad2)" opacity="0.3"/>
+  <rect x="530" y="220" width="90" height="40" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+  <rect x="630" y="220" width="90" height="40" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+  <circle cx="680" cy="380" r="60" fill="url(#grad2)" opacity="0.05"/>
+</svg>
