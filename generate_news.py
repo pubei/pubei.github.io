@@ -12,13 +12,23 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 NEWS_FILE = os.path.join(BASE_DIR, 'news.html')
 NEWS_DATA_FILE = os.path.join(BASE_DIR, 'assets', 'data', 'news-data.json')
 
-# 装修相关图片关键词库
-INTERIOR_KEYWORDS = [
-    "interior+design", "home+renovation", "custom+furniture", 
-    "modern+living+room", "kitchen+cabinets", "bedroom+wardrobe",
-    "home+interior", "luxury+home", "minimalist+design",
-    "house+remodeling", "furniture+design", "home+decor",
-    "smart+home", "eco+friendly+home", "showroom+design"
+# 装修相关图片URL库 - 使用固定的Unsplash图片ID确保图片稳定且与装修设计相关
+INTERIOR_IMAGES = [
+    "https://images.unsplash.com/photo-1521791136064-7986c292026c?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1514674116507-95ac68373442?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1524678714210-9917a6c619c2?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=450&fit=crop",
+    "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=450&fit=crop"
 ]
 
 # 新闻模板库 - 涵盖全屋定制、装修知识、公司动态、行业资讯等
@@ -126,10 +136,8 @@ def generate_news():
     title = template["title"].format(year=year_var)
     excerpt = template["excerpt"].format(year=year_var)
 
-    # 生成图片URL - 使用picsum.photos确保稳定显示，通过seed保证图片一致性
-    keywords = template.get('image_keywords', INTERIOR_KEYWORDS)
-    selected_keyword = random.choice(keywords)
-    image_url = f"https://picsum.photos/seed/{selected_keyword}/800/450"
+    # 生成图片URL - 使用固定的装修相关图片库，确保图片稳定且与装修设计相关
+    image_url = random.choice(INTERIOR_IMAGES)
 
     # 生成新闻ID（使用日期+随机数避免重复）
     news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
