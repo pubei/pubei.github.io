@@ -126,12 +126,10 @@ def generate_news():
     title = template["title"].format(year=year_var)
     excerpt = template["excerpt"].format(year=year_var)
 
-    # 生成图片URL - 使用Unsplash支持关键词搜索的图片服务，确保图片与装修设计相关
+    # 生成图片URL - 使用picsum.photos确保稳定显示，通过seed保证图片一致性
     keywords = template.get('image_keywords', INTERIOR_KEYWORDS)
     selected_keyword = random.choice(keywords)
-    # 混合通用关键词确保图片相关性
-    all_keywords = f"{selected_keyword},{random.choice(INTERIOR_KEYWORDS)}"
-    image_url = f"https://source.unsplash.com/random/800x450/{all_keywords}"
+    image_url = f"https://picsum.photos/seed/{selected_keyword}/800/450"
 
     # 生成新闻ID（使用日期+随机数避免重复）
     news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
