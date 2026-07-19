@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /assets/js/
-Disallow: /assets/css/
-Disallow: /assets/images/news-bg-*.svg
 
 Sitemap: https://pboo.top/sitemap.xml
 
