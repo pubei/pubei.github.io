@@ -131,7 +131,7 @@ def generate_news():
     selected_keyword = random.choice(keywords)
     # 混合通用关键词确保图片相关性
     all_keywords = f"{selected_keyword},{random.choice(INTERIOR_KEYWORDS)}"
-    image_url = f"https://source.unsplash.com/random/800x450/?{all_keywords}"
+    image_url = f"https://source.unsplash.com/random/800x450/{all_keywords}"
 
     # 生成新闻ID（使用日期+随机数避免重复）
     news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
