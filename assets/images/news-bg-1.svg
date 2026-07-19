@@ -1,25 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
   <defs>
     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f8f9fa"/>
-      <stop offset="100%" style="stop-color:#e9ecef"/>
+      <stop offset="0%" style="stop-color:#0f1420"/>
+      <stop offset="100%" style="stop-color:#0a0e17"/>
     </linearGradient>
     <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff2227"/>
-      <stop offset="100%" style="stop-color:#ff4449"/>
+      <stop offset="0%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#7b2ff7"/>
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(0,212,255,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(123,47,247,0.15)"/>
     </linearGradient>
   </defs>
   <rect width="800" height="450" fill="url(#grad1)"/>
-  <rect x="50" y="80" width="180" height="200" rx="8" fill="white" stroke="#dee2e6" stroke-width="1"/>
-  <rect x="80" y="110" width="120" height="80" rx="4" fill="url(#grad2)" opacity="0.8"/>
-  <rect x="80" y="210" width="60" height="40" rx="4" fill="#f8f9fa" stroke="#dee2e6"/>
-  <rect x="150" y="210" width="50" height="40" rx="4" fill="#f8f9fa" stroke="#dee2e6"/>
-  <rect x="260" y="60" width="200" height="240" rx="12" fill="white" stroke="#dee2e6"/>
-  <rect x="290" y="90" width="140" height="100" rx="6" fill="url(#grad2)" opacity="0.6"/>
-  <rect x="290" y="210" width="70" height="50" rx="4" fill="#f8f9fa" stroke="#dee2e6"/>
-  <rect x="370" y="210" width="60" height="50" rx="4" fill="#f8f9fa" stroke="#dee2e6"/>
-  <rect x="500" y="100" width="250" height="180" rx="10" fill="white" stroke="#dee2e6"/>
-  <rect x="530" y="130" width="190" height="100" rx="6" fill="url(#grad2)" opacity="0.4"/>
+  <rect x="50" y="80" width="180" height="200" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="80" y="110" width="120" height="80" rx="4" fill="url(#grad2)" opacity="0.6"/>
+  <rect x="80" y="210" width="60" height="40" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="150" y="210" width="50" height="40" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="260" y="60" width="200" height="240" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="290" y="90" width="140" height="100" rx="6" fill="url(#grad2)" opacity="0.4"/>
+  <rect x="290" y="210" width="70" height="50" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="370" y="210" width="60" height="50" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="500" y="100" width="250" height="180" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="530" y="130" width="190" height="100" rx="6" fill="url(#grad3)"/>
   <circle cx="700" cy="350" r="60" fill="url(#grad2)" opacity="0.1"/>
-  <circle cx="100" cy="380" r="40" fill="#ff2227" opacity="0.05"/>
+  <circle cx="100" cy="380" r="40" fill="#00d4ff" opacity="0.05"/>
+  <circle cx="400" cy="225" r="150" fill="#7b2ff7" opacity="0.03"/>
 </svg>

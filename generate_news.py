@@ -179,6 +179,9 @@ def generate_news():
     news_html = f'''          <article class="news-card">
             <div class="news-card-image">
               <img src="{image_url}" alt="{title}">
+              <div class="news-card-image-overlay">
+                <div class="news-card-image-title">{title}</div>
+              </div>
             </div>
             <div class="news-card-content">
               <div class="news-card-meta">
