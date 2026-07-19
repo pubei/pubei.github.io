@@ -31,97 +31,127 @@ INTERIOR_IMAGES = [
     "assets/images/news-bg-3.svg"
 ]
 
-# 新闻模板库 - 涵盖全屋定制、装修知识、公司动态、行业资讯等
+# 新闻模板库 - 全部围绕浦北装修设计和全屋定制主题
 NEWS_TEMPLATES = [
     {
         "category": "全屋定制",
-        "title": "全屋定制趋势：{year}年最受欢迎的定制设计方案",
-        "excerpt": "随着生活品质的提升，全屋定制已成为现代家庭装修的首选。本期为您解读{year}年最受欢迎的全屋定制设计方案，包括简约风格、轻奢风格和新中式风格...",
+        "title": "浦北装修设计全屋定制案例分享：{year}平米现代简约风格",
+        "excerpt": "浦北装修设计近期完成了一套{year}平米现代简约风格的全屋定制项目。从整体设计到细节处理，每一处都体现了专业定制的品质与美感...",
         "image_keywords": ["custom+furniture", "modern+interior"]
     },
     {
-        "category": "装修知识",
-        "title": "全屋定制避坑指南：业主必须了解的{year}个关键细节",
-        "excerpt": "全屋定制虽然方便，但如果不注意细节，很容易踩坑。今天我们整理了全屋定制中最容易出问题的{year}个关键细节，帮助您避免装修遗憾...",
-        "image_keywords": ["home+renovation+tips", "interior+design"]
+        "category": "全屋定制",
+        "title": "浦北装修设计全屋定制工艺升级，打造高品质家居体验",
+        "excerpt": "为了给客户提供更好的全屋定制服务，浦北装修设计对定制工艺进行了全面升级，包括环保板材选用、精细切割工艺、智能装配技术等...",
+        "image_keywords": ["custom+furniture", "modern+interior"]
     },
     {
         "category": "公司动态",
-        "title": "浦北装修设计本月新增{year}个全屋定制订单，服务再升级",
-        "excerpt": "感谢客户们的信任与支持，本月我公司新增{year}个全屋定制订单。为更好地服务客户，我们升级了设计团队和施工工艺，为您提供更优质的全屋定制服务...",
+        "title": "浦北装修设计本月新增{year}个全屋定制订单，客户好评如潮",
+        "excerpt": "感谢客户们的信任与支持，本月浦北装修设计新增{year}个全屋定制订单。每一位客户的认可都是我们前进的动力...",
+        "image_keywords": ["design+studio", "professional+team"]
+    },
+    {
+        "category": "全屋定制",
+        "title": "浦北装修设计全屋定制优势：{year}大核心竞争力",
+        "excerpt": "浦北装修设计在全屋定制领域深耕多年，积累了丰富的经验和专业优势。本期为您介绍我们的{year}大核心竞争力...",
         "image_keywords": ["design+studio", "professional+team"]
     },
     {
         "category": "行业资讯",
-        "title": "环保材料新标准出台，全屋定制行业迎来新变革",
-        "excerpt": "国家最新环保材料标准正式实施，对全屋定制行业提出更高要求。浦北装修设计积极响应新标准，全面升级环保材料供应链，为客户提供更健康的家居环境...",
-        "image_keywords": ["eco+friendly+materials", "green+interior"]
+        "title": "全屋定制行业新趋势，浦北装修设计引领浦北市场",
+        "excerpt": "随着消费者对品质生活的追求，全屋定制已成为装修主流趋势。浦北装修设计凭借专业实力和优质服务，引领浦北地区全屋定制市场发展...",
+        "image_keywords": ["market+research", "home+design"]
     },
     {
         "category": "全屋定制",
-        "title": "小户型全屋定制方案：{year}平米也能住出大空间感",
-        "excerpt": "面积小不代表不能拥有高品质的生活。通过合理的全屋定制方案，即使是{year}平米的小户型也能打造出宽敞舒适的居住空间。本期分享几个实用的设计技巧...",
-        "image_keywords": ["small+apartment+design", "space+saving"]
-    },
-    {
-        "category": "装修知识",
-        "title": "全屋定制板材怎么选？E0、E1、ENF级区别详解",
-        "excerpt": "全屋定制中最重要的就是板材选择。E0级、E1级、ENF级板材有什么区别？哪种更适合家庭使用？本文为您详细解读各种环保等级板材的特点和适用场景...",
-        "image_keywords": ["wood+panels", "furniture+materials"]
+        "title": "浦北装修设计全屋定制材料升级：环保板材更安心",
+        "excerpt": "浦北装修设计始终把客户健康放在首位，全面升级全屋定制材料，采用E0级、ENF级环保板材，为您打造绿色健康的家居环境...",
+        "image_keywords": ["eco+friendly+materials", "green+interior"]
     },
     {
         "category": "公司动态",
-        "title": "浦北装修设计全屋定制展厅焕新升级，欢迎参观体验",
-        "excerpt": "为了给客户带来更好的体验，我公司全屋定制展厅已完成焕新升级。新展厅展示了多种风格的全屋定制实景效果，包括现代简约、轻奢、北欧等风格，欢迎莅临参观...",
+        "title": "浦北装修设计全屋定制展厅全新开放，欢迎预约参观",
+        "excerpt": "浦北装修设计全屋定制展厅已完成焕新升级，展示了多种风格的全屋定制实景效果。欢迎预约参观，亲身体验专业定制的魅力...",
         "image_keywords": ["showroom+interior", "furniture+display"]
     },
     {
         "category": "全屋定制",
-        "title": "客厅全屋定制设计要点：打造温馨实用的家庭核心区",
-        "excerpt": "客厅是家庭活动的核心区域，全屋定制客厅需要兼顾美观与实用。本文为您分享客厅全屋定制的设计要点，包括电视柜、收纳柜、展示柜的定制技巧...",
-        "image_keywords": ["modern+living+room", "TV+cabinet"]
-    },
-    {
-        "category": "行业资讯",
-        "title": "智能家居与全屋定制融合，打造未来智慧家居生活",
-        "excerpt": "随着智能家居技术的发展，全屋定制与智能系统的融合已成为新趋势。浦北装修设计推出智能全屋定制方案，将智能照明、安防监控、家电控制等融入定制家具中...",
-        "image_keywords": ["smart+home", "modern+living+room"]
+        "title": "浦北装修设计全屋定制流程解析：从设计到安装一站式服务",
+        "excerpt": "浦北装修设计提供全屋定制一站式服务，从前期沟通、方案设计、材料选购到现场安装，全程专业团队跟进，让您省心省力...",
+        "image_keywords": ["custom+furniture", "modern+interior"]
     },
     {
         "category": "全屋定制",
-        "title": "卧室全屋定制攻略：衣柜+梳妆台+床头柜一体化设计",
-        "excerpt": "卧室是休息的重要空间，全屋定制卧室需要考虑收纳和舒适度。本文为您分享卧室一体化定制方案，包括衣柜、梳妆台、床头柜的协调设计...",
+        "title": "浦北装修设计客厅全屋定制：{year}款热门设计方案",
+        "excerpt": "客厅是家庭的核心区域，全屋定制客厅需要兼顾美观与实用。浦北装修设计为您精选{year}款热门客厅定制方案，总有一款适合您...",
+        "image_keywords": ["modern+living+room", "TV+cabinet"]
+    },
+    {
+        "category": "全屋定制",
+        "title": "浦北装修设计卧室全屋定制：衣柜+梳妆台一体化方案",
+        "excerpt": "卧室是休息的重要空间，浦北装修设计提供卧室全屋定制服务，包括衣柜、梳妆台、床头柜等一体化设计，打造舒适温馨的睡眠环境...",
         "image_keywords": ["modern+bedroom", "custom+wardrobe"]
     },
     {
-        "category": "装修知识",
-        "title": "全屋定制预算怎么算？2026年最新价格参考",
-        "excerpt": "全屋定制的价格是很多业主关心的问题。本文为您详细分析2026年全屋定制的价格构成，包括板材费、五金件费、设计费、安装费等，帮助您合理规划装修预算...",
-        "image_keywords": ["home+budget", "renovation+cost"]
+        "category": "全屋定制",
+        "title": "浦北装修设计厨房全屋定制：打造高效舒适的烹饪空间",
+        "excerpt": "厨房是家庭使用频率最高的空间，浦北装修设计提供专业的厨房全屋定制服务，从橱柜设计到收纳系统，让烹饪变得轻松愉快...",
+        "image_keywords": ["modern+kitchen", "custom+cabinets"]
     },
     {
         "category": "公司动态",
-        "title": "浦北装修设计荣获全屋定制品质服务认证",
+        "title": "浦北装修设计荣获全屋定制行业品质服务认证",
         "excerpt": "经过严格评审，浦北装修设计公司荣获全屋定制品质服务认证。这一认证标志着我们在设计能力、施工质量、售后服务等方面均达到行业领先水平...",
         "image_keywords": ["award+certificate", "quality+service"]
     },
     {
         "category": "全屋定制",
-        "title": "厨房全屋定制设计：橱柜+岛台+收纳一体化方案",
-        "excerpt": "厨房是家庭使用频率最高的空间之一。全屋定制厨房需要考虑动线、收纳和美观。本文分享厨房橱柜、岛台、收纳系统的一体化定制方案...",
-        "image_keywords": ["modern+kitchen", "custom+cabinets"]
+        "title": "浦北装修设计全屋定制价格透明，{year}项免费服务",
+        "excerpt": "浦北装修设计坚持透明报价体系，让客户明明白白消费。同时推出{year}项免费服务，包括免费设计咨询、免费上门测量、免费方案修改等...",
+        "image_keywords": ["home+budget", "renovation+cost"]
     },
     {
         "category": "行业资讯",
-        "title": "全屋定制行业报告：消费者最看重的三大因素",
-        "excerpt": "最新行业调查报告显示，消费者在选择全屋定制时最看重的是品质、环保和设计感。浦北装修设计始终坚持以客户需求为导向，在这三个方面持续投入和提升...",
-        "image_keywords": ["market+research", "home+design"]
+        "title": "全屋定制与智能家居融合，浦北装修设计引领智慧家居新潮流",
+        "excerpt": "随着智能家居技术的发展，全屋定制与智能系统的融合已成为新趋势。浦北装修设计推出智能全屋定制方案，打造未来智慧家居生活...",
+        "image_keywords": ["smart+home", "modern+living+room"]
     },
     {
         "category": "全屋定制",
-        "title": "书房全屋定制方案：打造安静舒适的居家办公空间",
-        "excerpt": "随着居家办公的普及，书房定制需求不断增长。本文为您分享书房全屋定制方案，包括书柜、书桌、榻榻米等一体化设计，打造多功能书房空间...",
-        "image_keywords": ["home+office", "custom+bookshelf"]
+        "title": "浦北装修设计全屋定制售后服务升级：终身维护保障",
+        "excerpt": "浦北装修设计不仅注重定制品质，更重视售后服务。我们推出全屋定制终身维护保障，让您的定制家具长久如新...",
+        "image_keywords": ["quality+service", "after+sales"]
+    },
+    {
+        "category": "全屋定制",
+        "title": "浦北装修设计小户型全屋定制：{year}个空间扩容技巧",
+        "excerpt": "小户型也能拥有大空间感！浦北装修设计分享{year}个全屋定制空间扩容技巧，让有限空间发挥无限可能...",
+        "image_keywords": ["small+apartment+design", "space+saving"]
+    },
+    {
+        "category": "公司动态",
+        "title": "浦北装修设计设计师团队赴{year}城市学习先进定制理念",
+        "excerpt": "为了提升专业水平，浦北装修设计组织设计师团队赴{year}城市学习先进的全屋定制设计理念和工艺技术，为客户带来更好的服务...",
+        "image_keywords": ["design+studio", "professional+team"]
+    },
+    {
+        "category": "全屋定制",
+        "title": "浦北装修设计全屋定制风格指南：{year}大流行风格解析",
+        "excerpt": "全屋定制风格多样，如何选择适合自己的风格？浦北装修设计为您解析{year}大流行风格，帮助您找到理想的家居设计方向...",
+        "image_keywords": ["modern+interior", "design+style"]
+    },
+    {
+        "category": "全屋定制",
+        "title": "浦北装修设计儿童房全屋定制：安全环保更贴心",
+        "excerpt": "儿童房装修安全最重要！浦北装修设计提供专业的儿童房全屋定制服务，采用环保材料和圆角设计，为孩子打造安全舒适的成长空间...",
+        "image_keywords": ["kids+room", "safe+furniture"]
+    },
+    {
+        "category": "公司动态",
+        "title": "浦北装修设计全屋定制优惠活动：{year}限时折扣",
+        "excerpt": "感恩回馈新老客户，浦北装修设计推出全屋定制限时优惠活动，{year}折起！活动期间预定还可享受免费升级服务...",
+        "image_keywords": ["promotion", "discount"]
     }
 ]
 
