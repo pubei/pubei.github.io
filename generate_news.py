@@ -117,8 +117,8 @@ def generate_news():
     title = template["title"].format(year=year_var)
     excerpt = template["excerpt"].format(year=year_var)
 
-    # 生成图片URL
-    image_url = f"https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt={template['image_prompt']}&image_size=landscape_16_9"
+    # 生成图片URL - 使用picsum.photos公开图片服务
+    image_url = f"https://picsum.photos/seed/{template['image_prompt']}/800/450"
 
     # 生成新闻ID（使用日期+随机数避免重复）
     news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
