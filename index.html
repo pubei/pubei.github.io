@@ -740,6 +740,94 @@
     </div>
   </footer>
 
+  <style>
+    .cookie-consent {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, rgba(10, 14, 23, 0.98), rgba(20, 25, 40, 0.98));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0, 212, 255, 0.2);
+      z-index: 9999;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 24px 0;
+    }
+    .cookie-consent.show {
+      transform: translateY(0);
+    }
+    .cookie-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cookie-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 247, 0.15));
+      border-radius: 16px;
+      color: #00d4ff;
+      flex-shrink: 0;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+    .cookie-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+    .cookie-text {
+      flex: 1;
+      min-width: 280px;
+    }
+    .cookie-text h4 {
+      color: #00d4ff;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .cookie-text p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .cookie-buttons {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .cookie-btn {
+      padding: 8px 32px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    .cookie-btn-accept {
+      background: linear-gradient(135deg, #00d4ff, #00ff80);
+      color: white;
+    }
+    .cookie-btn-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
+    }
+    .cookie-btn-reject {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .cookie-btn-reject:hover {
+      color: #00d4ff;
+      border-color: #00d4ff;
+    }
+  </style>
+
   <div id="cookie-consent" class="cookie-consent">
     <div class="container">
       <div class="cookie-content">
@@ -763,5 +851,31 @@
   </div>
   
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var cookieConsent = document.getElementById('cookie-consent');
+      var acceptBtn = document.querySelector('.cookie-btn-accept');
+      var rejectBtn = document.querySelector('.cookie-btn-reject');
+      
+      if (!cookieConsent) return;
+      
+      var consent = localStorage.getItem('cookie_consent');
+      if (!consent) {
+        setTimeout(function() {
+          cookieConsent.classList.add('show');
+        }, 500);
+      }
+      
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        cookieConsent.classList.remove('show');
+      });
+      
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'rejected');
+        cookieConsent.classList.remove('show');
+      });
+    });
+  </script>
 </body>
 </html>
