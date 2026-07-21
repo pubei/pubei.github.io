@@ -418,27 +418,51 @@
 
     function shareToWechat() {
       var url = window.location.href;
-      var title = document.title;
+      if (!url.startsWith('http')) {
+        url = 'https://pboo.top' + window.location.pathname + window.location.search;
+      }
       var qrcodeContainer = document.getElementById('qrcode-container');
-      qrcodeContainer.innerHTML = '<div style="text-align:center;"><p>使用微信扫码</p><p>分享文章</p><p style="font-size:0.6rem;color:#666;">' + url.substring(0, 30) + '...</p></div>';
+      qrcodeContainer.innerHTML = '<div style="text-align:center;padding:40px;"><p>正在生成二维码...</p></div>';
       document.getElementById('wechat-qrcode').style.display = 'flex';
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js';
-      script.onload = function() {
-        try {
-          QRCode.toCanvas(qrcodeContainer, url, {
-            width: 180,
-            margin: 2,
-            color: {
-              dark: '#000000',
-              light: '#ffffff'
-            }
-          });
-        } catch(e) {
-          console.error('QR code generation failed:', e);
+      
+      function generateQRCode() {
+        qrcodeContainer.innerHTML = '';
+        var canvas = document.createElement('canvas');
+        canvas.style.width = '180px';
+        canvas.style.height = '180px';
+        qrcodeContainer.appendChild(canvas);
+        
+        QRCode.toCanvas(canvas, url, {
+          width: 180,
+          margin: 2,
+          color: {
+            dark: '#000000',
+            light: '#ffffff'
+          }
+        }, function(error) {
+          if (error) {
+            console.error('QR code generation failed:', error);
+            qrcodeContainer.innerHTML = '<div style="text-align:center;padding:20px;"><p>二维码生成失败</p><p style="font-size:0.7rem;color:#666;">请手动复制链接分享</p><p style="font-size:0.6rem;color:#999;">' + url + '</p></div>';
+          }
+        });
+      }
+      
+      if (typeof QRCode !== 'undefined') {
+        generateQRCode();
+      } else {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js';
+        script.onload = generateQRCode;
+        script.onerror = function() {
+          qrcodeContainer.innerHTML = '<div style="text-align:center;padding:20px;"><p>二维码加载失败</p><p style="font-size:0.7rem;color:#666;">请手动复制链接分享</p><p style="font-size:0.6rem;color:#999;">' + url + '</p></div>';
+        };
+        script.id = 'qrcode-script';
+        if (!document.getElementById('qrcode-script')) {
+          document.head.appendChild(script);
+        } else {
+          setTimeout(generateQRCode, 500);
         }
-      };
-      document.head.appendChild(script);
+      }
     }
 
     function closeWechatQrcode() {
