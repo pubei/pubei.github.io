@@ -78,19 +78,19 @@
     
     <section class="project-gallery">
       <style>
-        .project-gallery .gallery-wrapper { display: flex !important; flex-direction: row !important; gap: 20px !important; align-items: flex-start !important; }
-        .project-gallery .gallery-main { flex: 1 !important; position: relative; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.04); min-height: 400px; }
-        .project-gallery .gallery-thumbs { display: flex !important; flex-direction: column !important; gap: 12px !important; width: 120px !important; flex-shrink: 0 !important; }
-        .project-gallery .thumb-item { width: 120px !important; height: 80px !important; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; position: relative; }
-        .project-gallery .thumb-item:hover { border-color: rgba(0,212,255,0.5); transform: translateX(-4px); }
-        .project-gallery .thumb-item.active { border-color: #00d4ff !important; box-shadow: 0 0 15px rgba(0,212,255,0.5) !important; transform: translateX(-4px); }
+        .project-gallery .gallery-wrapper { display: flex !important; flex-direction: column !important; gap: 20px !important; align-items: center !important; }
+        .project-gallery .gallery-main { width: 100% !important; position: relative; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.04); min-height: 400px; }
+        .project-gallery .gallery-thumbs { display: flex !important; flex-direction: row !important; gap: 12px !important; width: 100% !important; justify-content: center !important; }
+        .project-gallery .thumb-item { width: 120px !important; height: 80px !important; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; position: relative; flex-shrink: 0 !important; }
+        .project-gallery .thumb-item:hover { border-color: rgba(0,212,255,0.5); transform: translateY(-4px); }
+        .project-gallery .thumb-item.active { border-color: #00d4ff !important; box-shadow: 0 0 15px rgba(0,212,255,0.5) !important; transform: translateY(-4px); }
         .project-gallery .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
         .project-gallery .thumb-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: white; font-size: 0.75rem; padding: 8px 6px; text-align: center; }
         .project-gallery .gallery-main-image { width: 100%; height: 450px; object-fit: cover; transition: opacity 0.3s ease; }
         .project-gallery .gallery-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; cursor: zoom-in; }
         .project-gallery .gallery-main:hover .gallery-overlay { opacity: 1; }
         .project-gallery .gallery-zoom { font-size: 48px; color: white; font-weight: 300; }
-        @media (max-width: 768px) { .project-gallery .gallery-wrapper { flex-direction: column !important; } .project-gallery .gallery-thumbs { flex-direction: row !important; width: 100% !important; overflow-x: auto; padding-bottom: 10px; } .project-gallery .thumb-item { flex-shrink: 0; } .project-gallery .gallery-main-image { height: 300px; } }
+        @media (max-width: 768px) { .project-gallery .gallery-thumbs { overflow-x: auto; padding-bottom: 10px; } .project-gallery .gallery-main-image { height: 300px; } }
       </style>
       <div class="container">
         <div class="gallery-wrapper">
@@ -209,35 +209,45 @@
           <div class="info-card glass-card">
             <div class="card-icon-wrapper">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="card-icon">
-                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline>
               </svg>
             </div>
-            <h3 class="card-title">服务保障</h3>
-            <div class="promise-grid">
-              <div class="promise-item">
-                <svg viewBox="0 0 24 24" fill="currentColor" class="promise-icon">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
-                </svg>
-                <span class="promise-text">免费设计咨询</span>
-              </div>
-              <div class="promise-item">
-                <svg viewBox="0 0 24 24" fill="currentColor" class="promise-icon">
-                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"></path>
-                </svg>
-                <span class="promise-text">透明报价体系</span>
-              </div>
-              <div class="promise-item">
-                <svg viewBox="0 0 24 24" fill="currentColor" class="promise-icon">
+            <h3 class="card-title">材料选择</h3>
+            <div class="highlight-list">
+              <div class="highlight-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="highlight-icon">
                   <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
+                  <path d="M12 6v6l4 2"></path>
                 </svg>
-                <span class="promise-text">准时交付保障</span>
+                <span class="highlight-text">智能照明系统</span>
               </div>
-              <div class="promise-item">
-                <svg viewBox="0 0 24 24" fill="currentColor" class="promise-icon">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+              <div class="highlight-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="highlight-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
                 </svg>
-                <span class="promise-text">终身售后服务</span>
+                <span class="highlight-text">安防监控设备</span>
+              </div>
+              <div class="highlight-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="highlight-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span class="highlight-text">智能窗帘电机</span>
+              </div>
+              <div class="highlight-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="highlight-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span class="highlight-text">全屋Wi-Fi覆盖</span>
+              </div>
+              <div class="highlight-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="highlight-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span class="highlight-text">智能空调控制</span>
               </div>
             </div>
           </div>
