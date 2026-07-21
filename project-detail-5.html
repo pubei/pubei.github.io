@@ -77,6 +77,13 @@
     </section>
     
     <section class="project-gallery">
+      <style>
+        .project-gallery .gallery-wrapper { display: flex; flex-direction: column; gap: 20px; align-items: center !important; }
+        .project-gallery .gallery-main { width: 100% !important; max-width: 100% !important; }
+        .project-gallery .gallery-thumbs { display: flex; flex-direction: row !important; gap: 12px; width: 100% !important; justify-content: center !important; flex-wrap: wrap; }
+        .project-gallery .thumb-item { width: 150px !important; height: 100px !important; }
+        .project-gallery .thumb-item:hover, .project-gallery .thumb-item.active { transform: scale(1.05) !important; }
+      </style>
       <div class="container">
         <div class="gallery-wrapper">
           <div class="gallery-main">
