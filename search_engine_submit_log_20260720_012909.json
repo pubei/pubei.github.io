@@ -1,0 +1,48 @@
+{
+  "site_url": "https://pboo.top",
+  "sitemap_url": "https://pboo.top/sitemap.xml",
+  "submit_time": "2026-07-20 01:29:09",
+  "results": [
+    {
+      "name": "Google",
+      "success": false,
+      "error": "HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /ping?sitemap=https://pboo.top/sitemap.xml (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.google.com', port=443) at 0x1096baf70>, 'Connection to www.google.com timed out. (connect timeout=10)'))",
+      "description": "Google搜索索引提交"
+    },
+    {
+      "name": "Bing",
+      "success": false,
+      "status_code": 410,
+      "response": "",
+      "description": "Bing搜索索引提交"
+    },
+    {
+      "name": "百度",
+      "success": false,
+      "status_code": 500,
+      "response": "",
+      "description": "百度搜索索引提交"
+    },
+    {
+      "name": "Yandex",
+      "success": false,
+      "status_code": 404,
+      "response": "<!DOCTYPE html><html   class=\"i-ua_js_no i-ua_css_standart i-ua_browser_ i-ua_browser-engine_webkit i-ua_browser_desktop i-ua_platform_windows\"  lang=\"ru\"><head  xmlns:og=\"http://ogp.me/ns#\"><meta htt",
+      "description": "Yandex搜索索引提交"
+    },
+    {
+      "name": "360搜索",
+      "success": false,
+      "status_code": 400,
+      "response": "<!DOCTYPE html>\n<!--[if lt IE 7 ]><html class=\"ie6\"><![endif]-->\n<!--[if IE 7 ]><html class=\"ie7\"><![endif]-->\n<!--[if IE 8 ]><html class=\"ie8\"><![endif]-->\n<!--[if IE 9 ]><html class=\"ie9\"><![endif]-",
+      "description": "360搜索链接提交"
+    },
+    {
+      "name": "搜狗搜索",
+      "success": true,
+      "status_code": 200,
+      "response": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\"> <script src=\"//search.sogoucdn.com/fankui/static/js/jquerymin.6bed151c.js\"></script> <ti",
+      "description": "搜狗搜索链接提交"
+    }
+  ]
+}
