@@ -206,6 +206,122 @@
       </div>
     </div>
   </footer>
+
+  <style>
+    .news-detail-share {
+      margin-bottom: 24px;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .share-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+    .share-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .share-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    .share-btn-wechat {
+      background: linear-gradient(135deg, #07c160, #06ad56);
+      color: white;
+    }
+    .share-btn-wechat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
+    }
+    .share-btn-wechat svg {
+      width: 18px;
+      height: 18px;
+    }
+    .share-btn-weibo {
+      background: linear-gradient(135deg, #e6162d, #c91324);
+      color: white;
+    }
+    .share-btn-weibo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(230, 22, 45, 0.4);
+    }
+    .share-btn-weibo svg {
+      width: 18px;
+      height: 18px;
+    }
+    .wechat-qrcode {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .qrcode-content {
+      background: #1a1f2e;
+      padding: 32px;
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+    .qrcode-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      line-height: 28px;
+      text-align: center;
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .qrcode-close:hover {
+      color: white;
+      background: rgba(255, 68, 68, 0.5);
+    }
+    .qrcode-title {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    #qrcode-container {
+      width: 180px;
+      height: 180px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #333;
+      word-break: break-all;
+      padding: 8px;
+    }
+  </style>
   
   <script src="assets/js/main.js"></script>
   <script>
@@ -268,6 +384,26 @@
               '<img src="' + article.image + '" alt="' + article.title + '">' +
             '</div>' +
             '<div class="news-detail-content">' + contentHtml + '</div>' +
+            '<div class="news-detail-share">' +
+              '<span class="share-label">分享到：</span>' +
+              '<div class="share-buttons">' +
+                '<button class="share-btn share-btn-wechat" onclick="shareToWechat()">' +
+                  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c4.801 0 8.692-3.287 8.692-7.342 0-4.054-3.891-7.34-8.692-7.34zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm8.164 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zM7.002 10.794c-1.182 0-2.157 1.085-2.157 2.419 0 .698.246 1.362.688 1.875a.722.722 0 00.598.085l2.543-1.487a.486.486 0 01.41-.054c1.699.283 3.206.959 4.236 1.992a.717.717 0 00.598-.085 2.76 2.76 0 00.688-1.875c0-1.334-.975-2.419-2.157-2.419-.576 0-1.122.211-1.555.568a.489.489 0 01-.41.054l-2.543-1.487a.724.724 0 00-.598-.085c-.433-.357-.979-.568-1.555-.568z"/></svg>' +
+                  '<span>微信</span>' +
+                '</button>' +
+                '<button class="share-btn share-btn-weibo" onclick="shareToWeibo()">' +
+                  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384-.07-.771-.198-1.12-.385.724-.838 1.158-1.946 1.158-3.174 0-2.326-1.884-4.21-4.21-4.21s-4.21 1.884-4.21 4.21c0 2.326 1.884 4.21 4.21 4.21.826 0 1.603-.24 2.258-.654-.576.328-1.226.565-1.927.707zm8.547-1.271c.075-.32.118-.651.118-.993 0-2.866-2.334-5.2-5.2-5.2s-5.2 2.334-5.2 5.2c0 2.866 2.334 5.2 5.2 5.2.342 0 .673-.043.993-.118-.493.636-1.12 1.162-1.826 1.529-.712.372-1.51.581-2.336.581-3.594 0-6.5-2.906-6.5-6.5s2.906-6.5 6.5-6.5 6.5 2.906 6.5 6.5c0 .826-.209 1.624-.581 2.336.367.706.893 1.333 1.529 1.826z"/></svg>' +
+                  '<span>微博</span>' +
+                '</button>' +
+              '</div>' +
+              '<div id="wechat-qrcode" class="wechat-qrcode" style="display:none;">' +
+                '<div class="qrcode-content">' +
+                  '<span class="qrcode-close" onclick="closeWechatQrcode()">×</span>' +
+                  '<p class="qrcode-title">扫码分享到微信</p>' +
+                  '<div id="qrcode-container"></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
             '<div class="news-detail-footer">' +
               '<a href="news.html" class="back-to-news-btn">← 返回新闻列表</a>' +
               '<a href="contact.html" class="consult-btn">免费咨询</a>' +
@@ -279,6 +415,42 @@
     }
 
     loadNewsDetail();
+
+    function shareToWechat() {
+      var url = window.location.href;
+      var title = document.title;
+      var qrcodeContainer = document.getElementById('qrcode-container');
+      qrcodeContainer.innerHTML = '<div style="text-align:center;"><p>使用微信扫码</p><p>分享文章</p><p style="font-size:0.6rem;color:#666;">' + url.substring(0, 30) + '...</p></div>';
+      document.getElementById('wechat-qrcode').style.display = 'flex';
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js';
+      script.onload = function() {
+        try {
+          QRCode.toCanvas(qrcodeContainer, url, {
+            width: 180,
+            margin: 2,
+            color: {
+              dark: '#000000',
+              light: '#ffffff'
+            }
+          });
+        } catch(e) {
+          console.error('QR code generation failed:', e);
+        }
+      };
+      document.head.appendChild(script);
+    }
+
+    function closeWechatQrcode() {
+      document.getElementById('wechat-qrcode').style.display = 'none';
+    }
+
+    function shareToWeibo() {
+      var url = window.location.href;
+      var title = document.title;
+      var weiboUrl = 'https://service.weibo.com/share/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title) + '&pic=';
+      window.open(weiboUrl, '_blank', 'width=600,height=500');
+    }
   </script>
 </body>
 </html>
