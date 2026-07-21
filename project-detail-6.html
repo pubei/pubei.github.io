@@ -406,9 +406,13 @@
 document.addEventListener('DOMContentLoaded', function() {
   var thumbItems = document.querySelectorAll('.thumb-item');
   var mainImg = document.getElementById('gallery-main-img');
+  var galleryMain = document.querySelector('.gallery-main');
+  
+  mainImg.style.transition = 'opacity 0.3s ease';
   
   thumbItems.forEach(function(item) {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation();
       thumbItems.forEach(function(i) { i.classList.remove('active'); });
       this.classList.add('active');
       
@@ -426,11 +430,11 @@ document.addEventListener('DOMContentLoaded', function() {
       tempImg.src = newSrc;
     });
   });
-
-  mainImg.addEventListener('click', function() {
+  
+  galleryMain.addEventListener('click', function() {
     var lightbox = document.createElement('div');
     lightbox.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;animation:fadeIn 0.3s ease;';
-    lightbox.innerHTML = '<img src="' + this.src + '" style="max-width:90%;max-height:90%;object-fit:contain;border-radius:8px;animation:scaleIn 0.3s ease;" alt="放大查看">';
+    lightbox.innerHTML = '<img src="' + mainImg.src + '" style="max-width:90%;max-height:90%;object-fit:contain;border-radius:8px;animation:scaleIn 0.3s ease;" alt="放大查看">';
     
     var closeBtn = document.createElement('button');
     closeBtn.innerHTML = '&times;';
@@ -456,22 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(lightbox);
   });
 });
-</script>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const thumbItems = document.querySelectorAll('.thumb-item');
-      const mainImg = document.getElementById('gallery-main-img');
-      
-      thumbItems.forEach(item => {
-        item.addEventListener('click', function() {
-          thumbItems.forEach(i => i.classList.remove('active'));
-          this.classList.add('active');
-          mainImg.src = this.dataset.src;
-        });
-      });
-    });
-  </script>
+</script></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
