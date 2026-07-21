@@ -16,7 +16,7 @@ for file in files:
     if os.path.exists(file):
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
-        new_content = content.replace('style.css?v=24', 'style.css?v=25')
+        new_content = content.replace('style.css?v=25', 'style.css?v=26')
         if new_content != content:
             with open(file, 'w', encoding='utf-8') as f:
                 f.write(new_content)
