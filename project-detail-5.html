@@ -411,6 +411,111 @@
       </div>
     </div>
   </footer>
+
+  <style>
+    .project-gallery {
+      padding: 40px 0;
+    }
+    .gallery-wrapper {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .gallery-main {
+      flex: 1;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      min-height: 400px;
+    }
+    .gallery-main-image {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      cursor: zoom-in;
+    }
+    .gallery-main:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-zoom {
+      font-size: 48px;
+      color: white;
+      font-weight: 300;
+    }
+    .gallery-thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 120px;
+      flex-shrink: 0;
+    }
+    .thumb-item {
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .thumb-item:hover {
+      border-color: rgba(0, 212, 255, 0.5);
+      transform: translateX(-4px);
+    }
+    .thumb-item.active {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .thumb-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      color: white;
+      font-size: 0.75rem;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .gallery-wrapper {
+        flex-direction: column;
+      }
+      .gallery-thumbs {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+      .thumb-item {
+        flex-shrink: 0;
+      }
+      .gallery-main-image {
+        height: 300px;
+      }
+    }
+  </style>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -421,7 +526,20 @@
         item.addEventListener('click', function() {
           thumbItems.forEach(i => i.classList.remove('active'));
           this.classList.add('active');
-          mainImg.src = this.dataset.src;
+          
+          const newSrc = this.dataset.src;
+          mainImg.style.opacity = '0.5';
+          
+          const tempImg = new Image();
+          tempImg.onload = function() {
+            mainImg.src = newSrc;
+            mainImg.style.opacity = '1';
+          };
+          tempImg.onerror = function() {
+            mainImg.style.opacity = '1';
+            console.error('Failed to load image:', newSrc);
+          };
+          tempImg.src = newSrc;
         });
       });
     });
