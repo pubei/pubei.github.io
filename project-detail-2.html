@@ -411,6 +411,33 @@
       </div>
     </div>
   </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var thumbItems = document.querySelectorAll('.thumb-item');
+  var mainImg = document.getElementById('gallery-main-img');
+  
+  thumbItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      thumbItems.forEach(function(i) { i.classList.remove('active'); });
+      this.classList.add('active');
+      
+      var newSrc = this.dataset.src;
+      mainImg.style.opacity = '0.5';
+      
+      var tempImg = new Image();
+      tempImg.onload = function() {
+        mainImg.src = newSrc;
+        mainImg.style.opacity = '1';
+      };
+      tempImg.onerror = function() {
+        mainImg.style.opacity = '1';
+      };
+      tempImg.src = newSrc;
+    });
+  });
+});
+</script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
