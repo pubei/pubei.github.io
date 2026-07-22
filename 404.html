@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - 页面未找到 | 浦北陈皮</title>
+  <meta name="description" content="抱歉，您访问的页面不存在">
+  <link rel="canonical" href="https://pboo.top/404.html">
+  <link rel="stylesheet" href="assets/css/style.css?v=26">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .error-container {
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .tangerine-illustration {
+      font-size: 120px;
+      margin-bottom: var(--spacing-lg);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .error-code {
+      font-size: 150px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ff9800, #ff5722, #ffeb3b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .error-title {
+      font-size: var(--font-h1);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .error-description {
+      font-size: var(--font-body);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.8;
+    }
+    
+    .tangerine-facts {
+      background: var(--color-bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+      text-align: left;
+    }
+    
+    .tangerine-facts h3 {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-h3);
+    }
+    
+    .fact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm) 0;
+      color: var(--color-text-secondary);
+    }
+    
+    .fact-icon {
+      font-size: 1.5rem;
+    }
+    
+    .error-actions {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-primary, .btn-secondary {
+      padding: var(--spacing-md) var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--color-border);
+      color: var(--color-text-primary);
+    }
+    
+    .btn-secondary:hover {
+      border-color: #ff9800;
+      color: #ff9800;
+      transform: translateY(-3px);
+    }
+    
+    .floating-tangerines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .floating-tangerine {
+      position: absolute;
+      font-size: 60px;
+      opacity: 0.1;
+      animation: rotate 20s linear infinite;
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 100px;
+      }
+      
+      .tangerine-illustration {
+        font-size: 80px;
+      }
+      
+      .error-actions {
+        flex-direction: column;
+      }
+      
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="floating-tangerines">
+      <div class="floating-tangerine" style="top: 10%; left: 5%; animation-delay: 0s;">🍊</div>
+      <div class="floating-tangerine" style="top: 20%; right: 10%; animation-delay: 2s;">🍊</div>
+      <div class="floating-tangerine" style="bottom: 15%; left: 8%; animation-delay: 4s;">🍊</div>
+      <div class="floating-tangerine" style="bottom: 25%; right: 5%; animation-delay: 6s;">🍊</div>
+    </div>
+    
+    <div class="error-container">
+      <div class="tangerine-illustration">🍊</div>
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">页面走丢了</h2>
+      <p class="error-description">
+        抱歉，您要找的页面好像和浦北陈皮一起去旅行了...<br>
+        不过没关系，不如先来了解一下浦北陈皮吧！
+      </p>
+      
+      <div class="tangerine-facts">
+        <h3>🥰 浦北陈皮小知识</h3>
+        <div class="fact-item">
+          <span class="fact-icon">🏆</span>
+          <span>浦北陈皮是中国国家地理标志产品</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🌱</span>
+          <span>以浦北本地柑果为原料，传统工艺制作</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">⏳</span>
+          <span>越陈越香，存放时间越长越珍贵</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">💊</span>
+          <span>有理气健脾、燥湿化痰的功效</span>
+        </div>
+      </div>
+      
+      <div class="error-actions">
+        <a href="index.html" class="btn-primary">
+          <span>🏠</span>
+          <span>返回首页</span>
+        </a>
+        <a href="javascript:history.back()" class="btn-secondary">
+          <span>←</span>
+          <span>返回上一页</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
