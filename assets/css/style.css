@@ -9,7 +9,7 @@
 
 /* Hero Additional Styles */
 .hero-content{display:flex;align-items:center;gap:var(--spacing-xxl);text-align:left;}
-.hero-text{flex:1;}
+.hero-text{flex:1;padding-left:40px;}
 .hero-visual{flex:1;}
 .hero-image-container{position:relative;}
 .hero-image-wrapper{position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);}
