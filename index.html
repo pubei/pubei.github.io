@@ -137,8 +137,8 @@
             </div>
             <div class="hero-stats-row">
               <div class="hero-stat-item">
-                <span class="hero-stat-num" data-count="98">0</span>
-                <span class="hero-stat-label">客户满意度%</span>
+                <span class="hero-stat-num" data-count="98" data-suffix="%">0%</span>
+                <span class="hero-stat-label">客户满意度</span>
               </div>
               <div class="hero-stat-divider"></div>
               <div class="hero-stat-item">
@@ -158,18 +158,7 @@
                 <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20luxury%20home%20interior%20design%20showroom%20with%20elegant%20living%20room%20and%20kitchen%20soft%20lighting&image_size=landscape_16_9" alt="装修效果图" class="hero-image">
                 <div class="hero-image-glow"></div>
               </div>
-              <div class="hero-floating-card hero-float-1">
-                <div class="float-card-icon">⭐</div>
-                <div class="float-card-text">免费设计咨询</div>
-              </div>
-              <div class="hero-floating-card hero-float-2">
-                <div class="float-card-icon">💎</div>
-                <div class="float-card-text">透明报价体系</div>
-              </div>
-              <div class="hero-floating-card hero-float-3">
-                <div class="float-card-icon">⏱️</div>
-                <div class="float-card-text">准时交付保障</div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -851,31 +840,5 @@
   </div>
   
   <script src="assets/js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var cookieConsent = document.getElementById('cookie-consent');
-      var acceptBtn = document.querySelector('.cookie-btn-accept');
-      var rejectBtn = document.querySelector('.cookie-btn-reject');
-      
-      if (!cookieConsent) return;
-      
-      var consent = localStorage.getItem('cookie_consent');
-      if (!consent) {
-        setTimeout(function() {
-          cookieConsent.classList.add('show');
-        }, 500);
-      }
-      
-      acceptBtn.addEventListener('click', function() {
-        localStorage.setItem('cookie_consent', 'accepted');
-        cookieConsent.classList.remove('show');
-      });
-      
-      rejectBtn.addEventListener('click', function() {
-        localStorage.setItem('cookie_consent', 'rejected');
-        cookieConsent.classList.remove('show');
-      });
-    });
-  </script>
 </body>
 </html>
