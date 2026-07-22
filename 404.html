@@ -24,72 +24,245 @@
     }
     
     .error-container {
-      max-width: 800px;
+      max-width: 900px;
       position: relative;
       z-index: 2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .tangerine-illustration-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: var(--spacing-xl);
     }
     
     .tangerine-illustration {
-      font-size: 120px;
-      margin-bottom: var(--spacing-lg);
-      animation: float 3s ease-in-out infinite;
+      font-size: 140px;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 10px 30px rgba(255, 152, 0, 0.3));
     }
     
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-25px) rotate(2deg); }
+    }
+    
+    .sparkle {
+      position: absolute;
+      font-size: 24px;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    .sparkle:nth-child(1) { top: 0; left: -30px; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 20px; right: -40px; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { bottom: 10px; left: -20px; animation-delay: 1s; }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
     }
     
     .error-code {
-      font-size: 150px;
+      font-size: 180px;
       font-weight: 800;
-      background: linear-gradient(135deg, #ff9800, #ff5722, #ffeb3b);
+      background: linear-gradient(135deg, #ff9800 0%, #ff5722 50%, #ffeb3b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1;
       margin-bottom: var(--spacing-md);
+      text-shadow: 0 0 60px rgba(255, 152, 0, 0.2);
+      position: relative;
+    }
+    
+    .error-code::before {
+      content: '404';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 180px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ff9800 0%, #ff5722 50%, #ffeb3b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: blur(20px);
+      opacity: 0.5;
+      z-index: -1;
     }
     
     .error-title {
       font-size: var(--font-h1);
       color: var(--color-text-primary);
       margin-bottom: var(--spacing-md);
+      font-weight: 700;
     }
     
     .error-description {
-      font-size: var(--font-body);
+      font-size: 1.125rem;
       color: var(--color-text-secondary);
       margin-bottom: var(--spacing-xl);
-      line-height: 1.8;
+      line-height: 1.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .search-section {
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .search-box {
+      display: flex;
+      gap: var(--spacing-sm);
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--color-bg-card);
+      padding: var(--spacing-sm);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+      transition: all var(--transition-normal);
+    }
+    
+    .search-box:focus-within {
+      border-color: #ff9800;
+      box-shadow: 0 0 30px rgba(255, 152, 0, 0.2);
+    }
+    
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--color-text-primary);
+      font-size: 1rem;
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .search-input::placeholder {
+      color: var(--color-text-muted);
+    }
+    
+    .search-btn {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      border: none;
+      color: white;
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all var(--transition-normal);
+    }
+    
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(255, 152, 0, 0.4);
     }
     
     .tangerine-facts {
       background: var(--color-bg-card);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
       padding: var(--spacing-xl);
       margin-bottom: var(--spacing-xl);
       text-align: left;
+      transition: all var(--transition-normal);
+    }
+    
+    .tangerine-facts:hover {
+      border-color: rgba(255, 152, 0, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
     
     .tangerine-facts h3 {
-      color: var(--color-primary);
-      margin-bottom: var(--spacing-md);
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--spacing-lg);
       font-size: var(--font-h3);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
     }
     
     .fact-item {
       display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm) 0;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md) 0;
       color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border);
+      transition: all var(--transition-normal);
+    }
+    
+    .fact-item:last-child {
+      border-bottom: none;
+    }
+    
+    .fact-item:hover {
+      color: var(--color-text-primary);
+      transform: translateX(5px);
     }
     
     .fact-icon {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
+      flex-shrink: 0;
+    }
+    
+    .fact-text {
+      flex: 1;
+      line-height: 1.7;
+    }
+    
+    .quick-links {
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .quick-links-title {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-md);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .quick-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--spacing-md);
+    }
+    
+    .quick-link {
+      background: var(--color-bg-card);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      transition: all var(--transition-normal);
+      border: 1px solid var(--color-border);
+    }
+    
+    .quick-link:hover {
+      background: rgba(255, 152, 0, 0.1);
+      border-color: #ff9800;
+      color: #ff9800;
+      transform: translateY(-3px);
     }
     
     .error-actions {
@@ -109,16 +282,18 @@
       display: inline-flex;
       align-items: center;
       gap: var(--spacing-sm);
+      font-size: 1rem;
     }
     
     .btn-primary {
       background: linear-gradient(135deg, #ff9800, #ff5722);
       color: white;
+      box-shadow: 0 4px 20px rgba(255, 152, 0, 0.3);
     }
     
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(255, 152, 0, 0.5);
     }
     
     .btn-secondary {
@@ -130,7 +305,8 @@
     .btn-secondary:hover {
       border-color: #ff9800;
       color: #ff9800;
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      background: rgba(255, 152, 0, 0.05);
     }
     
     .floating-tangerines {
@@ -145,23 +321,71 @@
     
     .floating-tangerine {
       position: absolute;
-      font-size: 60px;
-      opacity: 0.1;
-      animation: rotate 20s linear infinite;
+      font-size: 70px;
+      opacity: 0.08;
+      animation: floatRotate 30s linear infinite;
     }
     
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes floatRotate {
+      0% { transform: rotate(0deg) translateY(0); }
+      25% { transform: rotate(90deg) translateY(-20px); }
+      50% { transform: rotate(180deg) translateY(0); }
+      75% { transform: rotate(270deg) translateY(20px); }
+      100% { transform: rotate(360deg) translateY(0); }
+    }
+    
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: particleFloat 15s linear infinite;
+    }
+    
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.3;
+      }
+      90% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+      }
     }
     
     @media (max-width: 768px) {
       .error-code {
-        font-size: 100px;
+        font-size: 120px;
+      }
+      
+      .error-code::before {
+        font-size: 120px;
       }
       
       .tangerine-illustration {
-        font-size: 80px;
+        font-size: 100px;
+      }
+      
+      .error-container {
+        padding: var(--spacing-md);
       }
       
       .error-actions {
@@ -172,44 +396,83 @@
         width: 100%;
         justify-content: center;
       }
+      
+      .quick-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .tangerine-facts {
+        padding: var(--spacing-lg);
+      }
     }
   </style>
 </head>
 <body>
   <div class="error-page">
     <div class="floating-tangerines">
-      <div class="floating-tangerine" style="top: 10%; left: 5%; animation-delay: 0s;">🍊</div>
-      <div class="floating-tangerine" style="top: 20%; right: 10%; animation-delay: 2s;">🍊</div>
-      <div class="floating-tangerine" style="bottom: 15%; left: 8%; animation-delay: 4s;">🍊</div>
-      <div class="floating-tangerine" style="bottom: 25%; right: 5%; animation-delay: 6s;">🍊</div>
+      <div class="floating-tangerine" style="top: 8%; left: 3%; animation-delay: 0s;">🍊</div>
+      <div class="floating-tangerine" style="top: 15%; right: 8%; animation-delay: 3s;">🍊</div>
+      <div class="floating-tangerine" style="bottom: 20%; left: 5%; animation-delay: 6s;">🍊</div>
+      <div class="floating-tangerine" style="bottom: 30%; right: 3%; animation-delay: 9s;">🍊</div>
+      <div class="floating-tangerine" style="top: 50%; left: 1%; animation-delay: 12s;">🍊</div>
+      <div class="floating-tangerine" style="top: 45%; right: 1%; animation-delay: 15s;">🍊</div>
     </div>
     
+    <div class="particles" id="particles"></div>
+    
     <div class="error-container">
-      <div class="tangerine-illustration">🍊</div>
+      <div class="tangerine-illustration-wrapper">
+        <div class="sparkle">✨</div>
+        <div class="sparkle">🌟</div>
+        <div class="sparkle">💫</div>
+        <div class="tangerine-illustration">🍊</div>
+      </div>
+      
       <h1 class="error-code">404</h1>
-      <h2 class="error-title">页面走丢了</h2>
+      <h2 class="error-title">哎呀！页面走丢了</h2>
       <p class="error-description">
-        抱歉，您要找的页面好像和浦北陈皮一起去旅行了...<br>
-        不过没关系，不如先来了解一下浦北陈皮吧！
+        抱歉，您要找的页面好像和浦北陈皮一起去寻找阳光了...<br>
+        别着急，让我们一起找到回家的路！
       </p>
+      
+      <div class="search-section">
+        <form class="search-box" onsubmit="handleSearch(event)">
+          <input type="text" class="search-input" id="searchInput" placeholder="搜索您想找的内容...">
+          <button type="submit" class="search-btn">搜索</button>
+        </form>
+      </div>
+      
+      <div class="quick-links">
+        <div class="quick-links-title">热门页面</div>
+        <div class="quick-links-grid">
+          <a href="index.html" class="quick-link">🏠 首页</a>
+          <a href="index.html#services" class="quick-link">🎨 服务</a>
+          <a href="index.html#portfolio" class="quick-link">🖼️ 案例</a>
+          <a href="index.html#about" class="quick-link">👋 关于我们</a>
+        </div>
+      </div>
       
       <div class="tangerine-facts">
         <h3>🥰 浦北陈皮小知识</h3>
         <div class="fact-item">
           <span class="fact-icon">🏆</span>
-          <span>浦北陈皮是中国国家地理标志产品</span>
+          <span class="fact-text">浦北陈皮是中国国家地理标志产品，品质卓越</span>
         </div>
         <div class="fact-item">
           <span class="fact-icon">🌱</span>
-          <span>以浦北本地柑果为原料，传统工艺制作</span>
+          <span class="fact-text">精选浦北本地优质柑果，传承百年传统工艺</span>
         </div>
         <div class="fact-item">
           <span class="fact-icon">⏳</span>
-          <span>越陈越香，存放时间越长越珍贵</span>
+          <span class="fact-text">越陈越香，岁月沉淀，价值与日俱增</span>
         </div>
         <div class="fact-item">
           <span class="fact-icon">💊</span>
-          <span>有理气健脾、燥湿化痰的功效</span>
+          <span class="fact-text">药食同源，理气健脾、燥湿化痰，养生佳品</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🍵</span>
+          <span class="fact-text">陈皮泡茶，香气四溢，回味悠长</span>
         </div>
       </div>
       
@@ -225,5 +488,36 @@
       </div>
     </div>
   </div>
+  
+  <script>
+    // 创建粒子效果
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const particleCount = 20;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+        container.appendChild(particle);
+      }
+    }
+    
+    // 搜索功能
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) {
+        alert('搜索功能开发中... 您搜索的是: ' + query);
+      }
+    }
+    
+    // 页面加载时初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+    });
+  </script>
 </body>
 </html>
