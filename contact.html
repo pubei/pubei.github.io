@@ -5,7 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>在线预约 - 浦北装修设计公司</title>
   <meta name="description" content="专业的装修设计服务，为您打造理想家园">
-  <link rel="stylesheet" href="assets/css/style.css?v=26">
+  <link rel="stylesheet" href="assets/css/style.css?v=27">
+  
+  <style>
+    .form-hint {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 6px;
+      margin-left: 2px;
+    }
+    
+    @keyframes notificationSlideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+    
+    @keyframes notificationSlideOut {
+      from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(100px) scale(0.9);
+      }
+    }
+    
+    .appointment-form input:invalid:not(:placeholder-shown) {
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+    
+    .appointment-form input:invalid:not(:placeholder-shown) + .input-border {
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+  </style>
   
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +130,6 @@
             <input type="hidden" name="access_key" value="15d59141-165a-4d89-9239-97c5049272f6">
             <input type="hidden" name="from_name" value="浦北装修设计预约">
             <input type="hidden" name="subject" value="新的装修预约">
-            <input type="hidden" name="reply_to" value="175114486@qq.com">
             <div class="form-row">
               <div class="form-group">
                 <label for="name">
@@ -104,9 +143,21 @@
               <div class="form-group">
                 <label for="phone">
                   <span class="label-icon">📞</span>
-                  <span class="label-text">电话 *</span>
+                  <span class="label-text">手机号 *</span>
                 </label>
-                <input type="tel" id="phone" name="phone" required placeholder="请输入您的联系电话">
+                <input type="tel" id="phone" name="phone" required pattern="1[3-9]\d{9}" placeholder="请输入您的手机号码" oninvalid="this.setCustomValidity('请输入有效的11位手机号码')" oninput="this.setCustomValidity('')">
+                <div class="input-border"></div>
+                <span class="form-hint">请输入11位手机号码</span>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">
+                  <span class="label-icon">📧</span>
+                  <span class="label-text">邮箱</span>
+                </label>
+                <input type="email" id="email" name="email" placeholder="请输入您的邮箱地址">
                 <div class="input-border"></div>
               </div>
             </div>
