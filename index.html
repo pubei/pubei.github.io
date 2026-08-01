@@ -926,9 +926,29 @@
     }
     .wechat-modal-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
     .wechat-modal-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
-    .wechat-qr-box { width: 200px; height: 200px; margin: 0 auto 20px; padding: 12px; background: #fff; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); position: relative; }
+    .wechat-qr-box { width: 200px; height: 200px; margin: 0 auto 20px; padding: 12px; background: #fff; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); position: relative; cursor: pointer; transition: all 0.3s ease; }
+    .wechat-qr-box:hover { transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
     .wechat-qr-img { width: 100%; height: 100%; border-radius: 8px; display: block; }
     .wechat-qr-loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: #999; font-size: 0.85rem; }
+    .wechat-qr-zoom-tip { position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; color: rgba(255,255,255,0.55); white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+    .wechat-qr-zoom-tip::before { content: "\1F50D"; font-size: 0.78rem; }
+    .qr-lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); z-index: 10000; align-items: center; justify-content: center; animation: lbFadeIn 0.25s ease; }
+    .qr-lightbox.active { display: flex; }
+    @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .qr-lightbox-content { background: #fff; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(7,193,96,0.2); animation: lbZoomIn 0.3s cubic-bezier(0.16,1,0.3,1); max-width: 90vw; }
+    @keyframes lbZoomIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .qr-lightbox-img { width: 280px; height: 280px; border-radius: 12px; display: block; margin-bottom: 14px; }
+    @media (max-width:480px) { .qr-lightbox-img { width: 240px; height: 240px; } }
+    .qr-lightbox-title { font-size: 1rem; font-weight: 700; color: #1a1f35; margin-bottom: 6px; letter-spacing: 0.5px; }
+    .qr-lightbox-subtitle { font-size: 0.8rem; color: #64748b; margin-bottom: 18px; }
+    .qr-lightbox-close { position: absolute; top: 20px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; backdrop-filter: blur(10px); }
+    .qr-lightbox-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+    .qr-lightbox-actions { display: flex; gap: 10px; justify-content: center; }
+    .qr-lightbox-btn { padding: 10px 22px; border-radius: 12px; border: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; font-family: inherit; display: flex; align-items: center; gap: 6px; }
+    .qr-lightbox-btn.save { background: linear-gradient(135deg, #07c160, #06ad56); color: #fff; box-shadow: 0 4px 14px rgba(7,193,96,.35); }
+    .qr-lightbox-btn.save:hover { filter: brightness(1.08); transform: translateY(-2px); }
+    .qr-lightbox-btn.download { background: rgba(0,0,0,0.06); color: #1a1f35; border: 1px solid rgba(0,0,0,0.08); }
+    .qr-lightbox-btn.download:hover { background: rgba(0,0,0,0.1); transform: translateY(-2px); }
     .wechat-id-box {
       display: flex;
       align-items: center;
@@ -1011,9 +1031,10 @@
       <div class="wechat-modal-icon">💬</div>
       <h3 class="wechat-modal-title">微信咨询</h3>
       <p class="wechat-modal-desc">扫码添加微信，获取免费设计咨询</p>
-      <div class="wechat-qr-box">
+      <div class="wechat-qr-box" id="wmQrBox">
         <span class="wechat-qr-loading">加载中...</span>
-        <img class="wechat-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=dgbook" alt="微信二维码" onload="this.previousElementSibling.style.display='none';this.style.display='block'" onerror="this.style.display='none';this.previousElementSibling.textContent='二维码加载失败'" style="display:none" />
+        <img class="wechat-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=dgbook" alt="微信二维码" onload="this.previousElementSibling.style.display='none';this.style.display='block'" onerror="this.style.display='none';this.previousElementSibling.textContent='二维码加载失败'" style="display:none" />
+        <span class="wechat-qr-zoom-tip">点击放大预览</span>
       </div>
       <div class="wechat-id-box">
         <span class="wechat-id-label">微信号</span>
@@ -1028,12 +1049,32 @@
     </div>
   </div>
 
+  <!-- 二维码放大灯箱 -->
+  <div class="qr-lightbox" id="qrLightbox">
+    <button class="qr-lightbox-close" id="lbClose" onclick="closeQrLightbox()">&times;</button>
+    <div class="qr-lightbox-content">
+      <img class="qr-lightbox-img" src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=dgbook" alt="微信二维码" />
+      <h3 class="qr-lightbox-title">微信二维码</h3>
+      <p class="qr-lightbox-subtitle">长按保存到相册，打开微信扫一扫</p>
+      <div class="qr-lightbox-actions">
+        <a class="qr-lightbox-btn save" href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=dgbook" download="微信二维码-dgbook.png">📥 保存二维码</a>
+        <a class="qr-lightbox-btn download" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=dgbook">🔗 新窗打开</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     function showWechatModal() {
       document.getElementById('wechatModal').classList.add('active');
     }
     function closeWechatModal() {
       document.getElementById('wechatModal').classList.remove('active');
+    }
+    function openQrLightbox() {
+      document.getElementById('qrLightbox').classList.add('active');
+    }
+    function closeQrLightbox() {
+      document.getElementById('qrLightbox').classList.remove('active');
     }
     function copyWechatId() {
       var wechatId = 'dgbook';
@@ -1055,11 +1096,18 @@
         document.body.removeChild(textarea);
       }
     }
+    document.getElementById('wmQrBox').addEventListener('click', openQrLightbox);
+    document.getElementById('qrLightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeQrLightbox();
+    });
     document.getElementById('wechatModal').addEventListener('click', function(e) {
       if (e.target === this) closeWechatModal();
     });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeWechatModal();
+      if (e.key === 'Escape') {
+        if (document.getElementById('qrLightbox').classList.contains('active')) closeQrLightbox();
+        else closeWechatModal();
+      }
     });
   </script>
 </body>
