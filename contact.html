@@ -53,6 +53,105 @@
     .appointment-form input:invalid:not(:placeholder-shown) + .input-border {
       border-color: rgba(239, 68, 68, 0.5);
     }
+
+    /* 微信咨询弹窗 */
+    .wechat-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      animation: modalFadeIn 0.3s ease;
+    }
+    .wechat-modal.active { display: flex; }
+    @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .wechat-modal-content {
+      background: linear-gradient(135deg, #1a1f35 0%, #0f1525 100%);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 24px;
+      padding: 40px 36px;
+      max-width: 380px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 80px rgba(0,212,255,0.1);
+      animation: modalSlideUp 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    @keyframes modalSlideUp { from { transform: translateY(30px) scale(0.95); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+    .wechat-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      font-size: 28px;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: all 0.3s;
+      background: none; border: none;
+      line-height: 1;
+    }
+    .wechat-close:hover { color: #fff; transform: rotate(90deg); }
+    .wechat-modal-icon {
+      width: 72px; height: 72px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 8px 30px rgba(7,193,96,0.3);
+    }
+    .wechat-modal-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    .wechat-modal-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+    .wechat-id-box {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .wechat-id-label {
+      padding: 14px 16px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .wechat-id-value {
+      flex: 1;
+      padding: 14px 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #07c160;
+      letter-spacing: 1px;
+      font-family: 'Courier New', monospace;
+    }
+    .wechat-copy-btn {
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .wechat-copy-btn:hover { filter: brightness(1.1); }
+    .wechat-copy-btn.copied { background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); }
+    .wechat-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .wechat-steps .step-arrow { color: rgba(0,212,255,0.4); }
   </style>
   
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -358,11 +457,11 @@
               <h3>在线客服</h3>
             </div>
             <div class="chat-buttons">
-              <a href="#" class="chat-btn wechat">
+              <a href="javascript:void(0)" class="chat-btn wechat" onclick="showWechatModal()">
                 <span class="chat-icon">💬</span>
                 <span>微信咨询</span>
               </a>
-              <a href="#" class="chat-btn phone">
+              <a href="tel:400-888-8888" class="chat-btn phone">
                 <span class="chat-icon">📞</span>
                 <span>电话咨询</span>
               </a>
@@ -491,5 +590,62 @@
   </footer>
   
   <script src="assets/js/main.js"></script>
+
+  <!-- 微信咨询弹窗 -->
+  <div class="wechat-modal" id="wechatModal">
+    <div class="wechat-modal-content">
+      <button class="wechat-close" onclick="closeWechatModal()">&times;</button>
+      <div class="wechat-modal-icon">💬</div>
+      <h3 class="wechat-modal-title">微信咨询</h3>
+      <p class="wechat-modal-desc">添加微信，获取免费设计咨询</p>
+      <div class="wechat-id-box">
+        <span class="wechat-id-label">微信号</span>
+        <span class="wechat-id-value" id="wechatIdValue">dgbook</span>
+        <button class="wechat-copy-btn" id="copyWechatBtn" onclick="copyWechatId()">复制</button>
+      </div>
+      <div class="wechat-steps">
+        <span>打开微信</span>
+        <span class="step-arrow">→</span>
+        <span>添加朋友</span>
+        <span class="step-arrow">→</span>
+        <span>输入微信号</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showWechatModal() {
+      document.getElementById('wechatModal').classList.add('active');
+    }
+    function closeWechatModal() {
+      document.getElementById('wechatModal').classList.remove('active');
+    }
+    function copyWechatId() {
+      var wechatId = 'dgbook';
+      var btn = document.getElementById('copyWechatBtn');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(wechatId).then(function() {
+          btn.textContent = '已复制 ✓';
+          btn.classList.add('copied');
+          setTimeout(function() { btn.textContent = '复制'; btn.classList.remove('copied'); }, 2000);
+        });
+      } else {
+        var textarea = document.createElement('textarea');
+        textarea.value = wechatId;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand('copy'); btn.textContent = '已复制 ✓'; btn.classList.add('copied'); setTimeout(function() { btn.textContent = '复制'; btn.classList.remove('copied'); }, 2000); } catch(e) {}
+        document.body.removeChild(textarea);
+      }
+    }
+    document.getElementById('wechatModal').addEventListener('click', function(e) {
+      if (e.target === this) closeWechatModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeWechatModal();
+    });
+  </script>
 </body>
 </html>
