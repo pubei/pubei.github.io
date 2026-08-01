@@ -478,11 +478,11 @@
     </form>
 
     <div class="quick-nav">
-      <a href="index.html" class="nav-link">
+      <a href="/" class="nav-link">
         <span class="nav-icon">🏠</span>
         <span class="nav-text">首页</span>
       </a>
-      <a href="index.html#services" class="nav-link">
+      <a href="/#services" class="nav-link">
         <span class="nav-icon">🛠️</span>
         <span class="nav-text">服务</span>
       </a>
@@ -501,7 +501,7 @@
     </div>
 
     <div class="btn-group">
-      <a href="index.html" class="btn btn-home">
+      <a href="/" class="btn btn-home">
         <span>🏠</span>
         <span>返回首页</span>
       </a>
@@ -538,7 +538,7 @@
       event.preventDefault();
       const query = document.getElementById('searchInput').value.trim();
       if (query) {
-        window.location.href = 'index.html?q=' + encodeURIComponent(query);
+        window.location.href = '/?q=' + encodeURIComponent(query);
       }
     }
 
@@ -554,7 +554,7 @@
         if (countdownEl) countdownEl.textContent = seconds;
         if (seconds <= 0) {
           clearInterval(countdownTimer);
-          window.location.href = 'index.html';
+          window.location.href = '/';
         }
       }, 1000);
     }
