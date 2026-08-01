@@ -567,11 +567,9 @@
         redirectEl.style.color = 'var(--c-accent)';
       }
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      createParticles();
-      startCountdown();
-    });
+// 页面加载时初始化（脚本在body末尾，DOM已就绪，直接调用）
+    createParticles();
+    startCountdown();
   </script>
 </body>
 </html>
