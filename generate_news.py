@@ -9,6 +9,8 @@ import json
 import random
 from datetime import datetime
 from urllib.parse import quote
+from urllib.request import urlopen, Request
+import urllib.error
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 NEWS_FILE = os.path.join(BASE_DIR, 'news.html')
@@ -21,6 +23,35 @@ IMAGE_API_BASE = "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image"
 def build_image_url(prompt, size="landscape_4_3"):
     """构建图片生成URL"""
     return f"{IMAGE_API_BASE}?prompt={quote(prompt)}&image_size={size}"
+
+
+def download_news_image(image_url, news_id):
+    """
+    下载新闻图片到本地，确保图片稳定可用
+    返回本地路径（如 assets/images/news/xxx.jpg）或原URL（若下载失败）
+    """
+    try:
+        news_images_dir = os.path.join(BASE_DIR, 'assets', 'images', 'news')
+        os.makedirs(news_images_dir, exist_ok=True)
+        
+        local_filename = f"news_{news_id}.jpg"
+        local_path = os.path.join(news_images_dir, local_filename)
+        local_url = f"assets/images/news/{local_filename}"
+        
+        # 下载图片
+        req = Request(image_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urlopen(req, timeout=15) as response:
+            if response.status == 200:
+                with open(local_path, 'wb') as f:
+                    f.write(response.read())
+                print(f"    ✓ 图片已下载: {local_url}")
+                return local_url
+            else:
+                print(f"    ✗ 下载失败 (HTTP {response.status}), 使用原URL")
+                return image_url
+    except Exception as e:
+        print(f"    ✗ 下载失败 ({str(e)[:60]}), 使用原URL")
+        return image_url
 
 
 # 新闻模板库 - 全部围绕浦北装修设计和全屋定制主题
@@ -261,6 +292,9 @@ def generate_news():
 
     # 生成新闻ID（使用日期+随机数避免重复）
     news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
+    
+    # 下载图片到本地，确保稳定显示
+    image_url = download_news_image(image_url, news_id)
 
     # 生成完整文章内容
     content = generate_article_content(template, title)
