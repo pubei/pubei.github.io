@@ -12,37 +12,48 @@
         <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
       </filter>
     </defs>
-    
+
     <!-- 背景渐变 -->
     <rect width="400" height="300" fill="url(#grad_20260729932)"/>
-    
+
     <!-- 装饰性圆圈 -->
     <circle cx="74" cy="63" r="44" fill="white" opacity="0.10"/>
       <circle cx="134" cy="161" r="20" fill="white" opacity="0.06"/>
       <circle cx="247" cy="184" r="34" fill="white" opacity="0.10"/>
       <circle cx="70" cy="240" r="47" fill="white" opacity="0.07"/>
-    
+
     <!-- 装饰性线条 -->
     <line x1="174" y1="113" x2="237" y2="99" stroke="white" stroke-width="1" opacity="0.07"/>
       <line x1="50" y1="134" x2="133" y2="163" stroke="white" stroke-width="1" opacity="0.06"/>
       <line x1="28" y1="224" x2="105" y2="236" stroke="white" stroke-width="1" opacity="0.07"/>
-    
+
+    <!-- 房屋轮廓装饰 -->
+    <g opacity="0.10" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
+      <path d="M 330 265 L 330 205 L 370 175 L 410 205 L 410 265 Z"/>
+      <rect x="345" y="225" width="18" height="40"/>
+      <rect x="378" y="215" width="22" height="22"/>
+    </g>
+    <g opacity="0.08" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
+      <path d="M -10 285 L -10 245 L 25 220 L 60 245 L 60 285 Z"/>
+      <rect x="5" y="255" width="15" height="30"/>
+    </g>
+
     <!-- 底部渐变遮罩 -->
     <rect width="400" height="300" fill="url(#grad_20260729932_overlay)"/>
-    
+
     <!-- 分类标签 -->
     <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
     <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">公司动态</text>
-    
-    <!-- 图标 -->
-    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260729932_shadow)">🏆</text>
-    
+
+    <!-- 图标（装修主题） -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260729932_shadow)" font-family="'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">🏗️</text>
+
     <!-- 主标题 -->
     <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">浦北装修设计设计师团队赴14城…</text>
-    
+
     <!-- 副标题 -->
     <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">公司动态 · 实时更新</text>
-    
+
     <!-- 底部品牌信息 -->
     <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
     <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>

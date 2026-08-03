@@ -51,7 +51,8 @@ CATEGORY_THEMES = {
             ("#373b44", "#4286f4"),
             ("#232526", "#414345"),
         ],
-        "icons": ["🏢", "🏆", "🎉", "👥", "🚀", "📢", "💼", "⭐"],
+        # 装修相关图标：工地/展厅/工具/施工语义
+        "icons": ["🏠", "🏗️", "🔨", "🪚", "🪜", "🧰", "📐", "📋"],
         "subtitle": "公司动态 · 实时更新",
     },
     "行业资讯": {
@@ -62,18 +63,19 @@ CATEGORY_THEMES = {
             ("#134e5e", "#71b280"),
             ("#614385", "#516395"),
         ],
-        "icons": ["📰", "📈", "🔍", "💡", "🌱", "📊", "🎯", "🔮"],
+        # 装修相关图标：材料/环保/空间语义
+        "icons": ["🪵", "🌿", "🧱", "🪟", "🏠", "🛋️", "💡", "📐"],
         "subtitle": "行业资讯 · 前沿洞察",
     },
 }
 
-# 默认主题（未匹配分类时使用）
+# 默认主题（未匹配分类时使用）- 全部为装修相关图标
 DEFAULT_THEME = {
     "gradients": [
         ("#00d4ff", "#7b2ff7"),
         ("#7b2ff7", "#00ff80"),
     ],
-    "icons": ["🏠", "✨", "🏗️", "🔨"],
+    "icons": ["🏠", "✨", "🪟", "🔨", "🪑", "📐"],
     "subtitle": "浦北装修设计",
 }
 
@@ -137,10 +139,25 @@ def generate_svg_image(news_id, title, category):
         )
     
     lines_svg = "\n      ".join(lines)
-    
+
+    # 装饰性房屋轮廓（所有分类共用，强化"装修"主题）
+    house_decoration = '''<!-- 房屋轮廓装饰 -->
+    <g opacity="0.10" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
+      <path d="M 330 265 L 330 205 L 370 175 L 410 205 L 410 265 Z"/>
+      <rect x="345" y="225" width="18" height="40"/>
+      <rect x="378" y="215" width="22" height="22"/>
+    </g>
+    <g opacity="0.08" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
+      <path d="M -10 285 L -10 245 L 25 220 L 60 245 L 60 285 Z"/>
+      <rect x="5" y="255" width="15" height="30"/>
+    </g>'''
+
     # 分割线位置
     divider_y = 210 if len(display_title) <= 10 else 220
-    
+
+    # emoji 字体栈，确保装修图标在所有平台正确渲染
+    emoji_font = "'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif"
+
     svg_content = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
     <defs>
       <linearGradient id="{gradient_id}" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -155,32 +172,34 @@ def generate_svg_image(news_id, title, category):
         <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
       </filter>
     </defs>
-    
+
     <!-- 背景渐变 -->
     <rect width="400" height="300" fill="url(#{gradient_id})"/>
-    
+
     <!-- 装饰性圆圈 -->
     {circles_svg}
-    
+
     <!-- 装饰性线条 -->
     {lines_svg}
-    
+
+    {house_decoration}
+
     <!-- 底部渐变遮罩 -->
     <rect width="400" height="300" fill="url(#{gradient_id}_overlay)"/>
-    
+
     <!-- 分类标签 -->
     <rect x="20" y="20" rx="12" ry="12" width="{len(category) * 14 + 24}" height="28" fill="white" opacity="0.2"/>
     <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">{category}</text>
-    
-    <!-- 图标 -->
-    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#{gradient_id}_shadow)">{icon}</text>
-    
+
+    <!-- 图标（装修主题） -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#{gradient_id}_shadow)" font-family="{emoji_font}">{icon}</text>
+
     <!-- 主标题 -->
     <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">{display_title}</text>
-    
+
     <!-- 副标题 -->
     <text x="200" y="{divider_y + 20}" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">{subtitle}</text>
-    
+
     <!-- 底部品牌信息 -->
     <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
     <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
@@ -599,8 +618,54 @@ def update_news_data_json(news_data):
     return True
 
 
+def regenerate_existing_images():
+    """
+    根据 news-data.json 重新生成所有新闻的 SVG 图片
+    用于主题图标调整后回填，确保所有图片都符合装修设计/全屋定制主题
+    历史遗留分类（如"装修知识"）会被映射到"装修设计"
+    """
+    print("=== 开始重新生成所有新闻 SVG 图片 ===")
+    with open(NEWS_DATA_FILE, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # 分类映射：将历史遗留分类统一到标准分类
+    category_mapping = {
+        "装修知识": "装修设计",
+    }
+
+    updated_count = 0
+    for item in data:
+        news_id = str(item['id'])
+        title = item['title']
+        category = item.get('category', '装修设计')
+
+        # 处理历史遗留分类
+        original_category = category
+        if category in category_mapping:
+            category = category_mapping[category]
+            item['category'] = category
+            print(f"  ↺ ID={news_id}: 分类 '{original_category}' → '{category}'")
+
+        # 重新生成 SVG
+        save_news_image(title, category, news_id)
+        updated_count += 1
+
+    # 保存更新后的 JSON（分类可能被映射）
+    with open(NEWS_DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    print(f"\n=== 已重新生成 {updated_count} 张 SVG 图片 ===")
+    print(f"=== 所有图片均使用装修设计/全屋定制主题图标 ===")
+
+
 def main():
     import sys
+
+    # 命令行参数：重新生成所有现有新闻的 SVG 图片
+    if '--regenerate-images' in sys.argv:
+        regenerate_existing_images()
+        return
+
     force = '--force' in sys.argv
     print("=== 开始生成公司新闻 ===")
 
