@@ -2,56 +2,212 @@
 """
 自动生成公司新闻 - 每天自动发布一条关于浦北装修设计/全屋定制的新闻或动态
 每条新闻的图片都与标题内容紧密相关，确保图文匹配
+图片采用纯 SVG 动态生成，零外部依赖，CI/CD 环境 100% 可靠
 """
 
 import os
 import json
 import random
+import hashlib
 from datetime import datetime
-from urllib.parse import quote
-from urllib.request import urlopen, Request
-import urllib.error
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 NEWS_FILE = os.path.join(BASE_DIR, 'news.html')
 NEWS_DATA_FILE = os.path.join(BASE_DIR, 'assets', 'data', 'news-data.json')
 
-# 图片生成API基础URL
-IMAGE_API_BASE = "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image"
+# ============================================================================
+# SVG 图片生成 - 零外部依赖，稳定可靠
+# ============================================================================
+
+# 分类配色方案 - 每个分类有独特的渐变配色
+CATEGORY_THEMES = {
+    "全屋定制": {
+        "gradients": [
+            ("#00d4ff", "#7b2ff7"),
+            ("#7b2ff7", "#00ff80"),
+            ("#ff6b6b", "#feca57"),
+            ("#48dbfb", "#0abde3"),
+            ("#5f27cd", "#341f97"),
+        ],
+        "icons": ["🏠", "🛋️", "🪑", "🗄️", "🚪", "🪟", "📐", "🔨"],
+        "subtitle": "全屋定制 · 品质生活",
+    },
+    "装修设计": {
+        "gradients": [
+            ("#667eea", "#764ba2"),
+            ("#f093fb", "#f5576c"),
+            ("#4facfe", "#00f2fe"),
+            ("#43e97b", "#38f9d7"),
+            ("#fa709a", "#fee140"),
+        ],
+        "icons": ["🎨", "🖌️", "✨", "💡", "🪟", "🌈", "🌸", "🖼️"],
+        "subtitle": "装修设计 · 匠心品质",
+    },
+    "公司动态": {
+        "gradients": [
+            ("#00d4ff", "#0099cc"),
+            ("#06beb6", "#48b1bf"),
+            ("#11998e", "#38ef7d"),
+            ("#373b44", "#4286f4"),
+            ("#232526", "#414345"),
+        ],
+        "icons": ["🏢", "🏆", "🎉", "👥", "🚀", "📢", "💼", "⭐"],
+        "subtitle": "公司动态 · 实时更新",
+    },
+    "行业资讯": {
+        "gradients": [
+            ("#ee0979", "#ff6a00"),
+            ("#ff9966", "#ff5e62"),
+            ("#f7971e", "#ffd200"),
+            ("#134e5e", "#71b280"),
+            ("#614385", "#516395"),
+        ],
+        "icons": ["📰", "📈", "🔍", "💡", "🌱", "📊", "🎯", "🔮"],
+        "subtitle": "行业资讯 · 前沿洞察",
+    },
+}
+
+# 默认主题（未匹配分类时使用）
+DEFAULT_THEME = {
+    "gradients": [
+        ("#00d4ff", "#7b2ff7"),
+        ("#7b2ff7", "#00ff80"),
+    ],
+    "icons": ["🏠", "✨", "🏗️", "🔨"],
+    "subtitle": "浦北装修设计",
+}
 
 
-def build_image_url(prompt, size="landscape_4_3"):
-    """构建图片生成URL"""
-    return f"{IMAGE_API_BASE}?prompt={quote(prompt)}&image_size={size}"
+def _hash_to_seed(text):
+    """将文本转换为随机种子，确保同一新闻ID生成相同图片"""
+    return int(hashlib.md5(text.encode()).hexdigest()[:8], 16)
 
 
-def download_news_image(image_url, news_id):
+def _truncate_title(title, max_chars=14):
+    """截断长标题以适配图片显示"""
+    if len(title) <= max_chars:
+        return title
+    return title[:max_chars - 1] + "…"
+
+
+def generate_svg_image(news_id, title, category):
     """
-    下载新闻图片到本地，确保图片稳定可用
-    返回本地路径（如 assets/images/news/xxx.jpg）或原URL（若下载失败）
+    为新闻生成一张独特的 SVG 封面图
+    - 根据分类选择配色和图标
+    - 根据 news_id 哈希生成确定性随机，保证一致性
+    - 包含装饰性几何元素
     """
-    try:
-        news_images_dir = os.path.join(BASE_DIR, 'assets', 'images', 'news')
-        os.makedirs(news_images_dir, exist_ok=True)
-        
-        local_filename = f"news_{news_id}.jpg"
-        local_path = os.path.join(news_images_dir, local_filename)
-        local_url = f"assets/images/news/{local_filename}"
-        
-        # 下载图片
-        req = Request(image_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urlopen(req, timeout=15) as response:
-            if response.status == 200:
-                with open(local_path, 'wb') as f:
-                    f.write(response.read())
-                print(f"    ✓ 图片已下载: {local_url}")
-                return local_url
-            else:
-                print(f"    ✗ 下载失败 (HTTP {response.status}), 使用原URL")
-                return image_url
-    except Exception as e:
-        print(f"    ✗ 下载失败 ({str(e)[:60]}), 使用原URL")
-        return image_url
+    seed = _hash_to_seed(news_id)
+    rng = random.Random(seed)
+    
+    theme = CATEGORY_THEMES.get(category, DEFAULT_THEME)
+    gradient = rng.choice(theme["gradients"])
+    icon = rng.choice(theme["icons"])
+    subtitle = theme.get("subtitle", DEFAULT_THEME["subtitle"])
+    
+    accent_color = gradient[1]
+    gradient_id = f"grad_{news_id}"
+    pattern_id = f"pat_{news_id}"
+    
+    display_title = _truncate_title(title, 16)
+    
+    # 生成装饰圆圈
+    circles = []
+    for i in range(rng.randint(3, 6)):
+        cx = rng.randint(20, 380)
+        cy = rng.randint(20, 280)
+        r = rng.randint(15, 50)
+        opacity = rng.uniform(0.05, 0.15)
+        circles.append(
+            f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="white" opacity="{opacity:.2f}"/>'
+        )
+    
+    circles_svg = "\n      ".join(circles)
+    
+    # 生成装饰线条
+    lines = []
+    for i in range(rng.randint(2, 4)):
+        x1 = rng.randint(0, 200)
+        y1 = rng.randint(0, 300)
+        x2 = x1 + rng.randint(40, 120)
+        y2 = y1 + rng.randint(-30, 30)
+        opacity = rng.uniform(0.05, 0.12)
+        lines.append(
+            f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="white" stroke-width="1" opacity="{opacity:.2f}"/>'
+        )
+    
+    lines_svg = "\n      ".join(lines)
+    
+    # 分割线位置
+    divider_y = 210 if len(display_title) <= 10 else 220
+    
+    svg_content = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+    <defs>
+      <linearGradient id="{gradient_id}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="{gradient[0]}"/>
+        <stop offset="100%" stop-color="{gradient[1]}"/>
+      </linearGradient>
+      <linearGradient id="{gradient_id}_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="{gradient_id}_shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+    
+    <!-- 背景渐变 -->
+    <rect width="400" height="300" fill="url(#{gradient_id})"/>
+    
+    <!-- 装饰性圆圈 -->
+    {circles_svg}
+    
+    <!-- 装饰性线条 -->
+    {lines_svg}
+    
+    <!-- 底部渐变遮罩 -->
+    <rect width="400" height="300" fill="url(#{gradient_id}_overlay)"/>
+    
+    <!-- 分类标签 -->
+    <rect x="20" y="20" rx="12" ry="12" width="{len(category) * 14 + 24}" height="28" fill="white" opacity="0.2"/>
+    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">{category}</text>
+    
+    <!-- 图标 -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#{gradient_id}_shadow)">{icon}</text>
+    
+    <!-- 主标题 -->
+    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">{display_title}</text>
+    
+    <!-- 副标题 -->
+    <text x="200" y="{divider_y + 20}" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">{subtitle}</text>
+    
+    <!-- 底部品牌信息 -->
+    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+  </svg>'''
+    
+    return svg_content
+
+
+def save_news_image(title, category, news_id):
+    """
+    生成并保存新闻 SVG 图片
+    返回本地路径
+    """
+    news_images_dir = os.path.join(BASE_DIR, 'assets', 'images', 'news')
+    os.makedirs(news_images_dir, exist_ok=True)
+    
+    local_filename = f"news_{news_id}.svg"
+    local_path = os.path.join(news_images_dir, local_filename)
+    local_url = f"assets/images/news/{local_filename}"
+    
+    svg_content = generate_svg_image(news_id, title, category)
+    
+    with open(local_path, 'w', encoding='utf-8') as f:
+        f.write(svg_content)
+    
+    print(f"    ✓ SVG图片已生成: {local_url} ({len(svg_content)}字节)")
+    return local_url
 
 
 # 新闻模板库 - 全部围绕浦北装修设计和全屋定制主题
@@ -287,14 +443,14 @@ def generate_news():
     title = template["title"].format(year=year_var)
     excerpt = template["excerpt"].format(year=year_var)
 
-    # 生成图片URL - 根据新闻内容生成相关图片，确保图文匹配
-    image_url = build_image_url(template["image_prompt"])
-
     # 生成新闻ID（使用日期+随机数避免重复）
     news_id = datetime.now().strftime('%Y%m%d') + str(random.randint(100, 999))
     
-    # 下载图片到本地，确保稳定显示
-    image_url = download_news_image(image_url, news_id)
+    # 生成分类
+    category = template.get("category", "装修设计")
+    
+    # 生成 SVG 图片 - 纯本地生成，零外部依赖
+    image_url = save_news_image(title, category, news_id)
 
     # 生成完整文章内容
     content = generate_article_content(template, title)

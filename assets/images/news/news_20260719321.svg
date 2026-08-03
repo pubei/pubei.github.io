@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+    <defs>
+      <linearGradient id="grad_20260719321" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#134e5e"/>
+        <stop offset="100%" stop-color="#71b280"/>
+      </linearGradient>
+      <linearGradient id="grad_20260719321_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="grad_20260719321_shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+    
+    <!-- 背景渐变 -->
+    <rect width="400" height="300" fill="url(#grad_20260719321)"/>
+    
+    <!-- 装饰性圆圈 -->
+    <circle cx="326" cy="177" r="17" fill="white" opacity="0.12"/>
+      <circle cx="303" cy="29" r="22" fill="white" opacity="0.13"/>
+      <circle cx="355" cy="236" r="47" fill="white" opacity="0.10"/>
+      <circle cx="297" cy="169" r="40" fill="white" opacity="0.08"/>
+      <circle cx="347" cy="31" r="49" fill="white" opacity="0.14"/>
+      <circle cx="333" cy="126" r="23" fill="white" opacity="0.14"/>
+    
+    <!-- 装饰性线条 -->
+    <line x1="157" y1="162" x2="205" y2="159" stroke="white" stroke-width="1" opacity="0.08"/>
+      <line x1="195" y1="257" x2="262" y2="228" stroke="white" stroke-width="1" opacity="0.05"/>
+    
+    <!-- 底部渐变遮罩 -->
+    <rect width="400" height="300" fill="url(#grad_20260719321_overlay)"/>
+    
+    <!-- 分类标签 -->
+    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
+    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">行业资讯</text>
+    
+    <!-- 图标 -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260719321_shadow)">🔍</text>
+    
+    <!-- 主标题 -->
+    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">环保材料新标准出台，全屋定制行…</text>
+    
+    <!-- 副标题 -->
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">行业资讯 · 前沿洞察</text>
+    
+    <!-- 底部品牌信息 -->
+    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+  </svg>

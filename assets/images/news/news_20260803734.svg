@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+    <defs>
+      <linearGradient id="grad_20260803734" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#43e97b"/>
+        <stop offset="100%" stop-color="#38f9d7"/>
+      </linearGradient>
+      <linearGradient id="grad_20260803734_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="grad_20260803734_shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+    
+    <!-- 背景渐变 -->
+    <rect width="400" height="300" fill="url(#grad_20260803734)"/>
+    
+    <!-- 装饰性圆圈 -->
+    <circle cx="62" cy="20" r="49" fill="white" opacity="0.14"/>
+      <circle cx="23" cy="38" r="40" fill="white" opacity="0.08"/>
+      <circle cx="58" cy="66" r="29" fill="white" opacity="0.14"/>
+      <circle cx="121" cy="258" r="33" fill="white" opacity="0.15"/>
+    
+    <!-- 装饰性线条 -->
+    <line x1="5" y1="240" x2="110" y2="211" stroke="white" stroke-width="1" opacity="0.07"/>
+      <line x1="57" y1="98" x2="176" y2="94" stroke="white" stroke-width="1" opacity="0.11"/>
+      <line x1="27" y1="37" x2="122" y2="7" stroke="white" stroke-width="1" opacity="0.10"/>
+    
+    <!-- 底部渐变遮罩 -->
+    <rect width="400" height="300" fill="url(#grad_20260803734_overlay)"/>
+    
+    <!-- 分类标签 -->
+    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
+    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">装修设计</text>
+    
+    <!-- 图标 -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260803734_shadow)">🖼️</text>
+    
+    <!-- 主标题 -->
+    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">浦北装修设计：新中式风格的现代…</text>
+    
+    <!-- 副标题 -->
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">装修设计 · 匠心品质</text>
+    
+    <!-- 底部品牌信息 -->
+    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+  </svg>

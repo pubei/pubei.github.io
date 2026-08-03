@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+    <defs>
+      <linearGradient id="grad_2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00d4ff"/>
+        <stop offset="100%" stop-color="#0099cc"/>
+      </linearGradient>
+      <linearGradient id="grad_2_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="grad_2_shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+    
+    <!-- 背景渐变 -->
+    <rect width="400" height="300" fill="url(#grad_2)"/>
+    
+    <!-- 装饰性圆圈 -->
+    <circle cx="210" cy="261" r="21" fill="white" opacity="0.10"/>
+      <circle cx="107" cy="160" r="15" fill="white" opacity="0.05"/>
+      <circle cx="359" cy="239" r="41" fill="white" opacity="0.06"/>
+      <circle cx="102" cy="124" r="43" fill="white" opacity="0.15"/>
+    
+    <!-- 装饰性线条 -->
+    <line x1="193" y1="87" x2="241" y2="73" stroke="white" stroke-width="1" opacity="0.09"/>
+      <line x1="21" y1="82" x2="122" y2="108" stroke="white" stroke-width="1" opacity="0.11"/>
+      <line x1="165" y1="185" x2="259" y2="165" stroke="white" stroke-width="1" opacity="0.11"/>
+      <line x1="114" y1="296" x2="233" y2="279" stroke="white" stroke-width="1" opacity="0.09"/>
+    
+    <!-- 底部渐变遮罩 -->
+    <rect width="400" height="300" fill="url(#grad_2_overlay)"/>
+    
+    <!-- 分类标签 -->
+    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
+    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">公司动态</text>
+    
+    <!-- 图标 -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_2_shadow)">🏢</text>
+    
+    <!-- 主标题 -->
+    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">浦北装修设计荣获2026年度优…</text>
+    
+    <!-- 副标题 -->
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">公司动态 · 实时更新</text>
+    
+    <!-- 底部品牌信息 -->
+    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+  </svg>

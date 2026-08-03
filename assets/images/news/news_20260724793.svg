@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+    <defs>
+      <linearGradient id="grad_20260724793" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ee0979"/>
+        <stop offset="100%" stop-color="#ff6a00"/>
+      </linearGradient>
+      <linearGradient id="grad_20260724793_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="grad_20260724793_shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+    
+    <!-- 背景渐变 -->
+    <rect width="400" height="300" fill="url(#grad_20260724793)"/>
+    
+    <!-- 装饰性圆圈 -->
+    <circle cx="352" cy="201" r="31" fill="white" opacity="0.06"/>
+      <circle cx="155" cy="130" r="39" fill="white" opacity="0.08"/>
+      <circle cx="184" cy="164" r="43" fill="white" opacity="0.13"/>
+    
+    <!-- 装饰性线条 -->
+    <line x1="88" y1="290" x2="152" y2="272" stroke="white" stroke-width="1" opacity="0.06"/>
+      <line x1="156" y1="82" x2="272" y2="102" stroke="white" stroke-width="1" opacity="0.06"/>
+      <line x1="90" y1="0" x2="181" y2="-27" stroke="white" stroke-width="1" opacity="0.09"/>
+      <line x1="186" y1="105" x2="288" y2="100" stroke="white" stroke-width="1" opacity="0.05"/>
+    
+    <!-- 底部渐变遮罩 -->
+    <rect width="400" height="300" fill="url(#grad_20260724793_overlay)"/>
+    
+    <!-- 分类标签 -->
+    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
+    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">行业资讯</text>
+    
+    <!-- 图标 -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260724793_shadow)">📈</text>
+    
+    <!-- 主标题 -->
+    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">5年装修流行趋势：这五种风格将…</text>
+    
+    <!-- 副标题 -->
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">行业资讯 · 前沿洞察</text>
+    
+    <!-- 底部品牌信息 -->
+    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+  </svg>

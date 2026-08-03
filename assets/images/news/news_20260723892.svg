@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+    <defs>
+      <linearGradient id="grad_20260723892" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#614385"/>
+        <stop offset="100%" stop-color="#516395"/>
+      </linearGradient>
+      <linearGradient id="grad_20260723892_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      </linearGradient>
+      <filter id="grad_20260723892_shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+    
+    <!-- 背景渐变 -->
+    <rect width="400" height="300" fill="url(#grad_20260723892)"/>
+    
+    <!-- 装饰性圆圈 -->
+    <circle cx="323" cy="195" r="49" fill="white" opacity="0.07"/>
+      <circle cx="171" cy="142" r="38" fill="white" opacity="0.06"/>
+      <circle cx="41" cy="220" r="15" fill="white" opacity="0.13"/>
+    
+    <!-- 装饰性线条 -->
+    <line x1="132" y1="29" x2="190" y2="21" stroke="white" stroke-width="1" opacity="0.11"/>
+      <line x1="185" y1="282" x2="234" y2="257" stroke="white" stroke-width="1" opacity="0.05"/>
+    
+    <!-- 底部渐变遮罩 -->
+    <rect width="400" height="300" fill="url(#grad_20260723892_overlay)"/>
+    
+    <!-- 分类标签 -->
+    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
+    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">行业资讯</text>
+    
+    <!-- 图标 -->
+    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260723892_shadow)">📊</text>
+    
+    <!-- 主标题 -->
+    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">环保装修材料新升级，打造绿色健…</text>
+    
+    <!-- 副标题 -->
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">行业资讯 · 前沿洞察</text>
+    
+    <!-- 底部品牌信息 -->
+    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+  </svg>
