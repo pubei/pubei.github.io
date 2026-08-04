@@ -1,60 +1,93 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
     <defs>
-      <linearGradient id="grad_20260730233" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#ff6b6b"/>
-        <stop offset="100%" stop-color="#feca57"/>
+      <linearGradient id="news_20260730233_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f093fb"/>
+        <stop offset="100%" stop-color="#f5576c"/>
       </linearGradient>
-      <linearGradient id="grad_20260730233_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="black" stop-opacity="0"/>
-        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      <linearGradient id="news_20260730233_floor" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(0,0,0,0.45)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.05)"/>
       </linearGradient>
-      <filter id="grad_20260730233_shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      <linearGradient id="news_20260730233_wall" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0.02)"/>
+      </linearGradient>
+      <linearGradient id="news_20260730233_glass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.28)"/>
+        <stop offset="50%" stop-color="rgba(255,255,255,0.10)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0.20)"/>
+      </linearGradient>
+      <radialGradient id="news_20260730233_spot" cx="50%" cy="20%" r="60%">
+        <stop offset="0%" stop-color="rgba(255,240,200,0.55)"/>
+        <stop offset="100%" stop-color="rgba(255,240,200,0)"/>
+      </radialGradient>
+      <linearGradient id="news_20260730233_accent" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00d4ff" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#00d4ff" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="news_20260730233_blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.5"/>
+      </filter>
+      <filter id="news_20260730233_shadow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="black" flood-opacity="0.35"/>
+      </filter>
+      <filter id="news_20260730233_glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
       </filter>
     </defs>
 
     <!-- 背景渐变 -->
-    <rect width="400" height="300" fill="url(#grad_20260730233)"/>
+    <rect width="400" height="300" fill="url(#news_20260730233_bg)"/>
 
-    <!-- 装饰性圆圈 -->
-    <circle cx="350" cy="146" r="33" fill="white" opacity="0.12"/>
-      <circle cx="87" cy="204" r="39" fill="white" opacity="0.09"/>
-      <circle cx="377" cy="136" r="37" fill="white" opacity="0.06"/>
-      <circle cx="256" cy="240" r="43" fill="white" opacity="0.11"/>
-      <circle cx="175" cy="232" r="44" fill="white" opacity="0.07"/>
+    <!-- 顶部聚光（暖光氛围） -->
+    <rect width="400" height="180" fill="url(#news_20260730233_spot)"/>
 
-    <!-- 装饰性线条 -->
-    <line x1="19" y1="257" x2="62" y2="262" stroke="white" stroke-width="1" opacity="0.11"/>
-      <line x1="37" y1="117" x2="93" y2="112" stroke="white" stroke-width="1" opacity="0.07"/>
+    <!-- 装饰光斑 -->
+    <circle cx="60" cy="50" r="42" fill="white" opacity="0.06"/>
+    <circle cx="350" cy="240" r="55" fill="white" opacity="0.05"/>
+    <circle cx="340" cy="60" r="22" fill="white" opacity="0.08"/>
 
-    <!-- 房屋轮廓装饰 -->
-    <g opacity="0.10" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
-      <path d="M 330 265 L 330 205 L 370 175 L 410 205 L 410 265 Z"/>
-      <rect x="345" y="225" width="18" height="40"/>
-      <rect x="378" y="215" width="22" height="22"/>
-    </g>
-    <g opacity="0.08" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
-      <path d="M -10 285 L -10 245 L 25 220 L 60 245 L 60 285 Z"/>
-      <rect x="5" y="255" width="15" height="30"/>
-    </g>
+    <!-- 场景插画 -->
+    
+      <!-- 风格展示墙背景 -->
+      <rect x="40" y="60" width="320" height="150" fill="rgba(255,255,255,0.08)"/>
+      <polygon points="40,210 360,210 380,280 20,280" fill="rgba(0,0,0,0.18)"/>
+<rect x="24" y="100" width="64" height="80" rx="4" fill="rgba(0,212,255,0.4)" stroke="rgba(255,255,255,0.65)" stroke-width="1.4" filter="url(#news_20260730233_shadow)"/>
+      <rect x="34" y="114" width="44" height="20" rx="3" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      <rect x="36" y="110" width="40" height="6" rx="2" fill="rgba(255,255,255,0.35)"/>
+      <text x="56" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif">简约</text>
+      <rect x="40" y="166" width="32" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+      <rect x="96" y="100" width="64" height="80" rx="4" fill="rgba(255,200,80,0.5)" stroke="rgba(255,255,255,0.65)" stroke-width="1.4" filter="url(#news_20260730233_shadow)"/>
+      <rect x="106" y="114" width="44" height="20" rx="3" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      <rect x="108" y="110" width="40" height="6" rx="2" fill="rgba(255,255,255,0.35)"/>
+      <text x="128" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif">轻奢</text>
+      <rect x="112" y="166" width="32" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+      <rect x="168" y="100" width="64" height="80" rx="4" fill="rgba(0,255,128,0.4)" stroke="rgba(255,255,255,0.65)" stroke-width="1.4" filter="url(#news_20260730233_shadow)"/>
+      <rect x="178" y="114" width="44" height="20" rx="3" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      <rect x="180" y="110" width="40" height="6" rx="2" fill="rgba(255,255,255,0.35)"/>
+      <text x="200" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif">北欧</text>
+      <rect x="184" y="166" width="32" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+      <rect x="240" y="100" width="64" height="80" rx="4" fill="rgba(255,120,180,0.45)" stroke="rgba(255,255,255,0.65)" stroke-width="1.4" filter="url(#news_20260730233_shadow)"/>
+      <rect x="250" y="114" width="44" height="20" rx="3" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      <rect x="252" y="110" width="40" height="6" rx="2" fill="rgba(255,255,255,0.35)"/>
+      <text x="272" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif">新中式</text>
+      <rect x="256" y="166" width="32" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
+      <rect x="312" y="100" width="64" height="80" rx="4" fill="rgba(180,140,255,0.4)" stroke="rgba(255,255,255,0.65)" stroke-width="1.4" filter="url(#news_20260730233_shadow)"/>
+      <rect x="322" y="114" width="44" height="20" rx="3" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+      <rect x="324" y="110" width="40" height="6" rx="2" fill="rgba(255,255,255,0.35)"/>
+      <text x="344" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif">侘寂</text>
+      <rect x="328" y="166" width="32" height="3" rx="1" fill="rgba(255,255,255,0.7)"/>
 
-    <!-- 底部渐变遮罩 -->
-    <rect width="400" height="300" fill="url(#grad_20260730233_overlay)"/>
+    <!-- 底部渐变遮罩（增强文字可读性，配合 HTML overlay） -->
+    <rect y="170" width="400" height="130" fill="url(#news_20260730233_floor)"/>
 
-    <!-- 分类标签 -->
-    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
-    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">全屋定制</text>
-
-    <!-- 图标（装修主题） -->
-    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260730233_shadow)" font-family="'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">🔨</text>
-
-    <!-- 主标题 -->
-    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">浦北装修设计全屋定制风格指南：…</text>
-
-    <!-- 副标题 -->
-    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">全屋定制 · 品质生活</text>
-
-    <!-- 底部品牌信息 -->
-    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
-    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+    <!-- 分类标签（玻璃拟态） -->
+    <rect x="18" y="18" rx="14" ry="14" width="80" height="26" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1" filter="url(#news_20260730233_blur)"/>
+    <rect x="18" y="18" rx="14" ry="14" width="80" height="26" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <text x="30" y="36" font-size="12" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">全屋定制</text>
   </svg>

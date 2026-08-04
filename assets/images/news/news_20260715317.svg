@@ -1,60 +1,143 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
     <defs>
-      <linearGradient id="grad_20260715317" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#5f27cd"/>
-        <stop offset="100%" stop-color="#341f97"/>
+      <linearGradient id="news_20260715317_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#a18cd1"/>
+        <stop offset="100%" stop-color="#fbc2eb"/>
       </linearGradient>
-      <linearGradient id="grad_20260715317_overlay" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="black" stop-opacity="0"/>
-        <stop offset="100%" stop-color="black" stop-opacity="0.4"/>
+      <linearGradient id="news_20260715317_floor" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(0,0,0,0.45)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.05)"/>
       </linearGradient>
-      <filter id="grad_20260715317_shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
+      <linearGradient id="news_20260715317_wall" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0.02)"/>
+      </linearGradient>
+      <linearGradient id="news_20260715317_glass" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.28)"/>
+        <stop offset="50%" stop-color="rgba(255,255,255,0.10)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0.20)"/>
+      </linearGradient>
+      <radialGradient id="news_20260715317_spot" cx="50%" cy="20%" r="60%">
+        <stop offset="0%" stop-color="rgba(255,240,200,0.55)"/>
+        <stop offset="100%" stop-color="rgba(255,240,200,0)"/>
+      </radialGradient>
+      <linearGradient id="news_20260715317_accent" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00ff80" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#00ff80" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#00ff80" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="news_20260715317_blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.5"/>
+      </filter>
+      <filter id="news_20260715317_shadow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="black" flood-opacity="0.35"/>
+      </filter>
+      <filter id="news_20260715317_glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
       </filter>
     </defs>
 
     <!-- 背景渐变 -->
-    <rect width="400" height="300" fill="url(#grad_20260715317)"/>
+    <rect width="400" height="300" fill="url(#news_20260715317_bg)"/>
 
-    <!-- 装饰性圆圈 -->
-    <circle cx="34" cy="115" r="49" fill="white" opacity="0.07"/>
-      <circle cx="122" cy="206" r="38" fill="white" opacity="0.14"/>
-      <circle cx="268" cy="167" r="29" fill="white" opacity="0.09"/>
-      <circle cx="199" cy="120" r="29" fill="white" opacity="0.12"/>
-      <circle cx="126" cy="177" r="27" fill="white" opacity="0.09"/>
+    <!-- 顶部聚光（暖光氛围） -->
+    <rect width="400" height="180" fill="url(#news_20260715317_spot)"/>
 
-    <!-- 装饰性线条 -->
-    <line x1="174" y1="121" x2="215" y2="108" stroke="white" stroke-width="1" opacity="0.06"/>
-      <line x1="63" y1="241" x2="152" y2="213" stroke="white" stroke-width="1" opacity="0.09"/>
+    <!-- 装饰光斑 -->
+    <circle cx="60" cy="50" r="42" fill="white" opacity="0.06"/>
+    <circle cx="350" cy="240" r="55" fill="white" opacity="0.05"/>
+    <circle cx="340" cy="60" r="22" fill="white" opacity="0.08"/>
 
-    <!-- 房屋轮廓装饰 -->
-    <g opacity="0.10" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
-      <path d="M 330 265 L 330 205 L 370 175 L 410 205 L 410 265 Z"/>
-      <rect x="345" y="225" width="18" height="40"/>
-      <rect x="378" y="215" width="22" height="22"/>
-    </g>
-    <g opacity="0.08" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
-      <path d="M -10 285 L -10 245 L 25 220 L 60 245 L 60 285 Z"/>
-      <rect x="5" y="255" width="15" height="30"/>
-    </g>
+    <!-- 场景插画 -->
+    
+      <!-- 房间透视：后墙 + 地板 -->
+      <rect x="40" y="60" width="320" height="150" fill="rgba(255,255,255,0.12)"/>
+      <polygon points="40,210 360,210 380,280 20,280" fill="rgba(0,0,0,0.18)"/>
+      <polygon points="40,60 40,210 20,280 20,90" fill="rgba(0,0,0,0.20)"/>
+      <polygon points="360,60 360,210 380,280 380,90" fill="rgba(0,0,0,0.20)"/>
+      <!-- 地板木纹 -->
+      <line x1="60" y1="228" x2="340" y2="228" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      <line x1="50" y1="252" x2="350" y2="252" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    
+      <!-- 书架外框（玻璃拟态定制柜） -->
+      <rect x="250" y="70" width="80" height="140" rx="3" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" filter="url(#news_20260715317_shadow)"/>
+      <!-- 玻璃门反光 -->
+      <line x1="254" y1="74" x2="322" y2="100" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+      <!-- 书本 -->
+      <line x1="250" y1="103" x2="330" y2="103" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <rect x="254" y="78" width="6" height="23" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="261" y="81" width="7" height="20" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="269" y="84" width="8" height="17" fill="rgba(0,255,128,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="278" y="87" width="6" height="14" fill="rgba(255,200,80,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="285" y="78" width="7" height="23" fill="rgba(180,140,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="293" y="81" width="8" height="20" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="302" y="84" width="6" height="17" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <line x1="250" y1="138" x2="330" y2="138" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <rect x="254" y="113" width="6" height="23" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="261" y="116" width="7" height="20" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="269" y="119" width="8" height="17" fill="rgba(0,255,128,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="278" y="122" width="6" height="14" fill="rgba(255,200,80,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="285" y="113" width="7" height="23" fill="rgba(180,140,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="293" y="116" width="8" height="20" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="302" y="119" width="6" height="17" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <line x1="250" y1="173" x2="330" y2="173" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <rect x="254" y="148" width="6" height="23" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="261" y="151" width="7" height="20" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="269" y="154" width="8" height="17" fill="rgba(0,255,128,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="278" y="157" width="6" height="14" fill="rgba(255,200,80,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="285" y="148" width="7" height="23" fill="rgba(180,140,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="293" y="151" width="8" height="20" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="302" y="154" width="6" height="17" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <line x1="250" y1="208" x2="330" y2="208" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <rect x="254" y="183" width="6" height="23" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="261" y="186" width="7" height="20" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="269" y="189" width="8" height="17" fill="rgba(0,255,128,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="278" y="192" width="6" height="14" fill="rgba(255,200,80,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="285" y="183" width="7" height="23" fill="rgba(180,140,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="293" y="186" width="8" height="20" fill="rgba(0,212,255,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <rect x="302" y="189" width="6" height="17" fill="rgba(255,120,180,0.5)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+    
+      <!-- 桌面 -->
+      <rect x="80" y="160" width="160" height="10" rx="2" fill="rgba(255,255,255,0.32)" stroke="rgba(255,255,255,0.55)" stroke-width="1.6" filter="url(#news_20260715317_shadow)"/>
+      <!-- 桌腿 -->
+      <rect x="84" y="170" width="8" height="42" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+      <rect x="228" y="170" width="8" height="42" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+      <!-- 抽屉 -->
+      <rect x="180" y="174" width="48" height="34" rx="2" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+      <line x1="204" y1="188" x2="216" y2="188" stroke="rgba(255,255,255,0.6)" stroke-width="1.4"/>
+    
+      <!-- 椅座 -->
+      <rect x="130" y="180" width="50" height="8" rx="2" fill="rgba(255,255,255,0.28)" stroke="rgba(255,255,255,0.5)" stroke-width="1.4"/>
+      <!-- 椅腿 -->
+      <line x1="134" y1="188" x2="134" y2="210" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
+      <line x1="176" y1="188" x2="176" y2="210" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
+      <!-- 椅背 -->
+      <path d="M 130 180 q 2 -16 25 -16 q 23 0 25 16" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+    
+      <!-- 落地灯灯罩 -->
+      <path d="M 64 98 L 92 98 L 86 80 L 70 80 Z" fill="rgba(255,240,200,0.55)" stroke="rgba(255,255,255,0.7)" stroke-width="1.6" filter="url(#news_20260715317_glow)"/>
+      <!-- 灯杆 -->
+      <line x1="78" y1="98" x2="78" y2="210" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+      <!-- 灯座 -->
+      <ellipse cx="78" cy="212" rx="12" ry="3" fill="rgba(255,255,255,0.35)" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <!-- 灯光晕染 -->
+      <circle cx="78" cy="90" r="22" fill="rgba(255,240,200,0.18)"/>
+    
+      <!-- 桌面物品 -->
+      <rect x="100" y="146" width="40" height="14" rx="1" fill="rgba(255,255,255,0.30)" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
+      <line x1="120" y1="146" x2="120" y2="160" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+      <path d="M 170 138 L 186 138 L 182 120 L 174 120 Z" fill="rgba(255,240,200,0.55)" stroke="rgba(255,255,255,0.6)" stroke-width="1.4"/>
+      <line x1="178" y1="138" x2="178" y2="160" stroke="rgba(255,255,255,0.5)" stroke-width="1.4"/>
 
-    <!-- 底部渐变遮罩 -->
-    <rect width="400" height="300" fill="url(#grad_20260715317_overlay)"/>
+    <!-- 底部渐变遮罩（增强文字可读性，配合 HTML overlay） -->
+    <rect y="170" width="400" height="130" fill="url(#news_20260715317_floor)"/>
 
-    <!-- 分类标签 -->
-    <rect x="20" y="20" rx="12" ry="12" width="80" height="28" fill="white" opacity="0.2"/>
-    <text x="32" y="40" font-size="13" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">全屋定制</text>
-
-    <!-- 图标（装修主题） -->
-    <text x="200" y="135" text-anchor="middle" font-size="56" filter="url(#grad_20260715317_shadow)" font-family="'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">📐</text>
-
-    <!-- 主标题 -->
-    <text x="200" y="175" text-anchor="middle" font-size="22" font-weight="700" fill="white" font-family="'Noto Sans SC', sans-serif" letter-spacing="1">书房全屋定制方案：打造安静舒适…</text>
-
-    <!-- 副标题 -->
-    <text x="200" y="240" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-family="'Noto Sans SC', sans-serif" letter-spacing="2">全屋定制 · 品质生活</text>
-
-    <!-- 底部品牌信息 -->
-    <line x1="150" y1="270" x2="250" y2="270" stroke="white" stroke-width="1" opacity="0.3"/>
-    <text x="200" y="288" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="'Noto Sans SC', sans-serif">浦北装修设计 · 专业品质 · 匠心铸就</text>
+    <!-- 分类标签（玻璃拟态） -->
+    <rect x="18" y="18" rx="14" ry="14" width="80" height="26" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1" filter="url(#news_20260715317_blur)"/>
+    <rect x="18" y="18" rx="14" ry="14" width="80" height="26" fill="rgba(0,0,0,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <text x="30" y="36" font-size="12" font-weight="600" fill="white" font-family="'Noto Sans SC', sans-serif">全屋定制</text>
   </svg>
