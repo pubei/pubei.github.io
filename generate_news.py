@@ -208,25 +208,139 @@ def generate_svg_image(news_id, title, category):
     return svg_content
 
 
+# 图片生成 API 基础 URL（与首页 CSS 中使用的一致，浏览器带认证可正常加载）
+IMAGE_API_BASE = "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image"
+IMAGE_SIZE = "landscape_4_3"  # 与首页案例卡片一致，横向 4:3 适合新闻卡片
+
+
+def _build_image_url(prompt):
+    """构造完整的图片生成 API URL（prompt 需 URL 编码）"""
+    from urllib.parse import quote
+    return f"{IMAGE_API_BASE}?prompt={quote(prompt)}&image_size={IMAGE_SIZE}"
+
+
+def _prompt_for_news(title, category):
+    """根据新闻标题和分类生成专属的真实装修场景英文 prompt
+    与首页 CSS 中的 prompt 风格保持一致：真实室内设计摄影"""
+    t = title
+
+    # ===== 全屋定制 - 具体房间类型 =====
+    if '客厅' in t and ('布局' in t or '装修' in t):
+        return ("modern luxury living room interior design with elegant sofa "
+                "TV wall unit soft lighting warm atmosphere minimalist style "
+                "professional photography")
+    if '儿童房' in t:
+        return ("colorful children bedroom with custom safe furniture rounded edges "
+                "eco-friendly materials wardrobe and study desk warm playful design "
+                "professional interior photography")
+    if '厨房' in t:
+        return ("modern custom kitchen with elegant cabinets marble countertop "
+                "kitchen island with storage integrated appliances professional "
+                "interior design photography warm lighting")
+    if '书房' in t:
+        return ("modern home office study room with custom built-in bookshelf "
+                "wooden desk tatami area organized workspace natural light "
+                "professional interior design photography")
+    if '卧室' in t or '衣柜' in t:
+        return ("luxury bedroom with custom walk-in wardrobe integrated vanity "
+                "table soft warm lighting modern minimalist design cozy atmosphere "
+                "professional interior photography")
+    if '小户型' in t:
+        return ("small apartment with space-saving custom furniture multi-functional "
+                "storage solutions built-in wardrobes foldable desk compact modern "
+                "minimalist interior design photography")
+    if '风格' in t and ('指南' in t or '解析' in t):
+        return ("interior design style guide showing multiple room styles modern "
+                "minimalist Nordic new Chinese luxury style comparison design mood "
+                "board professional photography")
+
+    # ===== 全屋定制 - 工艺/材料/流程 =====
+    if '材料升级' in t or '环保板材' in t:
+        return ("eco friendly wood panels stacked in warehouse E0 grade environmental "
+                "protection boards green leaf symbol on packaging sustainable materials "
+                "professional photography")
+    if '工艺升级' in t or '工艺' in t:
+        return ("custom furniture workshop with precision cutting machine craftsman "
+                "working on wood panels modern manufacturing technology professional "
+                "craftsmanship photography")
+    if '安装' in t or '流程' in t:
+        return ("custom furniture installation process workers installing wardrobe "
+                "in modern bedroom professional installation team tools and materials "
+                "professional photography")
+
+    # ===== 智能家居 =====
+    if '智能家居' in t and '融合' in t:
+        return ("smart home integration with custom furniture voice control system "
+                "automated wardrobe with LED lighting modern technology interior design "
+                "professional photography")
+    if '智能家居项目' in t or '锦绣花园' in t:
+        return ("smart home control panel on wall modern living room with automation "
+                "system smartphone controlling home devices futuristic interior design "
+                "professional photography")
+
+    # ===== 公司动态 =====
+    if ('认证' in t or '荣获' in t) and '品质' in t:
+        return ("quality service certification award ceremony golden trophy on stage "
+                "certificate with seal professional award presentation modern elegant "
+                "event photography")
+    if '优秀室内设计企业' in t:
+        return ("interior design award ceremony golden award trophy elegant stage "
+                "with spotlight professional recognition event modern luxury interior "
+                "design company showcase")
+    if '培训' in t or '学习' in t or '设计师团队' in t:
+        return ("interior designers attending training seminar professional workshop "
+                "design education group learning in modern classroom design studio with "
+                "presentation professional photography")
+    if '订单' in t and ('新增' in t or '签约' in t):
+        return ("professional design team meeting in modern office signing contract "
+                "with client business handshake happy customer service modern interior "
+                "design company photography")
+
+    # ===== 行业资讯 =====
+    if '避坑' in t or '注意事项' in t:
+        return ("home renovation checklist ten important tips for decoration warning "
+                "signs and notes construction site inspection professional engineer "
+                "with clipboard professional photography")
+    if '趋势' in t and ('风格' in t or '流行' in t):
+        return ("interior design style trends comparison five different room styles "
+                "showcase modern minimalist luxury Nordic Chinese wabi-sabi professional "
+                "photography mood board")
+    if '环保材料' in t or '环保' in t:
+        return ("eco friendly renovation materials display zero formaldehyde boards "
+                "water-based paint cans natural stone samples green building products "
+                "sustainable interior design photography")
+    if '预算' in t:
+        return ("home renovation budget planning cost breakdown chart calculator and "
+                "blueprint financial planning for interior design modern desk with "
+                "documents and coins professional photography")
+
+    # ===== 备选：按分类默认 =====
+    if category == '全屋定制':
+        return ("modern custom furniture design living room wardrobe kitchen cabinet "
+                "interior design professional photography elegant warm atmosphere")
+    if category == '装修设计':
+        return ("modern luxury home interior design with elegant living room and "
+                "minimalist style soft lighting warm atmosphere professional photography")
+    if category == '公司动态':
+        return ("professional interior design company team meeting modern office "
+                "with design samples and blueprints warm atmosphere corporate photography")
+    if category == '行业资讯':
+        return ("modern home renovation construction site building materials professional "
+                "work interior design industry trends professional photography")
+    return ("modern luxury home interior design with elegant living room minimalist "
+            "style soft lighting warm atmosphere professional photography")
+
+
 def save_news_image(title, category, news_id):
     """
-    生成并保存新闻 SVG 图片
-    返回本地路径
+    生成新闻图片 URL
+    使用 trae-api-cn 图片生成 API（与首页背景图方案一致）
+    浏览器带认证可正常加载，返回 API URL（不再生成本地 SVG）
     """
-    news_images_dir = os.path.join(BASE_DIR, 'assets', 'images', 'news')
-    os.makedirs(news_images_dir, exist_ok=True)
-    
-    local_filename = f"news_{news_id}.svg"
-    local_path = os.path.join(news_images_dir, local_filename)
-    local_url = f"assets/images/news/{local_filename}"
-    
-    svg_content = generate_svg_image(news_id, title, category)
-    
-    with open(local_path, 'w', encoding='utf-8') as f:
-        f.write(svg_content)
-    
-    print(f"    ✓ SVG图片已生成: {local_url} ({len(svg_content)}字节)")
-    return local_url
+    prompt = _prompt_for_news(title, category)
+    image_url = _build_image_url(prompt)
+    print(f"    ✓ 真实装修图片 URL 已生成: {image_url[:80]}...")
+    return image_url
 
 
 # 新闻模板库 - 全部围绕浦北装修设计和全屋定制主题
