@@ -57,3 +57,98 @@
 .news-detail-image img{width:100%;height:auto;display:block;}
 
 .project-gallery{padding:40px 0;}.gallery-wrapper{display:flex;flex-direction:column;gap:20px;align-items:center;}.gallery-main{width:100%;max-width:100%;position:relative;border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);min-height:400px;}.gallery-main-image{width:100%;height:450px;object-fit:cover;transition:opacity 0.3s ease;}.gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s ease;cursor:zoom-in;}.gallery-main:hover .gallery-overlay{opacity:1;}.gallery-zoom{font-size:48px;color:white;font-weight:300;}.gallery-thumbs{display:flex;flex-direction:row;gap:12px;width:100%;justify-content:center;flex-wrap:wrap;}.thumb-item{width:150px;height:100px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.3s ease;position:relative;}.thumb-item:hover{border-color:rgba(0,212,255,0.5);transform:scale(1.05);}.thumb-item.active{border-color:#00d4ff !important;box-shadow:0 0 15px rgba(0,212,255,0.5) !important;transform:scale(1.05);}.thumb-item img{width:100%;height:100%;object-fit:cover;}.thumb-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);color:white;font-size:0.75rem;padding:8px 6px;text-align:center;}@media (max-width:768px){.gallery-thumbs{justify-content:flex-start;overflow-x:auto;padding-bottom:10px;}.thumb-item{flex-shrink:0;}.gallery-main-image{height:300px;}}
+
+/* === Tech Enhancement Layer v39 (首页科技感 · 优雅玻璃拟态) === */
+
+/* Hero 装饰层 */
+.hero{position:relative;}
+.hero-grid-tech{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(0,212,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.05) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  mask:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  animation:grid-drift 30s linear infinite;opacity:0.7;}
+@keyframes grid-drift{from{background-position:0 0,0 0}to{background-position:44px 44px,44px 44px}}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.particle{position:absolute;width:6px;height:6px;border-radius:50%;
+  background:radial-gradient(circle,#00d4ff 0%,rgba(0,212,255,0.4) 40%,transparent 70%);
+  box-shadow:0 0 8px rgba(0,212,255,0.6);
+  animation:particle-float var(--d,18s) ease-in-out infinite;animation-delay:var(--delay,0s);
+  opacity:0;will-change:transform,opacity;}
+@keyframes particle-float{
+  0%{transform:translate(0,0) scale(0.6);opacity:0}
+  20%{opacity:0.8}
+  80%{opacity:0.6}
+  100%{transform:translate(var(--dx,30px),var(--dy,-60px)) scale(1);opacity:0}}
+.hero-scanline{position:absolute;left:0;right:0;height:2px;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,transparent,#00d4ff 50%,transparent);
+  box-shadow:0 0 14px #00d4ff;opacity:0;animation:scan-sweep 7s ease-in-out infinite;}
+@keyframes scan-sweep{0%{transform:translateY(0);opacity:0}10%{opacity:0.9}90%{opacity:0.7}100%{transform:translateY(620px);opacity:0}}
+.hero-vignette{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at center,transparent 45%,rgba(10,14,23,0.55) 100%);}
+.hero>.container{position:relative;z-index:2;}
+
+/* Hero 视觉增强 */
+.hero-image-glow{animation:glow-pulse 4s ease-in-out infinite;}
+@keyframes glow-pulse{0%,100%{opacity:0.55}50%{opacity:1}}
+.hero-image-wrapper{transition:transform .3s ease-out;}
+.hero-text{transition:transform .3s ease-out;}
+
+/* 服务卡片 3D 玻璃拟态 */
+.service-card-new{perspective:1000px;}
+.service-card-inner{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(0.16,1,0.3,1);will-change:transform;}
+.service-card-new::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(120deg,transparent 30%,#00d4ff 50%,transparent 70%);background-size:300% 300%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .3s ease;animation:border-flow 3s linear infinite;pointer-events:none;z-index:2;}
+@keyframes border-flow{to{background-position:300% 0}}
+.service-card-new:hover::before{opacity:1;}
+.service-card-new:hover{box-shadow:0 20px 50px rgba(0,0,0,0.45),0 0 40px rgba(0,212,255,0.22);}
+.service-icon-wrapper{background:linear-gradient(135deg,rgba(0,212,255,0.18),rgba(123,47,247,0.18));border:1px solid rgba(0,212,255,0.25);transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s;}
+.service-card-new:hover .service-icon-wrapper{transform:scale(1.1) rotate(-5deg);box-shadow:0 0 24px rgba(0,212,255,0.4);}
+
+/* 案例卡片光效扫描 */
+.project-card-new{perspective:1000px;}
+.project-image-wrapper{position:relative;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(0.16,1,0.3,1);will-change:transform;}
+.project-image-wrapper::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,0.18) 50%,transparent 60%);
+  transform:translateX(-100%);transition:transform .8s ease;pointer-events:none;z-index:3;opacity:0;}
+.project-card-new:hover .project-image-wrapper::after{transform:translateX(100%);opacity:1;}
+.project-overlay{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.project-image-corner{box-shadow:0 0 12px rgba(0,212,255,0.6);}
+
+/* 关于区统计卡片升级 */
+.about-stats-card{background:rgba(10,14,23,0.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,212,255,0.22);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 40px rgba(0,212,255,0.15);padding-top:22px;}
+.about-stats-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#00d4ff,#7b2ff7,#00ff80);}
+.about-feature{background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);transition:transform .35s cubic-bezier(0.16,1,0.3,1),box-shadow .35s,border-color .35s;}
+.about-feature:hover{transform:translateY(-4px);border-color:rgba(0,212,255,0.3);box-shadow:0 12px 30px rgba(0,0,0,0.3),0 0 24px rgba(0,212,255,0.15);}
+.about-feature .feature-icon{filter:drop-shadow(0 0 8px rgba(0,212,255,0.4));transition:transform .35s;}
+.about-feature:hover .feature-icon{transform:scale(1.12);}
+.about-panorama{box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 60px rgba(0,212,255,0.15);}
+
+/* CTA 行动召唤区脉冲光效 */
+.contact-section{position:relative;overflow:hidden;}
+.contact-section::before{content:'';position:absolute;top:50%;left:50%;width:140%;height:280%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 50% 50%,rgba(0,212,255,0.12) 0%,transparent 60%);
+  animation:cta-pulse 5s ease-in-out infinite;pointer-events:none;z-index:0;}
+@keyframes cta-pulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+.contact-section>.container{position:relative;z-index:1;}
+.contact-section .btn-primary:hover{box-shadow:0 0 30px rgba(0,212,255,0.5),0 10px 30px rgba(0,0,0,0.4);}
+
+/* 全局滚动揭示（opacity+blur，避免与既有 transform 冲突） */
+.reveal{opacity:0;filter:blur(4px);transition:opacity .7s cubic-bezier(0.16,1,0.3,1),filter .7s cubic-bezier(0.16,1,0.3,1);will-change:opacity,filter;}
+.reveal.visible{opacity:1;filter:blur(0);}
+
+/* 性能与可访问性 */
+@media (prefers-reduced-motion: reduce){
+  .hero-grid-tech,.hero-particles,.hero-scanline,.particle,.hero-image-glow,.contact-section::before{animation:none!important}
+  .hero-scanline,.particle{display:none}
+  .reveal{transition:none;opacity:1;filter:none}
+  .service-card-inner,.project-image-wrapper,.about-feature{transition:none!important;transform:none!important}
+}
+@media (max-width:768px){
+  .hero-scanline{display:none}
+  .hero-grid-tech{opacity:0.4;background-size:60px 60px}
+  .service-card-inner,.project-image-wrapper{transition-duration:.25s}
+}
