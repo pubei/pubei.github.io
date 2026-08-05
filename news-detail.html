@@ -323,7 +323,7 @@
     }
   </style>
   
-  <script src="assets/js/main.js?v=6"></script>
+  <script src="assets/js/main.js?v=8"></script>
   <script>
     // 解析URL参数获取文章ID
     function getUrlParam(name) {
@@ -381,7 +381,7 @@
             '</div>' +
             '<h1 class="news-detail-title">' + article.title + '</h1>' +
             '<div class="news-detail-image">' +
-              '<img src="' + article.image + '" alt="' + article.title + '">' +
+              '<img src="' + article.image + '" alt="' + article.title + '" data-fallback="' + (article.image_fallback || '') + '" onerror="if(this.dataset.fallback&&!this.dataset.fallbackTried){this.dataset.fallbackTried=\'1\';this.src=this.dataset.fallback;}">' +
             '</div>' +
             '<div class="news-detail-content">' + contentHtml + '</div>' +
             '<div class="news-detail-share">' +

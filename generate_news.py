@@ -333,14 +333,28 @@ def _prompt_for_news(title, category):
 
 def save_news_image(title, category, news_id):
     """
-    生成新闻图片 URL
-    使用 trae-api-cn 图片生成 API（与首页背景图方案一致）
-    浏览器带认证可正常加载，返回 API URL（不再生成本地 SVG）
+    生成新闻图片
+    主图：trae-api-cn 图片生成 API URL（真实装修照片）
+    Fallback：本地 SVG 插画（网络不稳定时回退）
+    返回 (api_url, local_svg_url)
     """
+    # 1. 生成 API URL（主图 - 真实装修照片）
     prompt = _prompt_for_news(title, category)
     image_url = _build_image_url(prompt)
-    print(f"    ✓ 真实装修图片 URL 已生成: {image_url[:80]}...")
-    return image_url
+
+    # 2. 生成本地 SVG（fallback - 网络不稳定时回退）
+    news_images_dir = os.path.join(BASE_DIR, 'assets', 'images', 'news')
+    os.makedirs(news_images_dir, exist_ok=True)
+    local_filename = f"news_{news_id}.svg"
+    local_path = os.path.join(news_images_dir, local_filename)
+    local_url = f"assets/images/news/{local_filename}"
+    svg_content = generate_svg_image(news_id, title, category)
+    with open(local_path, 'w', encoding='utf-8') as f:
+        f.write(svg_content)
+
+    print(f"    ✓ 真实装修图片 URL: {image_url[:80]}...")
+    print(f"    ✓ 本地 SVG fallback: {local_url}")
+    return image_url, local_url
 
 
 # 新闻模板库 - 全部围绕浦北装修设计和全屋定制主题
@@ -582,16 +596,16 @@ def generate_news():
     # 生成分类
     category = template.get("category", "装修设计")
     
-    # 生成 SVG 图片 - 纯本地生成，零外部依赖
-    image_url = save_news_image(title, category, news_id)
+    # 生成图片：API URL（主图）+ 本地 SVG（fallback）
+    image_url, image_fallback = save_news_image(title, category, news_id)
 
     # 生成完整文章内容
     content = generate_article_content(template, title)
 
-    # 生成新闻HTML
+    # 生成新闻HTML（img 带 data-fallback，由 main.js 统一处理回退）
     news_html = f'''          <article class="news-card">
             <div class="news-card-image">
-              <img src="{image_url}" alt="{title}">
+              <img src="{image_url}" alt="{title}" data-fallback="{image_fallback}">
               <div class="news-card-image-overlay">
                 <div class="news-card-image-title">{title}</div>
               </div>
@@ -615,6 +629,7 @@ def generate_news():
         "category": template["category"],
         "title": title,
         "image": image_url,
+        "image_fallback": image_fallback,
         "excerpt": excerpt,
         "content": content
     }
