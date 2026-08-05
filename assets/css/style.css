@@ -151,4 +151,5 @@
   .hero-scanline{display:none}
   .hero-grid-tech{opacity:0.4;background-size:60px 60px}
   .service-card-inner,.project-image-wrapper{transition-duration:.25s}
+  .particle{width:4px;height:4px;box-shadow:0 0 4px rgba(0,212,255,0.35);}
 }
