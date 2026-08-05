@@ -57,3 +57,267 @@
 .news-detail-image img{width:100%;height:auto;display:block;}
 
 .project-gallery{padding:40px 0;}.gallery-wrapper{display:flex;flex-direction:column;gap:20px;align-items:center;}.gallery-main{width:100%;max-width:100%;position:relative;border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);min-height:400px;}.gallery-main-image{width:100%;height:450px;object-fit:cover;transition:opacity 0.3s ease;}.gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s ease;cursor:zoom-in;}.gallery-main:hover .gallery-overlay{opacity:1;}.gallery-zoom{font-size:48px;color:white;font-weight:300;}.gallery-thumbs{display:flex;flex-direction:row;gap:12px;width:100%;justify-content:center;flex-wrap:wrap;}.thumb-item{width:150px;height:100px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.3s ease;position:relative;}.thumb-item:hover{border-color:rgba(0,212,255,0.5);transform:scale(1.05);}.thumb-item.active{border-color:#00d4ff !important;box-shadow:0 0 15px rgba(0,212,255,0.5) !important;transform:scale(1.05);}.thumb-item img{width:100%;height:100%;object-fit:cover;}.thumb-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);color:white;font-size:0.75rem;padding:8px 6px;text-align:center;}@media (max-width:768px){.gallery-thumbs{justify-content:flex-start;overflow-x:auto;padding-bottom:10px;}.thumb-item{flex-shrink:0;}.gallery-main-image{height:300px;}}
+
+/* ============================================================
+ * 图片水印遮挡 - AI生成图片底部渐变遮罩
+ * 覆盖所有使用trae-api生成图片的容器
+ * ============================================================ */
+
+/* --- 1. 新闻卡片图片容器 --- */
+.news-card-image {
+  position: relative;
+}
+.news-card-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* --- 2. 新闻详情页图片容器 --- */
+.news-detail-image {
+  position: relative;
+}
+.news-detail-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 3. 首页项目卡片图片容器 --- */
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+.project-card .project-image,
+.projects-grid .project-card > img:first-child,
+.index-projects .project-image-wrap,
+.card-image,
+.project-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.project-card .project-image::after,
+.projects-grid .project-card > .project-image-wrap::after,
+.card-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 4. 首页Hero区域图片 --- */
+.hero {
+  position: relative;
+}
+.hero-image-wrap,
+.hero-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+.hero-image-wrap::after,
+.hero-image-container::after,
+.hero img.hero-image + *::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 5. 关于我们页面介绍图片容器 --- */
+.about-intro-image {
+  position: relative;
+}
+.about-intro-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 6. 服务卡片背景图（全屋定制等卡片）--- */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18%;
+  background: linear-gradient(to top, rgba(10,14,23,0.95) 0%, rgba(10,14,23,0.7) 40%, rgba(10,14,23,0.3) 75%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- 7. 服务详情页顶部大图 --- */
+.service-detail-image {
+  position: relative;
+}
+.service-detail-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 8. 项目详情页画廊主图和缩略图 --- */
+.gallery-main {
+  position: relative;
+  overflow: hidden;
+}
+.gallery-main::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+.thumb-item {
+  position: relative;
+  overflow: hidden;
+}
+.thumb-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* --- 9. 页面全局背景图(body::after)遮挡 --- */
+/* 由于body::after是z-index:-2的全局背景，水印极淡(opacity:0.12)
+   叠加一层底部暗色渐变以弱化可能的水印痕迹 */
+body::before {
+  /* 增强底部渐变，覆盖背景图可能的水印区域 */
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(0,212,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(123,47,247,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0,255,128,0.03) 0%, transparent 70%),
+    linear-gradient(to top, var(--color-bg-dark) 0%, var(--color-bg-dark) 8%, transparent 20%);
+}
+
+/* --- 10. 项目详情页推荐项目卡片图片 --- */
+.related-project-image,
+.project-style-card,
+.style-showcase-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.related-project-image::after,
+.project-style-card::after,
+.style-showcase-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 11. 通用图片容器兜底 (任何使用img标签包裹的相对容器) --- */
+img[src*="trae-api-cn.mchost.guru"] {
+  display: block;
+}
+img[src*="trae-api-cn.mchost.guru"] + .img-watermark-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 12. 补充：首页项目卡片实际使用的类名 --- */
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.project-image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 13. 补充：首页Hero图片实际使用的类名 --- */
+.hero-image-wrapper,
+.hero-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+.hero-image-wrapper::after,
+.hero-image-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: linear-gradient(to top, rgba(10,14,23,1) 0%, rgba(10,14,23,0.85) 40%, rgba(10,14,23,0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* --- 14. 补充：项目卡片新类名 project-card-new --- */
+.project-card-new {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
