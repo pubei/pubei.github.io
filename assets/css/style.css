@@ -167,3 +167,184 @@
 @media (max-width:480px){
   .main-content{padding-top:90px;}
 }
+
+/* ===== 预约表单弹窗 & 3D 玻璃拟态卡片 ===== */
+
+/* --- 弹窗容器 --- */
+.appointment-modal{display:none;position:fixed;inset:0;z-index:11000;align-items:flex-start;justify-content:center;padding:4vh 20px;overflow-y:auto;}
+.appointment-modal.open{display:flex;animation:aptFadeIn .35s ease both;}
+@keyframes aptFadeIn{from{opacity:0}to{opacity:1}}
+.appointment-modal-overlay{position:fixed;inset:0;background:rgba(5,8,15,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:0;animation:aptOverlayIn .4s ease both;}
+@keyframes aptOverlayIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(14px)}}
+.appointment-modal-dialog{position:relative;z-index:1;width:100%;max-width:880px;margin:0 auto;animation:aptSlideUp .55s cubic-bezier(0.16,1,0.3,1) both;}
+@keyframes aptSlideUp{from{opacity:0;transform:translateY(50px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.appointment-modal.closing{animation:aptFadeOut .28s ease both;}
+.appointment-modal.closing .appointment-modal-dialog{animation:aptSlideDown .28s cubic-bezier(0.55,0,0.68,0.53) both;}
+@keyframes aptFadeOut{to{opacity:0}}
+@keyframes aptSlideDown{to{opacity:0;transform:translateY(30px) scale(.97)}}
+
+/* --- 关闭按钮 --- */
+.apt-modal-close{position:absolute;top:14px;right:18px;z-index:10;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .35s cubic-bezier(0.34,1.56,0.64,1);}
+.apt-modal-close:hover{background:rgba(255,100,100,0.15);border-color:rgba(255,100,100,0.4);color:#ff8080;transform:rotate(90deg) scale(1.08);box-shadow:0 8px 24px rgba(255,100,100,0.25);}
+
+/* ===== 3D 玻璃拟态预约卡片（复用 contact.html 样式，全局化） ===== */
+.contact-form-section{
+  position:relative;
+  background:linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+  backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);
+  border:1px solid transparent;
+  border-radius:28px;
+  padding:44px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.4),0 12px 32px rgba(0,0,0,0.25),0 0 60px rgba(0,212,255,0.06),inset 0 1px 0 rgba(255,255,255,0.1),inset 0 -1px 0 rgba(0,0,0,0.2);
+  overflow:hidden;
+  background-clip:padding-box;
+}
+/* conic 渐变光边框 */
+.contact-form-section::before{
+  content:'';position:absolute;inset:-1px;border-radius:28px;padding:1px;
+  background:conic-gradient(from 0deg,rgba(0,212,255,0.5),rgba(123,47,247,0.4),rgba(0,255,128,0.5),rgba(0,212,255,0.5));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;z-index:0;
+  animation:cardBorderSpin 12s linear infinite;opacity:0.6;
+}
+@keyframes cardBorderSpin{to{transform:rotate(360deg)}}
+/* 顶部彩虹光带 */
+.card-top-glow{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--color-primary),var(--color-secondary),var(--color-accent),var(--color-primary));background-size:200% 100%;box-shadow:0 0 20px rgba(0,212,255,0.7),0 0 40px rgba(123,47,247,0.3);animation:topGlowFlow 6s linear infinite;z-index:2;}
+@keyframes topGlowFlow{to{background-position:200% 0}}
+/* 角落装饰光斑 */
+.card-corner-glow{position:absolute;width:320px;height:320px;border-radius:50%;pointer-events:none;z-index:0;filter:blur(40px);}
+.card-corner-glow.tl{top:-40%;left:-15%;background:radial-gradient(circle,rgba(0,212,255,0.15) 0%,transparent 70%);}
+.card-corner-glow.br{bottom:-40%;right:-15%;background:radial-gradient(circle,rgba(123,47,247,0.12) 0%,transparent 70%);}
+.contact-form-section > .form-header,.contact-form-section > .form-group-section,.contact-form-section > form,.contact-form-section > .form-progress-wrap{position:relative;z-index:1;}
+
+/* 表单完成度进度条 */
+.form-progress-wrap{margin-bottom:28px;padding:14px 18px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.06);border-radius:14px;backdrop-filter:blur(8px);}
+.form-progress-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.form-progress-label{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.7);display:inline-flex;align-items:center;gap:8px;}
+.form-progress-label svg{width:16px;height:16px;}
+.form-progress-pct{font-size:0.85rem;font-weight:700;background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.form-progress-track{height:6px;background:rgba(0,0,0,0.4);border-radius:3px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,0.4);}
+.form-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--color-primary),var(--color-secondary),var(--color-accent));background-size:200% 100%;border-radius:3px;box-shadow:0 0 12px rgba(0,212,255,0.6);transition:width .5s cubic-bezier(0.16,1,0.3,1);animation:progressFlow 3s linear infinite;}
+@keyframes progressFlow{to{background-position:200% 0}}
+
+/* 表单头部 */
+.form-header{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.form-header .header-icon-badge{display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;background:linear-gradient(135deg,rgba(0,212,255,0.2),rgba(123,47,247,0.2));border:1px solid rgba(0,212,255,0.25);border-radius:18px;margin-bottom:18px;box-shadow:0 12px 28px rgba(0,212,255,0.2),inset 0 1px 0 rgba(255,255,255,0.15),inset 0 -2px 6px rgba(0,0,0,0.2);position:relative;}
+.form-header .header-icon-badge::after{content:'';position:absolute;top:6px;left:8px;width:20px;height:12px;background:radial-gradient(ellipse,rgba(255,255,255,0.5) 0%,transparent 70%);border-radius:50%;filter:blur(2px);}
+.form-header .header-icon-badge svg{width:30px;height:30px;stroke:var(--color-primary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 4px rgba(0,212,255,0.4));}
+.form-header h2{font-size:1.85rem;font-weight:800;background:linear-gradient(135deg,#ffffff 0%,rgba(0,212,255,0.9) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-.5px;}
+.form-header p{font-size:.95rem;color:rgba(255,255,255,0.55);margin:0;}
+
+/* 表单分组 */
+.form-group-section{position:relative;margin-bottom:28px;}
+.section-title{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:.95rem;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:.3px;}
+.section-title .section-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:linear-gradient(135deg,rgba(0,212,255,0.18),rgba(123,47,247,0.18));border:1px solid rgba(0,212,255,0.2);border-radius:10px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),0 4px 12px rgba(0,212,255,0.1);}
+.section-title .section-icon svg{width:18px;height:18px;stroke:var(--color-primary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.section-title .section-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,0.3),transparent);}
+.section-title .section-num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 8px;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(123,47,247,0.15));border:1px solid rgba(0,212,255,0.25);border-radius:12px;font-size:.75rem;font-weight:700;color:var(--color-primary);}
+
+/* 标签图标 */
+.form-group label{font-size:.9rem;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.label-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:linear-gradient(135deg,rgba(0,212,255,0.14),rgba(123,47,247,0.14));border:1px solid rgba(0,212,255,0.18);border-radius:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),0 2px 6px rgba(0,212,255,0.08);flex-shrink:0;}
+.label-icon svg{width:15px;height:15px;stroke:var(--color-primary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 输入框 */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-row .form-group{margin-bottom:0;}
+.form-group{position:relative;margin-bottom:16px;}
+.form-group.full-width{grid-column:1/-1;}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;
+  background:rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:14px 16px 14px 18px;
+  font-size:.95rem;
+  color:#fff;
+  transition:all .35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.25),inset 0 1px 2px rgba(0,0,0,0.15);
+  font-family:inherit;
+  box-sizing:border-box;
+}
+.form-group::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;background:linear-gradient(180deg,var(--color-primary),var(--color-secondary));border-radius:2px;box-shadow:0 0 12px rgba(0,212,255,0.6);transition:height .35s cubic-bezier(0.16,1,0.3,1);z-index:2;pointer-events:none;}
+.form-group:focus-within::before{height:60%;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.5);}
+.form-group input:hover,.form-group select:hover,.form-group textarea:hover{border-color:rgba(0,212,255,0.25);background:rgba(0,212,255,0.03);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--color-primary);background:rgba(0,212,255,0.06);box-shadow:0 0 0 4px rgba(0,212,255,0.12),0 0 24px rgba(0,212,255,0.2),inset 0 2px 4px rgba(0,0,0,0.25);transform:translateY(-1px);}
+.form-group textarea{min-height:130px;resize:vertical;}
+.form-hint{display:block;margin-top:6px;font-size:.75rem;color:rgba(255,255,255,0.4);padding-left:4px;}
+
+/* 下拉框 */
+.select-wrapper{position:relative;}
+.select-wrapper select{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer;}
+.select-wrapper .select-arrow{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:rgba(0,212,255,0.6);font-size:.7rem;pointer-events:none;}
+.select-wrapper select option{background:#0a0e17;color:#fff;}
+
+/* 日期输入框 */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1) saturate(5) hue-rotate(160deg);cursor:pointer;}
+
+/* 提交按钮 */
+.submit-btn{
+  position:relative;
+  width:100%;
+  padding:18px 32px;
+  background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-secondary) 50%,var(--color-accent) 100%);
+  background-size:200% 200%;
+  border:none;
+  border-radius:14px;
+  color:#fff;
+  font-size:1.05rem;
+  font-weight:700;
+  letter-spacing:1px;
+  cursor:pointer;
+  overflow:hidden;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:all .4s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:0 12px 28px rgba(0,212,255,0.35),0 4px 12px rgba(0,0,0,0.3),0 0 48px rgba(123,47,247,0.2),inset 0 1px 0 rgba(255,255,255,0.3),inset 0 -2px 6px rgba(0,0,0,0.2);
+  animation:btnGradientShift 4s ease infinite;
+  font-family:inherit;
+}
+@keyframes btnGradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.submit-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);transition:left .6s ease;z-index:1;}
+.submit-btn:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 20px 48px rgba(0,212,255,0.45),0 8px 20px rgba(0,0,0,0.35),0 0 72px rgba(123,47,247,0.3),inset 0 1px 0 rgba(255,255,255,0.4),inset 0 -2px 8px rgba(0,0,0,0.25);}
+.submit-btn:hover::before{left:100%;}
+.submit-btn:active{transform:translateY(-1px) scale(0.99);}
+.submit-btn:disabled{opacity:.7;cursor:not-allowed;transform:none !important;}
+.submit-btn .btn-icon,.submit-btn .btn-text,.submit-btn .btn-arrow{position:relative;z-index:2;}
+.submit-btn .btn-arrow{display:inline-block;transition:transform .3s ease;}
+.submit-btn:hover .btn-arrow{transform:translateX(4px);}
+
+/* checkbox */
+.checkbox-group{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.06);border-radius:12px;transition:all .3s ease;margin-bottom:24px;}
+.checkbox-group:hover{border-color:rgba(0,212,255,0.2);background:rgba(0,212,255,0.03);}
+.checkbox-group input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid rgba(0,212,255,0.3);border-radius:6px;background:rgba(0,0,0,0.3);cursor:pointer;position:relative;flex-shrink:0;transition:all .3s cubic-bezier(0.16,1,0.3,1);margin-top:1px;}
+.checkbox-group input[type="checkbox"]:checked{background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));border-color:var(--color-primary);box-shadow:0 0 12px rgba(0,212,255,0.5),inset 0 1px 0 rgba(255,255,255,0.3);}
+.checkbox-group input[type="checkbox"]:checked::after{content:'';position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid white;border-width:0 2.5px 2.5px 0;transform:rotate(45deg);filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3));}
+.checkbox-group label{font-weight:400;color:rgba(255,255,255,0.6);font-size:.85rem;margin:0;line-height:1.5;align-items:flex-start;}
+.checkbox-group label a{color:var(--color-primary);font-weight:500;}
+
+/* 底部提示 */
+.form-tip{text-align:center;font-size:.82rem;color:rgba(255,255,255,0.45);margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.form-tip svg{width:14px;height:14px;stroke:rgba(0,255,128,0.7);fill:none;stroke-width:2;}
+
+/* 响应式：弹窗卡片 */
+@media (max-width:768px){
+  .appointment-modal{padding:2vh 12px;}
+  .contact-form-section{padding:28px 20px;border-radius:22px;}
+  .form-header h2{font-size:1.5rem;}
+  .form-header .header-icon-badge{width:50px;height:50px;border-radius:15px;}
+  .form-header .header-icon-badge svg{width:25px;height:25px;}
+  .submit-btn{padding:16px 24px;font-size:1rem;}
+  .form-row{grid-template-columns:1fr;gap:16px;margin-bottom:0;}
+  .form-row .form-group{margin-bottom:16px;}
+  .apt-modal-close{top:10px;right:12px;width:38px;height:38px;}
+}
+@media (max-width:480px){
+  .contact-form-section{padding:24px 16px;border-radius:20px;}
+  .form-progress-wrap{padding:10px 12px;}
+  .checkbox-group{padding:12px;}
+}
