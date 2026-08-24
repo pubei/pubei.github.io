@@ -348,3 +348,10 @@
   .form-progress-wrap{padding:10px 12px;}
   .checkbox-group{padding:12px;}
 }
+
+/* 响应式：页脚移动端单列布局 v42 */
+@media (max-width:768px){
+  .footer-content{grid-template-columns:1fr !important;gap:1.5rem;}
+  .footer-brand,.footer-links,.footer-services,.footer-contact,.footer-promises{grid-column:span 1 !important;}
+  .footer-top{padding:var(--spacing-xl) 0;}
+}
