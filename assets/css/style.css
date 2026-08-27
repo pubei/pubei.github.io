@@ -331,6 +331,139 @@
 .form-tip{text-align:center;font-size:.82rem;color:rgba(255,255,255,0.45);margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px;}
 .form-tip svg{width:14px;height:14px;stroke:rgba(0,255,128,0.7);fill:none;stroke-width:2;}
 
+/* ===== 预约弹窗精致化优化 v43 ===== */
+
+/* Header 标题渐变文字 */
+.form-title-gradient{
+  background:linear-gradient(135deg,#00d4ff 0%,#7b2ff7 50%,#00ff80 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:aptTitleGradient 5s ease infinite;
+  letter-spacing:1.5px;
+  font-size:1.9rem;
+  font-weight:800;
+  margin:0 0 8px 0;
+  filter:drop-shadow(0 2px 8px rgba(0,212,255,0.15));
+}
+@keyframes aptTitleGradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* 副标题装饰圆点 */
+.form-subtitle{display:flex;align-items:center;gap:8px;font-size:.9rem !important;color:rgba(255,255,255,0.55) !important;margin:0 !important;}
+.subtitle-dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#00ff80);box-shadow:0 0 8px rgba(0,212,255,0.6);flex-shrink:0;animation:dotPulse 2s ease-in-out infinite;}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+
+/* Header 图标徽章增强 3D 光泽 */
+.form-header .header-icon-badge{
+  background:linear-gradient(135deg,rgba(0,212,255,0.25),rgba(123,47,247,0.2),rgba(0,255,128,0.15));
+  box-shadow:0 14px 36px rgba(0,212,255,0.25),inset 0 1px 0 rgba(255,255,255,0.25),inset 0 -3px 8px rgba(0,0,0,0.25),0 0 24px rgba(123,47,247,0.15);
+}
+.form-header .header-icon-badge svg{stroke:url(#aptFormHeaderGrad);stroke-width:1.6;fill:none;}
+
+/* 进度条增强：末端发光圆点 */
+.form-progress-fill::after{
+  content:'';position:absolute;right:-2px;top:50%;transform:translateY(-50%);
+  width:10px;height:10px;border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 12px rgba(0,255,128,0.9),0 0 24px rgba(0,212,255,0.6),inset 0 0 4px rgba(0,212,255,0.5);
+  opacity:0;transition:opacity .3s ease;
+}
+.form-progress-fill{position:relative;}
+.form-progress-fill[style*="width: 0%"]::after{opacity:0;}
+.form-progress-fill:not([style*="width: 0%"])::after{opacity:1;}
+.form-progress-track{height:8px !important;border-radius:4px !important;}
+.form-progress-fill{border-radius:4px !important;}
+
+/* 分组标题数字徽章圆形化 */
+.section-title .section-num{
+  width:28px !important;height:28px !important;min-width:28px !important;
+  border-radius:50% !important;padding:0 !important;
+  background:linear-gradient(135deg,var(--color-primary),var(--color-secondary)) !important;
+  border:none !important;
+  color:#fff !important;
+  box-shadow:0 4px 12px rgba(0,212,255,0.35),inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  font-size:.8rem !important;
+}
+.section-title .section-icon{box-shadow:inset 0 1px 0 rgba(255,255,255,0.15),0 6px 16px rgba(0,212,255,0.15),0 0 0 1px rgba(0,212,255,0.1);}
+
+/* 提交按钮 3D 增强凸起 */
+.submit-btn{
+  box-shadow:0 16px 32px rgba(0,212,255,0.4),0 6px 16px rgba(0,0,0,0.35),0 0 56px rgba(123,47,247,0.25),
+    inset 0 2px 0 rgba(255,255,255,0.4),inset 0 -3px 8px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.2);
+}
+.submit-btn:hover{
+  transform:translateY(-5px) scale(1.015);
+  box-shadow:0 24px 56px rgba(0,212,255,0.5),0 10px 24px rgba(0,0,0,0.4),0 0 80px rgba(123,47,247,0.35),
+    inset 0 2px 0 rgba(255,255,255,0.5),inset 0 -3px 10px rgba(0,0,0,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+.submit-btn:hover .btn-arrow{transform:translateX(6px);}
+
+/* 社会证明徽章 */
+.social-proof{
+  display:flex;align-items:center;gap:16px;
+  margin-top:24px;padding:18px 20px;
+  background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(123,47,247,0.04),rgba(0,255,128,0.04));
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  backdrop-filter:blur(8px);
+  position:relative;z-index:1;
+}
+.social-proof::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--color-primary),var(--color-secondary),var(--color-accent));
+  border-radius:16px 16px 0 0;opacity:.6;
+}
+.avatars-stack{display:flex;flex-shrink:0;}
+.avatars-stack .avatar{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:700;color:#fff;
+  border:2px solid rgba(10,14,23,0.8);
+  margin-left:-10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+.avatars-stack .avatar:first-child{margin-left:0;}
+.avatars-stack .av-1{background:linear-gradient(135deg,#00d4ff,#0099cc);}
+.avatars-stack .av-2{background:linear-gradient(135deg,#7b2ff7,#5b2fd7);}
+.avatars-stack .av-3{background:linear-gradient(135deg,#00ff80,#00cc66);}
+.avatars-stack .av-4{background:linear-gradient(135deg,#ff6b9d,#c94f7d);}
+.proof-text{flex:1;min-width:0;}
+.proof-count{font-size:.85rem;font-weight:600;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:4px;}
+.count-num{
+  background:linear-gradient(135deg,var(--color-primary),var(--color-accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-size:1.1rem;font-weight:800;
+}
+.proof-stars{display:flex;align-items:center;gap:8px;margin-top:4px;}
+.proof-stars .stars{color:#ffc857;font-size:.8rem;letter-spacing:1px;filter:drop-shadow(0 1px 4px rgba(255,200,87,0.4));}
+.proof-rating{font-size:.72rem;color:rgba(255,255,255,0.5);}
+.proof-badge{
+  display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;
+  padding:8px 12px;border-radius:12px;
+  background:rgba(0,255,128,0.08);
+  border:1px solid rgba(0,255,128,0.2);
+}
+.proof-badge svg{width:22px;height:22px;stroke:#00ff80;filter:drop-shadow(0 2px 4px rgba(0,255,128,0.4));}
+.proof-badge span{font-size:.68rem;font-weight:600;color:rgba(0,255,128,0.9);}
+
+/* 关闭按钮 3D 玻璃质感增强 */
+.apt-modal-close{
+  background:linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04));
+  box-shadow:0 8px 20px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.2),inset 0 -1px 2px rgba(0,0,0,0.2),0 0 0 1px rgba(255,255,255,0.05);
+}
+.apt-modal-close:hover{
+  box-shadow:0 12px 28px rgba(255,100,100,0.3),inset 0 1px 0 rgba(255,255,255,0.3),inset 0 -1px 2px rgba(0,0,0,0.2),0 0 0 1px rgba(255,100,100,0.3);
+}
+
+@media (max-width:768px){
+  .social-proof{flex-wrap:wrap;gap:12px;padding:14px 16px;}
+  .proof-badge{display:none;}
+  .form-title-gradient{font-size:1.5rem;}
+}
+
 /* 响应式：弹窗卡片 */
 @media (max-width:768px){
   .appointment-modal{padding:2vh 12px;}
