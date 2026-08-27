@@ -685,3 +685,11 @@
   .social-icons a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;}
   .footer-bottom-links a{min-height:44px;display:inline-flex;align-items:center;padding:4px 0;}
 }
+
+/* ===== SVG 图标尺寸（替换 emoji）v46 ===== */
+.service-icon svg{width:2rem;height:2rem;stroke:currentColor;}
+.service-card-new .service-icon svg{filter:drop-shadow(0 2px 4px rgba(0,212,255,0.3));}
+.feature-icon svg{width:1.5rem;height:1.5rem;stroke:currentColor;display:block;}
+.title-icon{width:1.2em;height:1.2em;vertical-align:middle;margin-right:0.3em;stroke:currentColor;fill:none;display:inline-block;}
+.service-detail-header h1 .title-icon,.service-card h3 .title-icon{filter:drop-shadow(0 2px 8px rgba(0,212,255,0.3));}
+.service-card .feature-icon svg{width:1.5rem;height:1.5rem;}
