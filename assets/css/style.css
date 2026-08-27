@@ -626,3 +626,62 @@
   .footer-brand,.footer-links,.footer-services,.footer-contact,.footer-promises{grid-column:span 1 !important;}
   .footer-top{padding:var(--spacing-xl) 0;}
 }
+
+/* ===== 移动端优化 v45：3项修复 ===== */
+
+/* 修复1：汉堡菜单展开动画平滑过渡 */
+@media (max-width:768px){
+  .nav{
+    display:flex !important;
+    opacity:0;visibility:hidden;
+    transform:translateY(-20px) scale(0.98);
+    transition:opacity .35s cubic-bezier(0.16,1,0.3,1),transform .35s cubic-bezier(0.16,1,0.3,1),visibility .35s;
+    pointer-events:none;
+  }
+  .nav.active{
+    opacity:1;visibility:visible;transform:translateY(0) scale(1);
+    pointer-events:auto;
+  }
+  .nav-list{
+    opacity:0;transform:translateY(30px);
+    transition:opacity .4s ease .1s,transform .4s cubic-bezier(0.16,1,0.3,1) .1s;
+  }
+  .nav.active .nav-list{opacity:1;transform:translateY(0);}
+
+  /* 汉堡按钮动画 */
+  .hamburger-menu{transition:transform .3s ease;}
+  .hamburger-menu.active{transform:rotate(90deg);}
+  .hamburger-menu span,
+  .hamburger-menu .bar,
+  .hamburger-menu i{
+    transition:all .3s ease;
+  }
+}
+
+/* 修复2：新闻列表移动端间距优化 */
+@media (max-width:768px){
+  .news-list{gap:20px !important;}
+  .news-card{border-radius:16px !important;overflow:hidden;}
+  .news-card-image{height:160px !important;}
+  .news-card-content{padding:16px 18px !important;}
+  .news-card-title{font-size:1.05rem !important;line-height:1.4;margin-bottom:8px;}
+  .news-card-excerpt{
+    font-size:.85rem !important;line-height:1.6;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;text-overflow:ellipsis;margin-bottom:12px;
+  }
+  .news-card-meta{gap:12px;margin-bottom:10px;}
+  .news-card-meta span{font-size:.75rem;}
+  .news-card-readmore{font-size:.85rem;padding:8px 0;}
+}
+
+/* 修复3：触摸目标最小44px */
+@media (max-width:768px){
+  .nav-item a{min-height:48px;display:flex;align-items:center;justify-content:center;}
+  .filter-btn,.category-btn{min-height:44px;padding:10px 16px;display:flex;align-items:center;justify-content:center;}
+  .news-card-readmore{min-height:44px;display:inline-flex;align-items:center;}
+  .footer-links a,.footer-services a{min-height:44px;display:flex;align-items:center;padding:8px 0;}
+  .footer-contact-item{min-height:44px;display:flex;align-items:center;}
+  .social-icons a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;}
+  .footer-bottom-links a{min-height:44px;display:inline-flex;align-items:center;padding:4px 0;}
+}
