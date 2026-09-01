@@ -26,32 +26,33 @@
     /* 隐藏原 hero 区域 */
     .contact-hero { display: none !important; }
 
-    /* 布局容器 */
+    /* 布局容器 - 双栏：左表单 + 右信息侧边栏 */
     .contact-wrapper {
-      display: block !important;
-      max-width: 460px !important;
+      display: grid !important;
+      grid-template-columns: 1fr 340px !important;
+      max-width: 960px !important;
       margin: 0 auto !important;
-      padding: 48px 16px !important;
-      grid-template-columns: none !important;
-      gap: 0 !important;
+      padding: 48px 24px !important;
+      gap: 40px !important;
+      align-items: start;
     }
     .contact-form-section,
     .contact-info-section {
       grid-column: auto !important;
     }
 
-    /* 表单卡片 */
+    /* 表单卡片（左栏） */
     .contact-form-section {
       position: relative;
       background: #fff !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
-      border: none !important;
-      border-radius: 8px !important;
-      padding: 48px 40px !important;
-      box-shadow: 0 1px 3px rgba(60,64,67,0.15), 0 1px 2px rgba(60,64,67,0.1) !important;
+      border: 1px solid #e8eaed !important;
+      border-radius: 12px !important;
+      padding: 40px 36px !important;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.08), 0 4px 12px rgba(60,64,67,0.06) !important;
       overflow: visible !important;
-      margin-bottom: 24px;
+      margin-bottom: 0;
     }
     .contact-form-section::before { display: none !important; }
     .contact-form-section > .card-top-glow,
@@ -472,30 +473,54 @@
     .contact-method:hover { text-decoration: none; }
     .method-value { text-decoration: none; }
 
-    /* ===== 信息区域（极简文字列表） ===== */
+    /* ===== 信息侧边栏（右栏） ===== */
     .contact-info-section {
+      position: sticky !important;
+      top: 88px !important;
       margin-top: 0 !important;
-      max-width: 460px;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      padding: 0 0 24px !important;
+      max-width: none !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 0 !important;
     }
     .info-cards-grid {
-      display: block !important;
-      grid-template-columns: none !important;
-      gap: 0 !important;
+      display: flex !important;
+      flex-direction: column;
+      gap: 16px !important;
     }
     .info-card {
-      background: transparent !important;
-      border-radius: 0 !important;
-      padding: 0 !important;
-      box-shadow: none !important;
-      border: none !important;
+      background: #fff !important;
+      border: 1px solid #e8eaed !important;
+      border-radius: 12px !important;
+      padding: 20px 20px !important;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.05) !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
-      margin-bottom: 8px;
+      margin-bottom: 0 !important;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .info-card:hover {
+      box-shadow: 0 4px 16px rgba(60,64,67,0.1) !important;
+      transform: translateY(-2px);
     }
     .info-card-header { display: none !important; }
+
+    /* 信息卡片小标题 */
+    .info-card::before {
+      content: '';
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1f1f1f;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #f1f3f4;
+      letter-spacing: 0.3px;
+    }
+    .info-card:nth-child(1)::before { content: '联系方式'; }
+    .info-card:nth-child(2)::before { content: '营业时间'; }
+    .info-card:nth-child(3)::before { content: '服务承诺'; }
+    .info-card:nth-child(4)::before { content: '在线咨询'; }
 
     /* 联系方式列表 */
     .contact-methods {
@@ -643,13 +668,14 @@
 
     /* ===== FAQ 链接 - 简洁居中文字链接 ===== */
     .faq-link-card {
-      max-width: 460px !important;
-      margin: 24px auto 0 !important;
-      background: transparent !important;
-      border-radius: 0 !important;
-      padding: 16px 0 !important;
+      max-width: 960px !important;
+      margin: 32px auto 0 !important;
+      background: #f8f9fa !important;
+      border-radius: 12px !important;
+      padding: 20px 24px !important;
       box-shadow: none !important;
       text-align: center;
+      border: 1px solid #e8eaed;
     }
     .faq-link-content {
       display: block !important;
@@ -801,6 +827,16 @@
 
     /* ===== 响应式 ===== */
     @media (max-width:768px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr !important;
+        max-width: 460px !important;
+        gap: 24px !important;
+        padding: 32px 16px !important;
+      }
+      .contact-info-section {
+        position: static !important;
+        top: auto !important;
+      }
       .contact-form-section { padding: 32px 24px !important; }
       .form-title { font-size: 32px !important; }
     }
@@ -808,7 +844,7 @@
       .contact-form-section { padding: 24px 16px !important; }
       .form-title { font-size: 28px !important; }
       .form-subtitle { font-size: 14px !important; }
-      .contact-wrapper { padding: 24px 8px !important; }
+      .contact-wrapper { padding: 24px 12px !important; }
     }
   </style>
 
