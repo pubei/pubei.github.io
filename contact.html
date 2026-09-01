@@ -921,18 +921,17 @@
             <input type="hidden" name="subject" id="formSubject" value="新的装修预约">
             <input type="hidden" name="to" value="contact@pboo.top">
             <input type="hidden" name="reply_to" id="formReplyTo" value="">
-            <!-- ↓↓↓ 全部字段名使用英文，避免Web3Forms邮件模板 UTF-8 乱码 ↓↓↓ -->
-            <input type="hidden" name="form_source" value="在线预约页面（contact.html）">
-            <input type="hidden" name="submit_time" id="formSubmitTime" value="">
-            <!-- 关键信息显式映射（Web3Forms对name/email/phone等标准字段在表格末尾不重复显示值） -->
-            <input type="hidden" name="a1_customer_name" id="formNameCn" value="">
-            <input type="hidden" name="a2_customer_phone" id="formPhoneCn" value="">
-            <input type="hidden" name="a3_customer_email" id="formEmailCn" value="">
-            <input type="hidden" name="a4_service_type" id="formServiceZh" value="">
-            <input type="hidden" name="a5_house_area" id="formAreaZh" value="">
-            <input type="hidden" name="a6_budget_range" id="formBudgetZh" value="">
-            <input type="hidden" name="a7_schedule_date" id="formTimeZh" value="">
-            <input type="hidden" name="a8_message" id="formMessageCn" value="">
+            <!-- Q01-Q10 序号命名保证邮件表格按逻辑顺序显示；中文标题内嵌到 value，永远不乱码 -->
+            <input type="hidden" name="Q01" id="formQ01" value="">
+            <input type="hidden" name="Q02" id="formQ02" value="">
+            <input type="hidden" name="Q03" id="formQ03" value="">
+            <input type="hidden" name="Q04" id="formQ04" value="">
+            <input type="hidden" name="Q05" id="formQ05" value="">
+            <input type="hidden" name="Q06" id="formQ06" value="">
+            <input type="hidden" name="Q07" id="formQ07" value="">
+            <input type="hidden" name="Q08" id="formQ08" value="">
+            <input type="hidden" name="Q09" id="formQ09" value="【⑨ 表单来源】在线预约页面（contact.html）">
+            <input type="hidden" name="Q10" id="formQ10" value="">
             <input type="hidden" name="bot_check" id="botCheck" value="">
             <input type="hidden" name="form_time" id="formTime" value="">
 
@@ -1391,19 +1390,26 @@
       if (!name || !phone) { alert('请填写必填项：姓名、手机号'); if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='';} return; }
       if (!/^1[3-9]\d{9}$/.test(phone)) { alert('请输入有效的11位手机号码'); if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='';} return; }
 
-      // 写入邮件优化字段（英文字段名防乱码；a1~a8排序让表格信息按逻辑顺序展示）
-      document.getElementById('formSubject').value = '🔔 新预约：'+name+' - '+phone+' - '+(SERVICE_MAP[service]||service||'待确认');
+      // Q01~Q10：中文标题内嵌到 value（永远不乱码），序号前缀保证邮件表格按阅读顺序排列
+      var fmt = function(zh,val){ return '【'+zh+'】'+val; };
+      var svcCn  = SERVICE_MAP[service] || service || '未填写';
+      var areaCn = AREA_MAP[area] || area || '未填写';
+      var budCn  = BUDGET_MAP[budget] || budget || '未填写';
+      var tCn    = formatDateCN(time) || '未填写';
+      var emailCn= email || '未填写（用户未提供邮箱）';
+      var msgCn  = message || '无';
+      document.getElementById('formSubject').value = '🔔 新预约：'+name+' - '+phone+' - '+svcCn;
       document.getElementById('formReplyTo').value = email || 'contact@pboo.top';
-      document.getElementById('formSubmitTime').value = nowCN();
-      // 关键信息显式映射：彻底解决标准字段在表格末尾不重复显示值的问题
-      document.getElementById('formNameCn').value    = name || '未填写';
-      document.getElementById('formPhoneCn').value   = phone || '未填写';
-      document.getElementById('formEmailCn').value   = email || '未填写（用户未提供邮箱）';
-      document.getElementById('formServiceZh').value = SERVICE_MAP[service] || service || '未填写';
-      document.getElementById('formAreaZh').value    = AREA_MAP[area] || area || '未填写';
-      document.getElementById('formBudgetZh').value  = BUDGET_MAP[budget] || budget || '未填写';
-      document.getElementById('formTimeZh').value    = formatDateCN(time) || '未填写';
-      document.getElementById('formMessageCn').value = message || '无';
+      document.getElementById('formQ01').value = fmt('① 客户姓名', name  || '未填写');
+      document.getElementById('formQ02').value = fmt('② 联系手机', phone || '未填写');
+      document.getElementById('formQ03').value = fmt('③ 电子邮箱', emailCn);
+      document.getElementById('formQ04').value = fmt('④ 服务类型', svcCn);
+      document.getElementById('formQ05').value = fmt('⑤ 房屋面积', areaCn);
+      document.getElementById('formQ06').value = fmt('⑥ 预算范围', budCn);
+      document.getElementById('formQ07').value = fmt('⑦ 装修时间', tCn);
+      document.getElementById('formQ08').value = fmt('⑧ 装修需求', msgCn);
+      // Q09 默认value已写死：【⑨ 表单来源】在线预约页面（contact.html）
+      document.getElementById('formQ10').value = fmt('⑩ 提交时间', nowCN());
 
       // 防垃圾检查
       if (isSpam({name:name,email:email,message:message})) {
