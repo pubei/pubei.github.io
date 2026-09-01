@@ -1432,6 +1432,10 @@
       var data = {};
       formData.forEach(function(v, k){ data[k] = v; });
 
+      // ===== 去重：移除原始字段（Name/Phone/Email等会被Web3Forms重复显示且是英文key），
+      // 只保留 a1~a8 映射版本和Web3Forms配置必需字段
+      ['name','phone','email','service','area','budget','time','message','agreement'].forEach(function(k){ delete data[k]; });
+
       fetch(form.action, {
         method:'POST',
         headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
