@@ -1439,8 +1439,67 @@
       formData.forEach(function(v, k){ data[k] = v; });
 
       // ===== 去重：移除原始字段（Name/Phone/Email等会被Web3Forms重复显示且是英文key），
-      // 只保留 a1~a8 映射版本和Web3Forms配置必需字段
+      // 只保留配置必需字段 + Q01~Q10 fallback
       ['name','phone','email','service','area','budget','time','message','agreement'].forEach(function(k){ delete data[k]; });
+
+      // ===== 自定义中文HTML邮件 + 纯文本版本（零重复、全中文表头、精美排版）
+      // 如果Web3Forms识别到html字段，会跳过默认模板直接渲染我们的HTML。
+      // plain字段：降级为纯文本邮件时也能显示中文表格（某些客户端/纯文本模式）。
+      // Q01~Q10：fallback，若以上都被忽略还能看到不乱码的版本。
+      (function buildCustomMail(){
+        // 准备行数据
+        var rows = [
+          ['客户姓名', name  || '未填写', 'tel-link'],
+          ['联系手机', phone || '未填写', 'tel-link'],
+          ['电子邮箱', emailCn, 'email-link'],
+          ['服务类型', svcCn,  ''],
+          ['房屋面积', areaCn, ''],
+          ['预算范围', budCn,  ''],
+          ['装修时间', tCn,    ''],
+          ['装修需求', msgCn.replace(/\n/g,'<br/>'), ''],
+          ['表单来源', '在线预约页面（contact.html）', '']
+        ];
+        var submitTimeStr = nowCN();
+        var phoneLink = phone ? '<a href="tel:'+phone+'" style="color:#0b57d0;text-decoration:none;font-weight:600;">'+phone+'</a>' : '未填写';
+        var emailLink = email ? '<a href="mailto:'+email+'" style="color:#0b57d0;text-decoration:none;">'+email+'</a>' : '未填写（用户未提供邮箱）';
+        // HTML 表格
+        var html = '';
+        html += '<div style="background:#f4f6fb;padding:24px 16px;font-family:-apple-system,BlinkMacSystemFont,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",sans-serif;color:#1f1f1f;">';
+        html += '  <table style="width:100%;max-width:640px;margin:0 auto;background:#fff;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(11,87,208,0.12);">';
+        // Header
+        html += '    <thead><tr><th colspan="2" style="background:linear-gradient(135deg,#0b57d0 0%,#1a73e8 100%);color:#fff;padding:22px 26px;text-align:left;font-size:20px;font-weight:600;letter-spacing:0.5px;">🏠 浦北装修设计 · 客户预约登记</th></tr></thead>';
+        html += '    <tbody>';
+        rows.forEach(function(r, i){
+          var label = r[0], val = r[1], cls = r[2];
+          var valueHtml = val;
+          if (cls === 'tel-link' && label === '联系手机') valueHtml = phoneLink;
+          if (cls === 'email-link' && label === '电子邮箱') valueHtml = emailLink;
+          var zStripe = (i % 2) ? '#fafbff' : '#ffffff';
+          html += '<tr style="background:'+zStripe+';"><td style="width:130px;padding:14px 18px;border-bottom:1px solid #eef0f5;font-weight:600;color:#1f1f1f;vertical-align:top;">'+label+'</td><td style="padding:14px 18px;border-bottom:1px solid #eef0f5;color:#333;line-height:1.7;vertical-align:top;">'+valueHtml+'</td></tr>';
+        });
+        // Footer row
+        html += '    <tr><td colspan="2" style="padding:14px 18px;background:linear-gradient(90deg,#f0f4ff 0%,#f4fdf8 100%);color:#5f6368;font-size:12px;text-align:right;">📅 提交时间：'+submitTimeStr+' · <a href="https://pboo.top" style="color:#0b57d0;text-decoration:none;">pboo.top</a> 自动发送</td></tr>';
+        html += '    </tbody>';
+        html += '  </table>';
+        html += '</div>';
+        // Plain text 版本
+        var plain = '浦北装修设计 - 客户预约登记\n'
+          + '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+          + '【客户姓名】'+(name||'未填写')+'\n'
+          + '【联系手机】'+(phone||'未填写')+'\n'
+          + '【电子邮箱】'+emailCn+'\n'
+          + '【服务类型】'+svcCn+'\n'
+          + '【房屋面积】'+areaCn+'\n'
+          + '【预算范围】'+budCn+'\n'
+          + '【装修时间】'+tCn+'\n'
+          + '【装修需求】'+(message||'无')+'\n'
+          + '【表单来源】在线预约页面（contact.html）\n'
+          + '【提交时间】'+submitTimeStr+'\n'
+          + '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+          + '来源：浦北装修设计官网 pboo.top';
+        data.html  = html;
+        data.plain = plain;
+      })();
 
       fetch(form.action, {
         method:'POST',
