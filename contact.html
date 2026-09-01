@@ -234,17 +234,20 @@
       top: 16px !important;
       transform: translateY(0) !important;
     }
-    /* 浮动标签激活状态（聚焦或有内容时浮动到左上角） */
+    /* 浮动标签激活状态（聚焦或有内容时浮动到边框线上，背景白色挡住边框线） */
     .form-group.float-field input:focus + label,
     .form-group.float-field input:not(:placeholder-shown) + label,
     .form-group.float-field textarea:focus + label,
     .form-group.float-field textarea:not(:placeholder-shown) + label {
-      top: 8px !important;
-      transform: translateY(0) scale(0.75) !important;
+      top: 0 !important;
+      transform: translateY(-50%) scale(0.75) !important;
       transform-origin: left center !important;
       font-size: 12px !important;
       font-weight: 500 !important;
       color: #0b57d0 !important;
+      background: #fff !important;
+      padding: 0 6px !important;
+      left: 12px !important;
     }
     /* 输入框聚焦样式 */
     .form-group.float-field input:focus,
