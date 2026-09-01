@@ -1280,12 +1280,18 @@
           <input type="hidden" name="subject" id="aptSubject" value="新的装修预约（首页弹窗）">
           <input type="hidden" name="to" value="contact@pboo.top">
           <input type="hidden" name="reply_to" id="aptReplyTo" value="">
-          <input type="hidden" name="表单来源" value="首页弹窗（index.html）">
-          <input type="hidden" name="提交时间" id="aptSubmitTime" value="">
-          <input type="hidden" name="服务类型_中文" id="aptServiceZh" value="">
-          <input type="hidden" name="房屋面积_中文" id="aptAreaZh" value="">
-          <input type="hidden" name="预算范围_中文" id="aptBudgetZh" value="">
-          <input type="hidden" name="装修时间_格式化" id="aptTimeZh" value="">
+          <!-- ↓↓↓ 全部字段名使用英文，避免Web3Forms邮件模板 UTF-8 乱码 ↓↓↓ -->
+          <input type="hidden" name="form_source" value="首页弹窗（index.html）">
+          <input type="hidden" name="submit_time" id="aptSubmitTime" value="">
+          <!-- 关键信息显式映射（Web3Forms对name/email/phone等标准字段在表格末尾不重复显示值） -->
+          <input type="hidden" name="a1_customer_name" id="aptNameCn" value="">
+          <input type="hidden" name="a2_customer_phone" id="aptPhoneCn" value="">
+          <input type="hidden" name="a3_customer_email" id="aptEmailCn" value="">
+          <input type="hidden" name="a4_service_type" id="aptServiceZh" value="">
+          <input type="hidden" name="a5_house_area" id="aptAreaZh" value="">
+          <input type="hidden" name="a6_budget_range" id="aptBudgetZh" value="">
+          <input type="hidden" name="a7_schedule_date" id="aptTimeZh" value="">
+          <input type="hidden" name="a8_message" id="aptMessageCn" value="">
           <input type="hidden" name="bot_check" id="aptBotCheck" value="">
           <input type="hidden" name="form_time" id="aptFormTime" value="">
 
@@ -1675,6 +1681,10 @@
       if (rtEl) rtEl.value = aEmail || 'contact@pboo.top';
       var stEl = document.getElementById('aptSubmitTime');
       if (stEl) stEl.value = nowCN();
+      // 关键信息显式映射（英文字段名防乱码 + a1~a8排序让表格逻辑排列，标准字段不重复显示问题彻底解决）
+      var nc = document.getElementById('aptNameCn');    if(nc) nc.value = aName || '未填写';
+      var pc = document.getElementById('aptPhoneCn');   if(pc) pc.value = aPhone || '未填写';
+      var ec = document.getElementById('aptEmailCn');   if(ec) ec.value = aEmail || '未填写（用户未提供邮箱）';
       var svcZhEl = document.getElementById('aptServiceZh');
       if (svcZhEl) svcZhEl.value = SERVICE_MAP[aService] || aService || '未填写';
       var areaZhEl = document.getElementById('aptAreaZh');
@@ -1682,7 +1692,8 @@
       var budZhEl = document.getElementById('aptBudgetZh');
       if (budZhEl) budZhEl.value = BUDGET_MAP[aBudget] || aBudget || '未填写';
       var tZhEl = document.getElementById('aptTimeZh');
-      if (tZhEl) tZhEl.value = formatDateCN(aTime);
+      if (tZhEl) tZhEl.value = formatDateCN(aTime) || '未填写';
+      var mc = document.getElementById('aptMessageCn'); if(mc) mc.value = (document.getElementById('aptMessage')?document.getElementById('aptMessage').value.trim():'') || '无';
 
       var formData = new FormData(form);
       var data = {};
