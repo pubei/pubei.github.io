@@ -16,62 +16,22 @@
   <link rel="stylesheet" href="assets/css/style.css?v=47">
 
   <style>
-    /* ===== Google Forms 风格 ===== */
+    /* ===== Google 登录页面风格 ===== */
     body {
-      background: #f0f3f4 !important;
+      background: #fff !important;
+      font-family: 'Google Sans', 'Noto Sans SC', Arial, sans-serif !important;
+      color: #1f1f1f;
     }
 
-    /* Hero 区域 */
-    .contact-hero {
-      background: #fff !important;
-      padding: 56px 0 40px !important;
-      text-align: center;
-      border-bottom: 1px solid #e8eaed;
-    }
-    .contact-hero-content {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .hero-icon {
-      width: 64px;
-      height: 64px;
-      background: #e8f0fe;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .hero-icon svg {
-      width: 32px;
-      height: 32px;
-      stroke: #1a73e8;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .contact-title {
-      font-size: 28px !important;
-      font-weight: 600 !important;
-      color: #3c4043 !important;
-      margin-bottom: 8px !important;
-      letter-spacing: -0.5px;
-    }
-    .contact-subtitle {
-      font-size: 15px !important;
-      color: #5f6368 !important;
-      margin: 0 !important;
-    }
-    .contact-stats { display: none !important; }
+    /* 隐藏原 hero 区域 */
+    .contact-hero { display: none !important; }
 
     /* 布局容器 */
     .contact-wrapper {
       display: block !important;
-      max-width: 680px !important;
+      max-width: 460px !important;
       margin: 0 auto !important;
-      padding: 32px 0 !important;
+      padding: 48px 16px !important;
       grid-template-columns: none !important;
       gap: 0 !important;
     }
@@ -87,26 +47,56 @@
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       border: none !important;
-      border-radius: 12px !important;
-      padding: 40px !important;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08) !important;
+      border-radius: 8px !important;
+      padding: 48px 40px !important;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.15), 0 1px 2px rgba(60,64,67,0.1) !important;
       overflow: visible !important;
       margin-bottom: 24px;
     }
     .contact-form-section::before { display: none !important; }
     .contact-form-section > .card-top-glow,
     .contact-form-section > .card-corner-glow { display: none !important; }
-    .contact-form-section > .form-header,
-    .contact-form-section > .form-group-section,
-    .contact-form-section > form,
-    .contact-form-section > .form-progress-wrap { position: relative; z-index: 1; }
-
-    /* SVG 渐变定义隐藏 */
     .contact-form-section > svg { display: none !important; }
+
+    /* Logo */
+    .form-logo {
+      display: block;
+      margin: 0 auto 24px;
+      width: 64px;
+      height: 64px;
+    }
+    .form-logo img {
+      width: 64px;
+      height: 64px;
+      display: block;
+    }
+
+    /* 标题 */
+    .form-title {
+      font-size: 32px !important;
+      font-weight: 400 !important;
+      color: #1f1f1f !important;
+      text-align: center;
+      margin: 0 0 8px !important;
+      letter-spacing: 0;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      background-clip: unset !important;
+    }
+    .form-subtitle {
+      font-size: 16px !important;
+      color: #5f6368 !important;
+      text-align: center;
+      margin: 0 0 32px !important;
+    }
+
+    /* 隐藏原 form-header */
+    .form-header { display: none !important; }
 
     /* 进度条 */
     .form-progress-wrap {
-      margin-bottom: 28px;
+      margin-bottom: 24px !important;
       padding: 0 !important;
       background: none !important;
       border: none !important;
@@ -124,7 +114,7 @@
     .form-progress-fill {
       height: 100%;
       width: 0%;
-      background: #1a73e8 !important;
+      background: #0b57d0 !important;
       background-size: 100% 100% !important;
       border-radius: 2px;
       box-shadow: none !important;
@@ -132,82 +122,23 @@
       animation: none !important;
     }
     .form-progress-pct {
-      display: block;
-      font-size: 12px;
-      color: #5f6368;
-      margin-top: 6px;
-      text-align: right;
-      font-weight: 500;
-      background: none !important;
-      -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: unset !important;
-      background-clip: unset !important;
-    }
-
-    /* 表单头部 */
-    .form-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 32px !important;
-      padding-bottom: 24px !important;
-      border-bottom: 1px solid #e8eaed !important;
-    }
-    .form-header .header-icon-badge {
-      width: 48px !important;
-      height: 48px !important;
-      background: #1a73e8 !important;
-      border: none !important;
-      border-radius: 50% !important;
-      margin-bottom: 16px !important;
-      box-shadow: none !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .form-header .header-icon-badge::after { display: none !important; }
-    .form-header .header-icon-badge svg {
-      width: 24px !important;
-      height: 24px !important;
-      stroke: #fff !important;
-      fill: none !important;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      filter: none !important;
-    }
-    .form-header h2 {
-      font-size: 22px !important;
-      font-weight: 600 !important;
-      background: none !important;
-      -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: unset !important;
-      background-clip: unset !important;
-      color: #3c4043 !important;
-      margin-bottom: 8px !important;
-      letter-spacing: -0.3px;
-    }
-    .form-header p {
-      font-size: 14px !important;
-      color: #5f6368 !important;
-      margin: 0 !important;
+      display: none !important;
     }
 
     /* 分区标题 */
     .form-group-section {
-      margin-bottom: 28px !important;
+      margin-bottom: 8px !important;
     }
     .section-title {
-      display: flex !important;
-      align-items: center !important;
+      display: block !important;
+      align-items: initial !important;
       gap: 0 !important;
-      margin-bottom: 18px !important;
-      font-size: 16px !important;
-      font-weight: 600 !important;
-      color: #3c4043 !important;
+      margin: 24px 0 16px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      color: #5f6368 !important;
       letter-spacing: 0 !important;
-      border-left: 4px solid #1a73e8;
+      border-left: 3px solid #0b57d0;
       padding-left: 12px;
       line-height: 1.4;
     }
@@ -215,188 +146,117 @@
     .section-title .section-line,
     .section-title .section-num { display: none !important; }
 
-    /* form-row */
+    /* form-row 强制单列 */
     .form-row {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 0;
+      display: block !important;
+      gap: 0 !important;
+      margin-bottom: 0 !important;
     }
     .form-row .form-group {
-      flex: 1;
+      flex: none;
+      width: 100%;
     }
 
     /* form-group 基础 */
     .form-group {
       position: relative;
-      margin-bottom: 16px;
+      margin-bottom: 16px !important;
     }
     .form-group::before { display: none !important; }
+    .form-group.full-width { /* 兼容 */ }
 
-    /* 浮动标签输入框 */
+    /* 标签 */
+    .form-group label,
+    .form-group .static-label {
+      display: block;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      color: #5f6368 !important;
+      margin: 0 0 6px !important;
+      padding: 0 !important;
+      line-height: 1.4;
+      background: none !important;
+      gap: 0 !important;
+      align-items: initial !important;
+      position: static !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+    }
+    .form-group .label-icon { display: none !important; }
+
+    /* 输入框统一 Google 风格 */
     .form-group input[type="text"],
     .form-group input[type="tel"],
     .form-group input[type="email"],
+    .form-group input[type="date"],
+    .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 22px 16px 8px !important;
-      font-size: 14px !important;
-      color: #3c4043 !important;
+      font-size: 16px !important;
+      color: #1f1f1f !important;
       background: #fff !important;
-      border: 1px solid #dadce0 !important;
-      border-radius: 8px !important;
+      border: 1px solid #c0c0c0 !important;
+      border-radius: 4px !important;
+      padding: 13px 14px !important;
+      height: auto !important;
+      box-sizing: border-box !important;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s !important;
+      transition: border-color 0.15s, box-shadow 0.15s !important;
       box-shadow: none !important;
       font-family: inherit !important;
-      box-sizing: border-box;
+      margin: 0 !important;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #5f6368 !important;
     }
     .form-group input[type="text"]:hover,
     .form-group input[type="tel"]:hover,
     .form-group input[type="email"]:hover,
+    .form-group input[type="date"]:hover,
+    .form-group select:hover,
     .form-group textarea:hover {
-      border-color: #bdc1c6 !important;
+      border-color: #c0c0c0 !important;
       background: #fff !important;
     }
     .form-group input[type="text"]:focus,
     .form-group input[type="tel"]:focus,
     .form-group input[type="email"]:focus,
+    .form-group input[type="date"]:focus,
+    .form-group select:focus,
     .form-group textarea:focus {
-      border-color: #1a73e8 !important;
+      border-color: #0b57d0 !important;
       background: #fff !important;
-      box-shadow: 0 0 0 2px rgba(26,115,232,0.2) !important;
+      box-shadow: 0 0 0 2px rgba(11,87,208,0.15) !important;
       transform: none !important;
     }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: transparent;
-    }
 
-    /* 浮动标签 */
-    .form-group input[type="text"] + label,
-    .form-group input[type="tel"] + label,
-    .form-group input[type="email"] + label {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 14px !important;
-      font-weight: 400 !important;
-      color: #5f6368 !important;
-      pointer-events: none;
-      transition: all 0.2s ease;
-      margin: 0 !important;
-      display: block;
-      background: none;
-      gap: 0 !important;
-      align-items: initial !important;
-    }
-    .form-group input[type="text"]:focus + label,
-    .form-group input[type="text"]:not(:placeholder-shown) + label,
-    .form-group input[type="tel"]:focus + label,
-    .form-group input[type="tel"]:not(:placeholder-shown) + label,
-    .form-group input[type="email"]:focus + label,
-    .form-group input[type="email"]:not(:placeholder-shown) + label {
-      top: 8px;
-      transform: translateY(0);
-      font-size: 11px !important;
-      color: #1a73e8 !important;
-      font-weight: 500 !important;
-    }
-    .form-group .label-icon { display: none !important; }
-
-    /* textarea 浮动标签 */
+    /* textarea */
     .form-group textarea {
-      min-height: 120px !important;
+      min-height: 100px !important;
       resize: vertical;
     }
-    .form-group textarea + label {
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      transform: translateY(0);
-      font-size: 14px !important;
-      font-weight: 400 !important;
-      color: #5f6368 !important;
-      pointer-events: none;
-      transition: all 0.2s ease;
-      margin: 0 !important;
-      display: block;
-    }
-    .form-group textarea:focus + label,
-    .form-group textarea:not(:placeholder-shown) + label {
-      top: 8px;
-      font-size: 11px !important;
-      color: #1a73e8 !important;
-      font-weight: 500 !important;
-    }
 
-    /* select 和 date 静态标签 */
-    .form-group .static-label {
-      display: block;
-      font-size: 12px;
-      font-weight: 500;
-      color: #1a73e8;
-      margin-bottom: 6px;
-    }
-
-    /* select 样式 */
+    /* select 自定义箭头 */
     .form-group select {
-      width: 100%;
-      padding: 14px 40px 14px 16px !important;
-      font-size: 14px !important;
-      color: #3c4043 !important;
-      background: #fff !important;
-      border: 1px solid #dadce0 !important;
-      border-radius: 8px !important;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s !important;
-      box-shadow: none !important;
-      font-family: inherit !important;
-      box-sizing: border-box;
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
       cursor: pointer;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-    }
-    .form-group select:hover {
-      border-color: #bdc1c6 !important;
-    }
-    .form-group select:focus {
-      border-color: #1a73e8 !important;
-      box-shadow: 0 0 0 2px rgba(26,115,232,0.2) !important;
+      padding-right: 40px !important;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 14px center !important;
     }
     .form-group select option {
       background: #fff;
-      color: #3c4043;
+      color: #1f1f1f;
     }
     .select-wrapper { position: relative; }
     .select-arrow { display: none !important; }
 
-    /* date input 样式 */
-    .form-group input[type="date"] {
-      width: 100%;
-      padding: 14px 16px !important;
-      font-size: 14px !important;
-      color: #3c4043 !important;
-      background: #fff !important;
-      border: 1px solid #dadce0 !important;
-      border-radius: 8px !important;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s !important;
-      box-shadow: none !important;
-      font-family: inherit !important;
-      box-sizing: border-box;
-    }
-    .form-group input[type="date"]:hover {
-      border-color: #bdc1c6 !important;
-    }
-    .form-group input[type="date"]:focus {
-      border-color: #1a73e8 !important;
-      box-shadow: 0 0 0 2px rgba(26,115,232,0.2) !important;
-    }
+    /* date picker */
     .form-group input[type="date"]::-webkit-calendar-picker-indicator {
       filter: none;
       cursor: pointer;
@@ -422,26 +282,16 @@
       margin-left: 2px;
     }
 
-    /* 通知动画 */
-    @keyframes notificationSlideIn {
-      from { opacity: 0; transform: translateX(100px) scale(0.9); }
-      to { opacity: 1; transform: translateX(0) scale(1); }
-    }
-    @keyframes notificationSlideOut {
-      from { opacity: 1; transform: translateX(0) scale(1); }
-      to { opacity: 0; transform: translateX(100px) scale(0.9); }
-    }
-
-    /* 复选框 */
+    /* 复选框 - 原生极简 */
     .checkbox-group {
-      display: flex;
+      display: flex !important;
       align-items: flex-start;
-      gap: 10px;
-      padding: 0 !important;
+      gap: 8px;
+      padding: 8px 0 !important;
       background: none !important;
       border: none !important;
       border-radius: 0 !important;
-      margin-bottom: 24px !important;
+      margin-bottom: 16px !important;
     }
     .checkbox-group:hover {
       border-color: transparent !important;
@@ -450,21 +300,21 @@
     .checkbox-group input[type="checkbox"] {
       appearance: auto !important;
       -webkit-appearance: auto !important;
-      width: 18px !important;
-      height: 18px !important;
-      border: 2px solid #5f6368 !important;
-      border-radius: 3px !important;
-      background: #fff !important;
+      width: 16px !important;
+      height: 16px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
       cursor: pointer;
       position: static !important;
       flex-shrink: 0;
       transition: none !important;
       margin-top: 2px !important;
-      accent-color: #1a73e8;
+      accent-color: #0b57d0;
     }
     .checkbox-group input[type="checkbox"]:checked {
-      background: #1a73e8 !important;
-      border-color: #1a73e8 !important;
+      background: transparent !important;
+      border-color: transparent !important;
       box-shadow: none !important;
     }
     .checkbox-group input[type="checkbox"]:checked::after { display: none !important; }
@@ -481,37 +331,38 @@
       display: inline !important;
     }
     .checkbox-group label a {
-      color: #1a73e8;
+      color: #0b57d0;
       font-weight: 500;
     }
 
-    /* 提交按钮 */
+    /* 提交按钮 - Google pill button */
     .submit-btn {
-      width: 100%;
-      padding: 14px !important;
-      background: #1a73e8 !important;
+      background: #0b57d0 !important;
       background-image: none !important;
       background-size: auto !important;
       border: none !important;
-      border-radius: 8px !important;
+      border-radius: 20px !important;
       color: #fff !important;
-      font-size: 16px !important;
-      font-weight: 600 !important;
-      letter-spacing: 0 !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      padding: 10px 24px !important;
+      width: auto !important;
+      float: right;
       cursor: pointer;
       overflow: visible !important;
-      transition: background 0.2s !important;
+      transition: background 0.15s !important;
       box-shadow: none !important;
       animation: none !important;
       font-family: inherit;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
+      letter-spacing: 0;
     }
     .submit-btn::before { display: none !important; }
     .submit-btn:hover {
-      background: #1557b0 !important;
+      background: #0a47c1 !important;
       transform: none !important;
       box-shadow: none !important;
     }
@@ -523,27 +374,30 @@
     .submit-btn .btn-arrow { position: static !important; z-index: auto !important; }
     .submit-btn .btn-arrow {
       display: inline-block;
-      transition: transform 0.3s ease;
+      transition: transform 0.2s ease;
     }
-    .submit-btn:hover .btn-arrow { transform: translateX(4px); }
+    .submit-btn:hover .btn-arrow { transform: translateX(3px); }
 
     /* 底部提示 */
     .form-tip {
-      text-align: center;
-      font-size: 13px;
-      color: #5f6368;
-      margin-top: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      text-align: left !important;
+      font-size: 12px !important;
+      color: #5f6368 !important;
+      margin-top: 16px !important;
+      display: block !important;
+      align-items: initial !important;
+      justify-content: initial !important;
+      gap: 0 !important;
+      clear: both;
     }
     .form-tip svg {
       width: 14px;
       height: 14px;
-      stroke: #1a73e8;
+      stroke: #5f6368;
       fill: none;
       stroke-width: 2;
+      vertical-align: middle;
+      margin-right: 4px;
     }
 
     /* 联系方式链接去下划线 */
@@ -551,73 +405,57 @@
     .contact-method:hover { text-decoration: none; }
     .method-value { text-decoration: none; }
 
-    /* ===== 信息卡片网格 ===== */
-    .contact-info-section { margin-top: 0 !important; }
+    /* ===== 信息区域（极简文字列表） ===== */
+    .contact-info-section {
+      margin-top: 0 !important;
+      max-width: 460px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding: 0 0 24px !important;
+    }
     .info-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      display: block !important;
+      grid-template-columns: none !important;
+      gap: 0 !important;
     }
     .info-card {
-      background: #fff !important;
-      border-radius: 12px !important;
-      padding: 24px !important;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08) !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
       border: none !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
+      margin-bottom: 8px;
     }
-    .info-card-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .info-card-header .card-icon {
-      width: 36px;
-      height: 36px;
-      background: #e8f0fe;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .info-card-header .card-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: #1a73e8;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .info-card-header h3 {
-      font-size: 16px !important;
-      font-weight: 600 !important;
-      color: #3c4043 !important;
-      margin: 0 !important;
-    }
+    .info-card-header { display: none !important; }
 
     /* 联系方式列表 */
+    .contact-methods {
+      display: block;
+    }
     .contact-methods .contact-method {
-      display: flex;
+      display: flex !important;
       align-items: center;
       gap: 12px;
-      padding: 8px 0;
+      padding: 12px 0 !important;
       text-decoration: none;
+      border-bottom: 1px solid #e8eaed;
+    }
+    .contact-methods .contact-method:last-child {
+      border-bottom: none;
     }
     .contact-method .method-icon {
-      width: 24px;
-      height: 24px;
+      width: 20px !important;
+      height: 20px !important;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
     .contact-method .method-icon svg {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       stroke: #5f6368;
       fill: none;
       stroke-width: 2;
@@ -628,21 +466,25 @@
       display: block;
       font-size: 12px;
       color: #5f6368;
+      margin-bottom: 2px;
     }
     .contact-method .method-value {
       display: block;
       font-size: 14px;
-      color: #3c4043;
-      font-weight: 500;
+      color: #1f1f1f;
+      font-weight: 400;
     }
 
     /* 营业时间 */
+    .business-hours {
+      display: block;
+    }
     .business-hours .hour-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f3f4;
+      padding: 12px 0;
+      border-bottom: 1px solid #e8eaed;
     }
     .business-hours .hour-item:last-child { border-bottom: none; }
     .business-hours .hour-day {
@@ -651,29 +493,34 @@
     }
     .business-hours .hour-time {
       font-size: 14px;
-      color: #3c4043;
-      font-weight: 500;
+      color: #1f1f1f;
+      font-weight: 400;
     }
 
-    /* 服务承诺 */
+    /* 服务承诺 - 简化 */
+    .promise-list {
+      display: block;
+    }
     .promise-list .promise-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 0;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e8eaed;
     }
+    .promise-list .promise-item:last-child { border-bottom: none; }
     .promise-item .promise-icon {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
     .promise-item .promise-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: #1a73e8;
+      width: 20px;
+      height: 20px;
+      stroke: #5f6368;
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
@@ -681,41 +528,36 @@
     }
     .promise-item .promise-text {
       font-size: 14px;
-      color: #3c4043;
+      color: #1f1f1f;
     }
 
-    /* 在线客服按钮 */
+    /* 在线客服按钮 - Google secondary button */
     .chat-buttons {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      padding-top: 12px;
     }
     .chat-btn {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 16px;
-      border-radius: 8px;
+      padding: 8px 16px !important;
+      background: transparent !important;
+      color: #0b57d0 !important;
+      border: 1px solid #dadce0 !important;
+      border-radius: 20px !important;
       font-size: 14px;
       font-weight: 500;
       text-decoration: none;
-      transition: background 0.2s, filter 0.2s;
+      transition: background 0.15s, border-color 0.15s;
       font-family: inherit;
+      cursor: pointer;
     }
-    .chat-btn.wechat {
-      background: #07c160;
-      color: #fff;
-    }
-    .chat-btn.wechat:hover {
-      background: #06ad56;
-    }
-    .chat-btn.phone {
-      background: #1a73e8;
-      color: #fff;
-    }
-    .chat-btn.phone:hover {
-      background: #1557b0;
+    .chat-btn:hover {
+      background: rgba(11,87,208,0.04) !important;
+      border-color: #c0c0c0 !important;
     }
     .chat-btn .chat-icon {
       display: inline-flex;
@@ -723,76 +565,49 @@
       justify-content: center;
     }
     .chat-btn .chat-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: #fff;
+      width: 16px;
+      height: 16px;
+      stroke: #0b57d0;
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    /* ===== FAQ 链接卡片 ===== */
+    /* ===== FAQ 链接 - 简洁居中文字链接 ===== */
     .faq-link-card {
-      max-width: 680px;
-      margin: 20px auto 0;
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px 24px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+      max-width: 460px !important;
+      margin: 24px auto 0 !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      padding: 16px 0 !important;
+      box-shadow: none !important;
+      text-align: center;
     }
     .faq-link-content {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      display: block !important;
+      text-align: center;
     }
-    .faq-link-icon {
-      width: 40px;
-      height: 40px;
-      background: #e8f0fe;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .faq-link-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: #1a73e8;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .faq-link-text {
-      flex: 1;
-    }
-    .faq-link-text h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: #3c4043;
-      margin: 0 0 4px;
-    }
-    .faq-link-text p {
-      font-size: 13px;
-      color: #5f6368;
-      margin: 0;
-    }
+    .faq-link-icon,
+    .faq-link-text { display: none !important; }
     .faq-link-btn {
-      padding: 8px 20px;
-      background: #1a73e8;
-      color: #fff;
-      border-radius: 8px;
+      display: inline-block;
+      padding: 0;
+      background: transparent !important;
+      color: #0b57d0 !important;
+      border: none !important;
+      border-radius: 0 !important;
       font-size: 14px;
       font-weight: 500;
       text-decoration: none;
-      white-space: nowrap;
-      transition: background 0.2s;
+      white-space: normal;
+      transition: none;
       flex-shrink: 0;
+      cursor: pointer;
     }
     .faq-link-btn:hover {
-      background: #1557b0;
+      background: transparent !important;
+      text-decoration: underline;
     }
 
     /* ===== 微信咨询弹窗（保持暗色风格） ===== */
@@ -919,24 +734,14 @@
 
     /* ===== 响应式 ===== */
     @media (max-width:768px) {
-      .contact-form-section { padding: 24px 20px !important; }
-      .form-header h2 { font-size: 20px !important; }
-      .contact-title { font-size: 24px !important; }
-      .info-cards-grid {
-        grid-template-columns: 1fr;
-      }
-      .form-row {
-        flex-direction: column;
-      }
-      .faq-link-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-      }
-      .faq-link-btn {
-        width: 100%;
-        text-align: center;
-      }
+      .contact-form-section { padding: 32px 24px !important; }
+      .form-title { font-size: 32px !important; }
+    }
+    @media (max-width:480px) {
+      .contact-form-section { padding: 24px 16px !important; }
+      .form-title { font-size: 28px !important; }
+      .form-subtitle { font-size: 14px !important; }
+      .contact-wrapper { padding: 24px 8px !important; }
     }
   </style>
 
@@ -987,39 +792,17 @@
   </header>
 
   <main class="main-content">
-    <div class="contact-hero">
-      <div class="container">
-        <div class="contact-hero-content">
-          <div class="hero-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="9" y1="13" x2="15" y2="13"/>
-              <line x1="9" y1="17" x2="15" y2="17"/>
-            </svg>
-          </div>
-          <h1 class="contact-title">在线预约咨询</h1>
-          <p class="contact-subtitle">填写预约信息，我们的专业团队将在24小时内与您联系</p>
-        </div>
-      </div>
-    </div>
-
     <div class="container">
       <div class="contact-wrapper">
         <div class="contact-form-section">
-          <!-- 表单头部 -->
-          <div class="form-header">
-            <div class="header-icon-badge">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="9" y1="13" x2="15" y2="13"/>
-                <line x1="9" y1="17" x2="15" y2="17"/>
-              </svg>
-            </div>
-            <h2>预约信息</h2>
-            <p>请填写以下信息，我们将为您提供专业的装修方案</p>
+          <!-- Logo -->
+          <div class="form-logo">
+            <img src="assets/images/logo.svg" alt="浦北装修设计LOGO">
           </div>
+
+          <!-- 标题 -->
+          <h1 class="form-title">在线预约咨询</h1>
+          <p class="form-subtitle">填写信息获取免费设计咨询</p>
 
           <!-- 表单完成度进度条 -->
           <div class="form-progress-wrap">
@@ -1041,21 +824,20 @@
               <div class="section-title">基本信息</div>
               <div class="form-row">
                 <div class="form-group">
-                  <input type="text" id="name" name="name" required placeholder=" ">
-                  <label for="name">姓名 *</label>
-                </div>
-
-                <div class="form-group">
-                  <input type="tel" id="phone" name="phone" required pattern="1[3-9]\d{9}" placeholder=" " oninvalid="this.setCustomValidity('请输入有效的11位手机号码')" oninput="this.setCustomValidity('')">
-                  <label for="phone">手机号 *</label>
-                  <span class="form-hint">请输入11位手机号码</span>
+                  <label for="name">姓名</label>
+                  <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
                 </div>
               </div>
-
               <div class="form-row">
                 <div class="form-group">
-                  <input type="email" id="email" name="email" placeholder=" ">
-                  <label for="email">邮箱</label>
+                  <label for="phone">手机号</label>
+                  <input type="tel" id="phone" name="phone" required pattern="1[3-9]\d{9}" placeholder="请输入11位手机号码" oninvalid="this.setCustomValidity('请输入有效的11位手机号码')" oninput="this.setCustomValidity('')">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">邮箱（选填）</label>
+                  <input type="email" id="email" name="email" placeholder="请输入您的邮箱">
                 </div>
               </div>
             </div>
@@ -1065,7 +847,7 @@
               <div class="section-title">装修详情</div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="service" class="static-label">服务类型 *</label>
+                  <label for="service" class="static-label">服务类型</label>
                   <div class="select-wrapper">
                     <select id="service" name="service" required>
                       <option value="">请选择服务类型</option>
@@ -1078,7 +860,8 @@
                     </select>
                   </div>
                 </div>
-
+              </div>
+              <div class="form-row">
                 <div class="form-group">
                   <label for="area" class="static-label">房屋面积</label>
                   <div class="select-wrapper">
@@ -1094,7 +877,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-row">
                 <div class="form-group">
                   <label for="budget" class="static-label">预算范围</label>
@@ -1110,7 +892,8 @@
                     </select>
                   </div>
                 </div>
-
+              </div>
+              <div class="form-row">
                 <div class="form-group">
                   <label for="time" class="static-label">装修时间</label>
                   <input type="date" id="time" name="time">
@@ -1122,8 +905,8 @@
             <div class="form-group-section">
               <div class="section-title">其他需求</div>
               <div class="form-group full-width">
-                <textarea id="message" name="message" placeholder=" "></textarea>
                 <label for="message">装修需求</label>
+                <textarea id="message" name="message" placeholder="请描述您的装修需求、风格偏好等"></textarea>
               </div>
             </div>
 
@@ -1153,14 +936,6 @@
           <div class="info-cards-grid">
             <!-- 联系我们 -->
             <div class="info-card">
-              <div class="info-card-header">
-                <span class="card-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </span>
-                <h3>联系我们</h3>
-              </div>
               <div class="contact-methods">
                 <a href="tel:13412277880" class="contact-method">
                   <span class="method-icon">
@@ -1214,15 +989,6 @@
 
             <!-- 营业时间 -->
             <div class="info-card">
-              <div class="info-card-header">
-                <span class="card-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </span>
-                <h3>营业时间</h3>
-              </div>
               <div class="business-hours">
                 <div class="hour-item">
                   <span class="hour-day">周一至周五</span>
@@ -1241,15 +1007,6 @@
 
             <!-- 服务承诺 -->
             <div class="info-card">
-              <div class="info-card-header">
-                <span class="card-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                </span>
-                <h3>服务承诺</h3>
-              </div>
               <div class="promise-list">
                 <div class="promise-item">
                   <span class="promise-icon">
@@ -1297,14 +1054,6 @@
 
             <!-- 在线客服 -->
             <div class="info-card">
-              <div class="info-card-header">
-                <span class="card-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </span>
-                <h3>在线客服</h3>
-              </div>
               <div class="chat-buttons">
                 <a href="javascript:void(0)" class="chat-btn wechat" onclick="showWechatModal()">
                   <span class="chat-icon">
@@ -1341,7 +1090,7 @@
             <h3>想了解更多常见问题？</h3>
             <p>我们整理了20+装修相关问题，包括咨询预约、设计方案、施工流程、费用预算等方面</p>
           </div>
-          <a href="faq.html" class="faq-link-btn">查看全部</a>
+          <a href="faq.html" class="faq-link-btn">查看常见问题 →</a>
         </div>
       </div>
     </div>
