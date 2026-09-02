@@ -809,88 +809,218 @@
   <style>
     .cookie-consent {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(135deg, rgba(10, 14, 23, 0.98), rgba(20, 25, 40, 0.98));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(0, 212, 255, 0.2);
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      width: 560px;
+      max-width: calc(100vw - 32px);
+      background: linear-gradient(135deg, rgba(15, 20, 35, 0.94), rgba(25, 30, 50, 0.94));
+      backdrop-filter: blur(28px) saturate(1.8);
+      -webkit-backdrop-filter: blur(28px) saturate(1.8);
+      border: 1px solid rgba(0, 212, 255, 0.22);
+      border-radius: 22px;
       z-index: 9999;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      padding: 24px 0;
+      opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 50px rgba(0, 212, 255, 0.1);
+      overflow: hidden;
     }
     .cookie-consent.show {
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    /* 顶部渐变流光条 */
+    .cookie-consent::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00d4ff, #7b2ff7, #00ff80, #00d4ff);
+      background-size: 200% 100%;
+      animation: cookieShimmer 6s linear infinite;
+    }
+    @keyframes cookieShimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    /* 背景装饰光晕 */
+    .cookie-consent::after {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: cookieGlowPulse 5s ease-in-out infinite;
+    }
+    @keyframes cookieGlowPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.08); }
     }
     .cookie-content {
       display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 22px 26px 16px;
+      position: relative;
+      z-index: 1;
     }
     .cookie-icon {
-      width: 56px;
-      height: 56px;
+      width: 46px;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 247, 0.15));
-      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.18), rgba(123, 47, 247, 0.18));
+      border-radius: 13px;
       color: #00d4ff;
       flex-shrink: 0;
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 212, 255, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+      position: relative;
+      animation: cookieIconBreathe 4s ease-in-out infinite;
+    }
+    @keyframes cookieIconBreathe {
+      0%, 100% { box-shadow: 0 4px 16px rgba(0, 212, 255, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 0 0 rgba(0, 212, 255, 0.3); }
+      50% { box-shadow: 0 6px 22px rgba(0, 212, 255, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06) inset, 0 0 0 6px rgba(0, 212, 255, 0.06); }
     }
     .cookie-icon svg {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
+      filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.4));
     }
     .cookie-text {
       flex: 1;
-      min-width: 280px;
+      min-width: 0;
     }
     .cookie-text h4 {
-      color: #00d4ff;
+      margin: 0 0 5px;
       font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 4px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      background: linear-gradient(135deg, #ffffff 0%, #b8e8ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
     .cookie-text p {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.83rem;
       line-height: 1.6;
+      margin: 0 0 4px;
+    }
+    .cookie-policy-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      color: #5ed5ff;
+      font-size: 0.76rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      margin-top: 2px;
+    }
+    .cookie-policy-link:hover {
+      color: #00d4ff;
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    }
+    .cookie-policy-link svg {
+      width: 11px;
+      height: 11px;
+    }
+    .cookie-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 18px;
+      line-height: 1;
+      z-index: 3;
+      backdrop-filter: blur(8px);
+    }
+    .cookie-close:hover {
+      background: rgba(255, 94, 94, 0.18);
+      border-color: rgba(255, 94, 94, 0.35);
+      color: #ff9b9b;
+      transform: rotate(90deg);
+      box-shadow: 0 4px 14px rgba(255, 94, 94, 0.2);
     }
     .cookie-buttons {
       display: flex;
-      gap: 12px;
-      flex-shrink: 0;
+      gap: 10px;
+      padding: 4px 26px 22px;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 1;
     }
     .cookie-btn {
-      padding: 8px 32px;
-      border-radius: 12px;
-      font-size: 0.9rem;
+      padding: 10px 30px;
+      border-radius: 11px;
+      font-size: 0.86rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       border: none;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+    }
+    .cookie-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transition: left 0.6s ease;
+    }
+    .cookie-btn:hover::before {
+      left: 100%;
     }
     .cookie-btn-accept {
-      background: linear-gradient(135deg, #00d4ff, #00ff80);
-      color: white;
+      background: linear-gradient(135deg, #00d4ff 0%, #00ff80 100%);
+      color: #0a0e17;
+      box-shadow: 0 4px 18px rgba(0, 212, 255, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
     }
     .cookie-btn-accept:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 10px 28px rgba(0, 212, 255, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      filter: brightness(1.1);
     }
     .cookie-btn-reject {
-      background: transparent;
-      color: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
     }
     .cookie-btn-reject:hover {
-      color: #00d4ff;
-      border-color: #00d4ff;
+      background: rgba(255, 255, 255, 0.11);
+      color: #fff;
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 212, 255, 0.12);
+    }
+    @media (max-width: 560px) {
+      .cookie-consent { bottom: 16px; border-radius: 18px; }
+      .cookie-content { flex-direction: column; gap: 14px; padding: 20px 20px 12px; align-items: center; text-align: center; }
+      .cookie-icon { width: 42px; height: 42px; }
+      .cookie-text { text-align: center; }
+      .cookie-text p { font-size: 0.82rem; }
+      .cookie-policy-link { justify-content: center; }
+      .cookie-buttons { justify-content: center; padding-bottom: 18px; gap: 8px; }
+      .cookie-btn { flex: 1; text-align: center; padding: 10px 18px; font-size: 0.82rem; }
+      .cookie-close { top: 10px; right: 10px; width: 28px; height: 28px; }
     }
 
     /* 微信咨询弹窗 */
@@ -1017,112 +1147,452 @@
     }
     .wechat-steps .step-arrow { color: rgba(0,212,255,0.4); }
 
-    /* ===== 弹窗浮动标签输入框（暗色玻璃拟态适配） ===== */
-    #aptContactForm .form-group.float-field {
-      position: relative;
+    /* ===== 首页弹窗预约咨询 - Google 白色底设计（参照 contact.html） ===== */
+    /* 表单卡片：白色背景 + 浅灰边框 + 极简阴影 */
+    #aptFormCard {
+      background: #fff !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid #e8eaed !important;
+      border-radius: 12px !important;
+      padding: 40px 36px !important;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.08), 0 4px 12px rgba(60,64,67,0.06) !important;
+      overflow: visible !important;
     }
-    #aptContactForm .form-group.float-field input,
-    #aptContactForm .form-group.float-field textarea {
+    /* 隐藏暗色玻璃拟态装饰元素 */
+    #aptFormCard::before,
+    #aptFormCard > .card-top-glow,
+    #aptFormCard > .card-corner-glow,
+    #aptFormCard > svg { display: none !important; }
+
+    /* 标题区：居中、白色背景 */
+    #aptFormCard .form-header {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 24px !important;
+      padding-bottom: 24px !important;
+      border-bottom: 1px solid #e8eaed !important;
+    }
+    #aptFormCard .header-icon-badge { display: none !important; }
+    #aptFormCard .form-title-gradient {
+      font-size: 28px !important;
+      font-weight: 400 !important;
+      color: #1f1f1f !important;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      background-clip: unset !important;
+      margin: 0 0 8px !important;
+      letter-spacing: 0 !important;
+    }
+    #aptFormCard .form-subtitle {
+      font-size: 14px !important;
+      color: #5f6368 !important;
+      text-align: center;
+      margin: 0 !important;
+      justify-content: center !important;
+    }
+    #aptFormCard .subtitle-dot { display: none !important; }
+
+    /* 进度条：极简灰底蓝条 */
+    #aptFormCard .form-progress-wrap {
+      margin-bottom: 24px !important;
+      padding: 0 !important;
+      background: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      backdrop-filter: none !important;
+    }
+    #aptFormCard .form-progress-head { display: none !important; }
+    #aptFormCard .form-progress-track {
+      height: 4px !important;
+      background: #e8eaed !important;
+      border-radius: 2px !important;
+      overflow: hidden;
+      box-shadow: none !important;
+    }
+    #aptFormCard .form-progress-fill {
+      background: #0b57d0 !important;
+      background-size: 100% 100% !important;
+      border-radius: 2px !important;
+      box-shadow: none !important;
+      animation: none !important;
+    }
+    #aptFormCard .form-progress-pct { display: none !important; }
+
+    /* 分区标题：蓝色左边框 */
+    #aptFormCard .form-group-section { margin-bottom: 8px !important; }
+    #aptFormCard .section-title {
+      display: block !important;
+      align-items: initial !important;
+      gap: 0 !important;
+      margin: 24px 0 16px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      color: #5f6368 !important;
+      letter-spacing: 0 !important;
+      border-left: 3px solid #0b57d0;
+      padding-left: 12px;
+      line-height: 1.4;
+    }
+    #aptFormCard .section-title .section-icon,
+    #aptFormCard .section-title .section-line,
+    #aptFormCard .section-title .section-num { display: none !important; }
+
+    /* form-row 强制单列 */
+    #aptFormCard .form-row {
+      display: block !important;
+      gap: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    #aptFormCard .form-row .form-group { width: 100%; }
+
+    /* form-group 基础 */
+    #aptFormCard .form-group {
+      margin-bottom: 16px !important;
+    }
+    #aptFormCard .form-group::before { display: none !important; }
+    #aptFormCard .form-group.full-width { grid-column: auto; }
+
+    /* 静态标签（select/date 用） */
+    #aptFormCard .form-group label {
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      color: #5f6368 !important;
+      margin: 0 0 6px !important;
+      padding: 0 !important;
+      line-height: 1.4;
+      background: none !important;
+      display: block !important;
+      align-items: initial !important;
+      gap: 0 !important;
+    }
+    #aptFormCard .label-icon { display: none !important; }
+
+    /* ===== Google 浮动标签输入框 ===== */
+    #aptFormCard .form-group.float-field { position: relative; }
+    #aptFormCard .form-group.float-field input,
+    #aptFormCard .form-group.float-field textarea {
       width: 100%;
       font-size: 16px !important;
-      color: #fff !important;
-      background: rgba(0,0,0,0.25) !important;
-      border: 1px solid rgba(255,255,255,0.12) !important;
-      border-radius: 8px !important;
+      color: #1f1f1f !important;
+      background: #fff !important;
+      border: 1px solid #c0c0c0 !important;
+      border-radius: 4px !important;
       padding: 24px 14px 10px !important;
       height: auto !important;
       box-sizing: border-box !important;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s !important;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.25) !important;
+      transition: border-color 0.15s, box-shadow 0.15s !important;
+      box-shadow: none !important;
       font-family: inherit !important;
       margin: 0 !important;
     }
-    #aptContactForm .form-group.float-field textarea {
+    #aptFormCard .form-group.float-field textarea {
       min-height: 100px;
       resize: vertical;
       padding-top: 24px !important;
     }
-    #aptContactForm .form-group.float-field input::placeholder,
-    #aptContactForm .form-group.float-field textarea::placeholder {
+    #aptFormCard .form-group.float-field input::placeholder,
+    #aptFormCard .form-group.float-field textarea::placeholder {
       color: transparent !important;
     }
-    /* 浮动标签默认状态 */
-    #aptContactForm .form-group.float-field input + label,
-    #aptContactForm .form-group.float-field textarea + label {
+    /* 浮动标签默认状态（输入框内居中） */
+    #aptFormCard .form-group.float-field input + label,
+    #aptFormCard .form-group.float-field textarea + label {
       display: block !important;
       position: absolute !important;
       left: 14px !important;
       top: 50% !important;
       transform: translateY(-50%) !important;
-      font-size: 16px !important;
+      font-size: 17px !important;
       font-weight: 500 !important;
-      color: rgba(255,255,255,0.55) !important;
+      color: #3c4043 !important;
       pointer-events: none !important;
-      transition: all 0.2s ease !important;
-      background: transparent !important;
-      padding: 0 6px !important;
+      transition: all 0.15s ease !important;
+      background: #fff !important;
+      padding: 0 4px !important;
+      border-radius: 2px !important;
       margin: 0 !important;
       gap: 0 !important;
       align-items: initial !important;
       z-index: 1 !important;
     }
     /* textarea 标签默认在顶部 */
-    #aptContactForm .form-group.float-field textarea + label {
+    #aptFormCard .form-group.float-field textarea + label {
       top: 16px !important;
       transform: translateY(0) !important;
     }
-    /* 浮动标签激活状态（横跨边框线） */
-    #aptContactForm .form-group.float-field input:focus + label,
-    #aptContactForm .form-group.float-field input:not(:placeholder-shown) + label,
-    #aptContactForm .form-group.float-field textarea:focus + label,
-    #aptContactForm .form-group.float-field textarea:not(:placeholder-shown) + label {
+    /* 浮动标签激活状态（聚焦或有内容时浮动到边框线上） */
+    #aptFormCard .form-group.float-field input:focus + label,
+    #aptFormCard .form-group.float-field input:not(:placeholder-shown) + label,
+    #aptFormCard .form-group.float-field textarea:focus + label,
+    #aptFormCard .form-group.float-field textarea:not(:placeholder-shown) + label {
       top: 0 !important;
       transform: translateY(-50%) scale(0.82) !important;
       transform-origin: left center !important;
       font-size: 14px !important;
       font-weight: 600 !important;
-      color: #00d4ff !important;
-      background: rgba(10,14,23,0.95) !important;
+      color: #1a73e8 !important;
+      background: #fff !important;
       padding: 0 6px !important;
       left: 12px !important;
-      border-radius: 3px;
     }
     /* 输入框聚焦样式 */
-    #aptContactForm .form-group.float-field input:focus,
-    #aptContactForm .form-group.float-field textarea:focus {
-      border-color: #00d4ff !important;
-      box-shadow: 0 0 0 2px rgba(0,212,255,0.2), inset 0 2px 4px rgba(0,0,0,0.25) !important;
+    #aptFormCard .form-group.float-field input:focus,
+    #aptFormCard .form-group.float-field textarea:focus {
+      border-color: #1a73e8 !important;
+      box-shadow: 0 0 0 2px rgba(26,115,232,0.18) !important;
     }
-    #aptContactForm .form-group.float-field input:hover,
-    #aptContactForm .form-group.float-field textarea:hover {
-      border-color: rgba(255,255,255,0.25) !important;
+    #aptFormCard .form-group.float-field input:hover,
+    #aptFormCard .form-group.float-field textarea:hover {
+      border-color: #5f6368 !important;
     }
+
+    /* 非浮动输入框（select、date）Google 风格 */
+    #aptFormCard .form-group input[type="date"],
+    #aptFormCard .form-group select {
+      width: 100%;
+      font-size: 16px !important;
+      color: #1f1f1f !important;
+      background: #fff !important;
+      border: 1px solid #c0c0c0 !important;
+      border-radius: 4px !important;
+      padding: 13px 14px !important;
+      height: auto !important;
+      box-sizing: border-box !important;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s !important;
+      box-shadow: none !important;
+      font-family: inherit !important;
+      margin: 0 !important;
+    }
+    #aptFormCard .form-group input[type="date"]:hover,
+    #aptFormCard .form-group select:hover,
+    #aptFormCard .form-group textarea:hover {
+      border-color: #c0c0c0 !important;
+      background: #fff !important;
+    }
+    #aptFormCard .form-group input[type="date"]:focus,
+    #aptFormCard .form-group select:focus,
+    #aptFormCard .form-group textarea:focus {
+      border-color: #0b57d0 !important;
+      background: #fff !important;
+      box-shadow: 0 0 0 2px rgba(11,87,208,0.15) !important;
+      transform: none !important;
+    }
+    #aptFormCard .form-group textarea {
+      min-height: 100px !important;
+      resize: vertical;
+    }
+
+    /* select 自定义箭头 */
+    #aptFormCard .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      padding-right: 40px !important;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 14px center !important;
+    }
+    #aptFormCard .form-group select option {
+      background: #fff;
+      color: #1f1f1f;
+    }
+    #aptFormCard .select-arrow { display: none !important; }
+
+    /* date picker 原生图标 */
+    #aptFormCard .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: none;
+      cursor: pointer;
+    }
+
     /* 隐藏旧装饰元素 */
-    #aptContactForm .form-group.float-field .input-border { display: none !important; }
-    #aptContactForm .form-group.float-field .label-icon { display: none !important; }
-    #aptContactForm .form-group.float-field .form-hint { display: none !important; }
+    #aptFormCard .input-border,
+    #aptFormCard .form-hint { display: none !important; }
+
+    /* 无效输入样式 */
+    #aptFormCard input:invalid:not(:placeholder-shown) {
+      border-color: #d93025 !important;
+    }
+
+    /* 复选框 - 原生极简 */
+    #aptFormCard .checkbox-group {
+      display: flex !important;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 0 !important;
+      background: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      margin-bottom: 16px !important;
+    }
+    #aptFormCard .checkbox-group:hover {
+      border-color: transparent !important;
+      background: none !important;
+    }
+    #aptFormCard .checkbox-group input[type="checkbox"] {
+      appearance: auto !important;
+      -webkit-appearance: auto !important;
+      width: 16px !important;
+      height: 16px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      cursor: pointer;
+      position: static !important;
+      flex-shrink: 0;
+      transition: none !important;
+      margin-top: 2px !important;
+      accent-color: #0b57d0;
+    }
+    #aptFormCard .checkbox-group input[type="checkbox"]:checked {
+      background: transparent !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+    #aptFormCard .checkbox-group input[type="checkbox"]:checked::after { display: none !important; }
+    #aptFormCard .checkbox-group label {
+      font-weight: 400 !important;
+      color: #5f6368 !important;
+      font-size: 14px !important;
+      margin: 0 !important;
+      line-height: 1.5;
+      cursor: pointer;
+      position: static !important;
+      transform: none !important;
+      top: auto !important;
+      display: inline !important;
+    }
+    #aptFormCard .checkbox-group label a {
+      color: #0b57d0;
+      font-weight: 500;
+    }
+
+    /* 提交按钮 - Google pill */
+    #aptFormCard .submit-btn {
+      background: #0b57d0 !important;
+      background-image: none !important;
+      background-size: auto !important;
+      border: none !important;
+      border-radius: 20px !important;
+      color: #fff !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      padding: 10px 24px !important;
+      width: auto !important;
+      float: right;
+      cursor: pointer;
+      overflow: visible !important;
+      transition: background 0.15s !important;
+      box-shadow: none !important;
+      animation: none !important;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      letter-spacing: 0;
+    }
+    #aptFormCard .submit-btn::before { display: none !important; }
+    #aptFormCard .submit-btn:hover {
+      background: #0a47c1 !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    #aptFormCard .submit-btn:active { transform: none !important; }
+    #aptFormCard .submit-btn .btn-icon,
+    #aptFormCard .submit-btn .btn-text,
+    #aptFormCard .submit-btn .btn-arrow { position: static !important; z-index: auto !important; }
+    #aptFormCard .submit-btn .btn-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    #aptFormCard .submit-btn:hover .btn-arrow { transform: translateX(3px); }
+
+    /* 底部提示 */
+    #aptFormCard .form-tip {
+      text-align: left !important;
+      font-size: 12px !important;
+      color: #5f6368 !important;
+      margin-top: 16px !important;
+      display: block !important;
+      align-items: initial !important;
+      justify-content: initial !important;
+      gap: 0 !important;
+      clear: both;
+    }
+    #aptFormCard .form-tip svg {
+      width: 14px;
+      height: 14px;
+      stroke: #5f6368;
+      fill: none;
+      stroke-width: 2;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    /* 隐藏社交证明徽章（Google 极简风格） */
+    #aptFormCard .social-proof { display: none !important; }
+
+    /* 关闭按钮 - Google 极简风格（适配白色卡片） */
+    .appointment-modal-dialog .apt-modal-close {
+      background: #fff !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid #e8eaed !important;
+      color: #5f6368 !important;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.12), 0 2px 6px rgba(60,64,67,0.06) !important;
+      top: 12px !important;
+      right: 14px !important;
+      width: 36px !important;
+      height: 36px !important;
+    }
+    .appointment-modal-dialog .apt-modal-close:hover {
+      background: #f1f3f4 !important;
+      border-color: #d9dce0 !important;
+      color: #1f1f1f !important;
+      transform: rotate(90deg) !important;
+      box-shadow: 0 2px 8px rgba(60,64,67,0.15) !important;
+    }
+    .appointment-modal-dialog .apt-modal-close svg { stroke-width: 2.2; }
+
+    /* 弹窗响应式适配 */
+    @media (max-width: 600px) {
+      #aptFormCard { padding: 28px 20px !important; border-radius: 10px !important; }
+      #aptFormCard .form-title-gradient { font-size: 22px !important; }
+      #aptFormCard .form-subtitle { font-size: 13px !important; }
+      #aptFormCard .submit-btn { float: none; width: 100%; padding: 12px 24px !important; }
+    }
   </style>
 
   <div id="cookie-consent" class="cookie-consent">
-    <div class="container">
-      <div class="cookie-content">
-        <div class="cookie-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M8 14.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5z"/>
-            <path d="M16 14.5c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5z"/>
-          </svg>
-        </div>
-        <div class="cookie-text">
-          <h4>浦北装修设计 - Cookie提示</h4>
-          <p>为了给您提供更优质的服务，我们使用Cookie来优化网站体验、分析访问流量。您的隐私对我们非常重要，我们承诺不会收集您的个人信息。</p>
-        </div>
-        <div class="cookie-buttons">
-          <button class="cookie-btn cookie-btn-accept">同意</button>
-          <button class="cookie-btn cookie-btn-reject">拒绝</button>
-        </div>
+    <button class="cookie-close" id="cookieClose" aria-label="关闭">&times;</button>
+    <div class="cookie-content">
+      <div class="cookie-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L4 5v6c0 5.5 3.4 10.6 8 12 4.6-1.4 8-6.5 8-12V5l-8-3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
       </div>
+      <div class="cookie-text">
+        <h4>隐私偏好</h4>
+        <p>我们使用 Cookie 优化网站体验和分析流量。您的隐私对我们非常重要，我们承诺绝不收集任何个人信息。</p>
+        <a href="javascript:void(0)" class="cookie-policy-link" onclick="alert('隐私政策：我们仅使用 Cookie 优化网站体验，不收集任何个人信息。');return false;">
+          查看隐私政策
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-btn-reject">仅必要</button>
+      <button class="cookie-btn cookie-btn-accept">全部接受</button>
     </div>
   </div>
   
