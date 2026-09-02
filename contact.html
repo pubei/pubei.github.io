@@ -1349,10 +1349,10 @@
     function formatDateCN(v){ if(!v) return ''; try{ var d=new Date(v+'T00:00:00'); return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日'; }catch(e){ return v; } }
     function nowCN(){ var d=new Date(); return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 '+(d.getHours()<10?'0':'')+d.getHours()+':'+(d.getMinutes()<10?'0':'')+d.getMinutes(); }
 
-    // 精简关键词防垃圾（避免误拦截合法内容，仅拦截明显广告/促销/推广类）
-    var SPAM_KW = ['http://','https://','www.','.com','推广','代运营','加V','加微','加我V','刷评','刷单','返现','兼职','贷款','理财','博彩','色情','赌博'];
+    // 精简关键词防垃圾（不检查邮箱字段，避免 qq.com 等正常邮箱被误拦）
+    var SPAM_KW = ['推广','代运营','刷单','返现','兼职','贷款','理财','博彩','色情','赌博','代开发票','棋牌','刷评','引流推广'];
     function isSpam(data){
-      var text = ((data.name||'')+' '+(data.message||'')+' '+(data.email||'')).toLowerCase();
+      var text = ((data.name||'')+' '+(data.message||'')).toLowerCase();
       for(var i=0;i<SPAM_KW.length;i++){
         if(text.indexOf(SPAM_KW[i].toLowerCase())>-1) return true;
       }
