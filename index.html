@@ -1699,29 +1699,29 @@
 
       if (btnText) btnText.textContent = '提交中...';
 
-      // ===== 构建干净的 FormData（只含4个Web3Forms保留字 + 纯中文业务键，无任何冗余）=====
-      var fd = new FormData();
-      fd.append('access_key', document.querySelector('#aptContactForm input[name="access_key"]').value);
-      fd.append('from_name',  document.querySelector('#aptContactForm input[name="from_name"]').value);
-      fd.append('subject',    document.getElementById('aptSubject').value);
-      fd.append('replyto',    document.getElementById('aptReplyTo').value);
-      // 中文业务字段（按阅读顺序append）
-      fd.append('01 客户姓名',   aName  || '未填写');
-      fd.append('02 联系手机',   aPhone || '未填写');
-      fd.append('03 电子邮箱',   emailCn);
-      fd.append('04 服务类型',   svcCn);
-      fd.append('05 房屋面积',   areaCn);
-      fd.append('06 预算范围',   budCn);
-      fd.append('07 装修时间',   tCn);
-      fd.append('08 装修需求',   aMsg);
-      fd.append('09 表单来源',   '首页弹窗（index.html）');
-      fd.append('10 提交时间',   nowCN());
+      // ===== 构建干净的 JSON（只含保留字 + 纯中文业务键，无任何冗余） =====
+      var data = {
+        access_key: document.querySelector('#aptContactForm input[name="access_key"]').value,
+        from_name:  document.querySelector('#aptContactForm input[name="from_name"]').value,
+        subject:    document.getElementById('aptSubject').value,
+        replyto:    document.getElementById('aptReplyTo').value,
+        '01 客户姓名': aName  || '未填写',
+        '02 联系手机': aPhone || '未填写',
+        '03 电子邮箱': emailCn,
+        '04 服务类型': svcCn,
+        '05 房屋面积': areaCn,
+        '06 预算范围': budCn,
+        '07 装修时间': tCn,
+        '08 装修需求': aMsg,
+        '09 表单来源': '首页弹窗（index.html）',
+        '10 提交时间': nowCN()
+      };
 
-      // ===== 发送：multipart/form-data（不手动设Content-Type，让浏览器带boundary）=====
+      // ===== 发送：JSON 方式 =====
       fetch(form.action, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: fd
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
       })
       .then(function(res) { return res.json(); })
       .then(function(result) {

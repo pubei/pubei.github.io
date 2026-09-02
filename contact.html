@@ -1413,35 +1413,29 @@
       var submitBtnTextEl = submitBtn ? submitBtn.querySelector('.btn-text') : null;
       if (submitBtnTextEl) submitBtnTextEl.textContent = '提交中...';
 
-      // ===== 构建干净的 FormData（只含4个Web3Forms保留字 + 纯中文业务键，无任何冗余）=====
-      // 注意：不使用 new FormData(form)，避免输入框name属性带来的重复字段、
-      //       也不使用JSON（会有UTF-8键名兼容性问题），multipart/form-data 中文键安全。
-      var fd = new FormData();
-      // ① Web3Forms 保留配置字段（Free版支持 from_name / subject / replyto）
-      fd.append('access_key', document.querySelector('input[name="access_key"]').value);
-      fd.append('from_name',  document.querySelector('input[name="from_name"]').value);
-      fd.append('subject',    document.getElementById('formSubject').value);
-      fd.append('replyto',    document.getElementById('formReplyTo').value);
-      // ② 中文业务字段（按阅读顺序append，Web3Forms默认表格保持append顺序显示）
-      //    注意：键名不使用 ①②…等符号字符，保持邮箱渲染兼容性最佳
-      fd.append('01 客户姓名',   name  || '未填写');
-      fd.append('02 联系手机',   phone || '未填写');
-      fd.append('03 电子邮箱',   emailCn);
-      fd.append('04 服务类型',   svcCn);
-      fd.append('05 房屋面积',   areaCn);
-      fd.append('06 预算范围',   budCn);
-      fd.append('07 装修时间',   tCn);
-      fd.append('08 装修需求',   msgCn);
-      fd.append('09 表单来源',   '在线预约页面（contact.html）');
-      fd.append('10 提交时间',   nowCN());
-      // 明确：不发送 name/email/phone 等标准字段（避免Sender Info区重复显示）
-      // 明确：不发送 botcheck/form_time（避免邮件里有空标题）
+      // ===== 构建干净的 JSON（只含保留字 + 纯中文业务键，无任何冗余） =====
+      // 用 JSON 方式（之前能收到邮件），但不发送 name/email/phone 标准字段避免重复
+      var data = {
+        access_key: document.querySelector('input[name="access_key"]').value,
+        from_name:  document.querySelector('input[name="from_name"]').value,
+        subject:    document.getElementById('formSubject').value,
+        replyto:    document.getElementById('formReplyTo').value,
+        '01 客户姓名': name  || '未填写',
+        '02 联系手机': phone || '未填写',
+        '03 电子邮箱': emailCn,
+        '04 服务类型': svcCn,
+        '05 房屋面积': areaCn,
+        '06 预算范围': budCn,
+        '07 装修时间': tCn,
+        '08 装修需求': msgCn,
+        '09 表单来源': '在线预约页面（contact.html）',
+        '10 提交时间': nowCN()
+      };
 
-      // ===== 发送：multipart/form-data（不手动设Content-Type，让浏览器带boundary）=====
       fetch(form.action, {
         method:'POST',
-        headers: { 'Accept':'application/json' },
-        body: fd
+        headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify(data)
       })
       .then(function(r){ return r.json(); })
       .then(function(res){
