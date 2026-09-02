@@ -1380,8 +1380,7 @@
       if (!name || !phone) { alert('请填写必填项：姓名、手机号'); if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='';} return; }
       if (!/^1[3-9]\d{9}$/.test(phone)) { alert('请输入有效的11位手机号码'); if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='';} return; }
 
-      // 准备中文显示值（不写入隐藏字段，直接append到干净的FormData）
-      var fmt = function(zh,val){ return zh + '：' + val; };
+      // 准备中文显示值
       var svcCn  = SERVICE_MAP[service] || service || '未填写';
       var areaCn = AREA_MAP[area] || area || '未填写';
       var budCn  = BUDGET_MAP[budget] || budget || '未填写';
