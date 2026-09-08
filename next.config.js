@@ -7,6 +7,24 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
+  async rewrites() {
+    return [
+      // 静态页面 clean URL 重写
+      { source: '/', destination: '/index.html' },
+      { source: '/about', destination: '/about.html' },
+      { source: '/news', destination: '/news.html' },
+      { source: '/news-detail', destination: '/news-detail.html' },
+      { source: '/services', destination: '/services.html' },
+      { source: '/projects', destination: '/projects.html' },
+      { source: '/contact', destination: '/contact.html' },
+      { source: '/faq', destination: '/faq.html' },
+      { source: '/privacy', destination: '/privacy.html' },
+      { source: '/terms', destination: '/terms.html' },
+      { source: '/sitemap', destination: '/sitemap.html' },
+      { source: '/project-detail-:id', destination: '/project-detail-:id.html' },
+      { source: '/service-detail-:id', destination: '/service-detail-:id.html' },
+    ];
+  },
   async headers() {
     return [
       {

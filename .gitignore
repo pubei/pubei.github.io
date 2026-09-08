@@ -8,3 +8,5 @@ build/
 .trae/
 .env.local
 .env
+.vercel
+.env*
