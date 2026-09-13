@@ -3,6 +3,7 @@ import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production-please-use-long';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 const TOKEN_NAME = 'admin_token';
 const TOKEN_MAX_AGE = 60 * 60 * 24; // 24 hours
@@ -27,8 +28,18 @@ export async function verifyToken(token: string): Promise<{ role: string } | nul
   }
 }
 
+export async function verifyCredentials(username: string, password: string): Promise<boolean> {
+  // 使用长度恒定比较，避免时序攻击
+  const uMatch = username.length === ADMIN_USERNAME.length &&
+    username.split('').every((c, i) => c === ADMIN_USERNAME[i]);
+  const pMatch = password.length === ADMIN_PASSWORD.length &&
+    password.split('').every((c, i) => c === ADMIN_PASSWORD[i]);
+  return uMatch && pMatch;
+}
+
+// 兼容旧接口（仅密码校验），保留供其他模块调用
 export async function verifyPassword(password: string): Promise<boolean> {
-  return password === ADMIN_PASSWORD;
+  return verifyCredentials(ADMIN_USERNAME, password);
 }
 
 export function getAuthToken(): string | undefined {

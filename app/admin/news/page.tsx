@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import type { NewsItem } from '@/lib/types';
+import ImageUpload from '@/components/ImageUpload';
 
 export default function NewsAdminPage() {
   const [news, setNews] = useState<NewsItem[]>([]);

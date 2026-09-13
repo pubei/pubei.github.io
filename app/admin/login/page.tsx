@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function LoginPage() {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
       if (data.success) {
@@ -65,16 +66,34 @@ export default function LoginPage() {
             </svg>
           </div>
           <h1 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6 }}>后台管理</h1>
-          <p style={{ color: 'var(--c-text-muted)', fontSize: 14 }}>请输入管理员密码</p>
+          <p style={{ color: 'var(--c-text-muted)', fontSize: 14 }}>请输入管理员账号和密码</p>
         </div>
 
         <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="管理员账号"
+            autoFocus
+            autoComplete="username"
+            style={{
+              width: '100%', padding: '14px 16px', fontSize: 15,
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid var(--c-border-light)',
+              borderRadius: 10, color: 'var(--c-text)',
+              outline: 'none', transition: 'all 0.2s',
+              marginBottom: 14,
+            }}
+            onFocus={(e) => { e.target.style.borderColor = 'var(--c-primary)'; }}
+            onBlur={(e) => { e.target.style.borderColor = 'var(--c-border-light)'; }}
+          />
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="管理员密码"
-            autoFocus
+            autoComplete="current-password"
             style={{
               width: '100%', padding: '14px 16px', fontSize: 15,
               background: 'rgba(255,255,255,0.04)',
