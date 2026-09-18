@@ -807,29 +807,35 @@
   </footer>
 
   <style>
+    /* ===== 浦北装修设计 · 隐私偏好中心（Google 风格） ===== */
     .cookie-consent {
       position: fixed;
       bottom: 24px;
       left: 50%;
-      transform: translateX(-50%) translateY(120%);
-      width: 560px;
+      transform: translateX(-50%) translateY(140%);
+      width: 580px;
       max-width: calc(100vw - 32px);
-      background: linear-gradient(135deg, rgba(15, 20, 35, 0.94), rgba(25, 30, 50, 0.94));
-      backdrop-filter: blur(28px) saturate(1.8);
-      -webkit-backdrop-filter: blur(28px) saturate(1.8);
+      max-height: calc(100vh - 48px);
+      background: linear-gradient(135deg, rgba(15, 20, 35, 0.95), rgba(25, 30, 50, 0.95));
+      backdrop-filter: blur(32px) saturate(1.8);
+      -webkit-backdrop-filter: blur(32px) saturate(1.8);
       border: 1px solid rgba(0, 212, 255, 0.22);
-      border-radius: 22px;
+      border-radius: 24px;
       z-index: 9999;
       opacity: 0;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 50px rgba(0, 212, 255, 0.1);
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 60px rgba(0, 212, 255, 0.1);
       overflow: hidden;
+      font-family: 'Inter', -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
     .cookie-consent.show {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
-    /* 顶部渐变流光条 */
+    .cookie-consent.expanded {
+      width: 620px;
+    }
+    /* 顶部流光条 */
     .cookie-consent::before {
       content: '';
       position: absolute;
@@ -838,6 +844,7 @@
       background: linear-gradient(90deg, #00d4ff, #7b2ff7, #00ff80, #00d4ff);
       background-size: 200% 100%;
       animation: cookieShimmer 6s linear infinite;
+      z-index: 2;
     }
     @keyframes cookieShimmer {
       0% { background-position: 0% 50%; }
@@ -847,56 +854,58 @@
     .cookie-consent::after {
       content: '';
       position: absolute;
-      top: -40px; right: -40px;
-      width: 160px; height: 160px;
-      background: radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, transparent 65%);
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, transparent 65%);
       border-radius: 50%;
       pointer-events: none;
       animation: cookieGlowPulse 5s ease-in-out infinite;
     }
     @keyframes cookieGlowPulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.08); }
+      0%, 100% { opacity: 0.45; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.1); }
     }
-    .cookie-content {
+    /* 头部区域 */
+    .cookie-header {
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      padding: 22px 26px 16px;
+      padding: 24px 28px 14px;
       position: relative;
       z-index: 1;
     }
     .cookie-icon {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.18), rgba(123, 47, 247, 0.18));
-      border-radius: 13px;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.22), rgba(123, 47, 247, 0.22));
+      border-radius: 14px;
       color: #00d4ff;
       flex-shrink: 0;
-      border: 1px solid rgba(0, 212, 255, 0.25);
-      box-shadow: 0 4px 16px rgba(0, 212, 255, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+      border: 1px solid rgba(0, 212, 255, 0.28);
+      box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2), 0 0 0 1px rgba(255, 255, 255,  0.05) inset;
       position: relative;
       animation: cookieIconBreathe 4s ease-in-out infinite;
     }
     @keyframes cookieIconBreathe {
       0%, 100% { box-shadow: 0 4px 16px rgba(0, 212, 255, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.04) inset, 0 0 0 0 rgba(0, 212, 255, 0.3); }
-      50% { box-shadow: 0 6px 22px rgba(0, 212, 255, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06) inset, 0 0 0 6px rgba(0, 212, 255, 0.06); }
+      50% { box-shadow: 0 6px 24px rgba(0, 212, 255, 0.34), 0 0 0 1px rgba(255, 255, 255, 0.06) inset, 0 0 0 7px rgba(0, 212, 255, 0.06); }
     }
     .cookie-icon svg {
-      width: 24px;
-      height: 24px;
-      filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.4));
+      width: 26px;
+      height: 26px;
+      filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
     }
     .cookie-text {
       flex: 1;
       min-width: 0;
+      padding-right: 36px;
     }
     .cookie-text h4 {
-      margin: 0 0 5px;
-      font-size: 1rem;
+      margin: 0 0 6px;
+      font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.4px;
       background: linear-gradient(135deg, #ffffff 0%, #b8e8ff 100%);
@@ -906,36 +915,45 @@
       display: inline-block;
     }
     .cookie-text p {
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 0.83rem;
-      line-height: 1.6;
-      margin: 0 0 4px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 0.84rem;
+      line-height: 1.65;
+      margin: 0 0 6px;
     }
     .cookie-policy-link {
       display: inline-flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
       color: #5ed5ff;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
+      font-weight: 500;
       text-decoration: none;
       transition: all 0.25s ease;
       margin-top: 2px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
     }
     .cookie-policy-link:hover {
       color: #00d4ff;
-      text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+      border-bottom-color: rgba(0, 212, 255, 0.5);
     }
     .cookie-policy-link svg {
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
+      transition: transform 0.25s ease;
     }
+    .cookie-policy-link:hover svg {
+      transform: translateX(2px);
+    }
+    /* 关闭按钮 */
     .cookie-close {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 30px;
-      height: 30px;
-      border-radius: 9px;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.45);
@@ -943,31 +961,152 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       font-size: 18px;
       line-height: 1;
-      z-index: 3;
+      z-index: 4;
       backdrop-filter: blur(8px);
     }
     .cookie-close:hover {
       background: rgba(255, 94, 94, 0.18);
-      border-color: rgba(255, 94, 94, 0.35);
+      border-color: rgba(255, 94, 94, 0.4);
       color: #ff9b9b;
       transform: rotate(90deg);
-      box-shadow: 0 4px 14px rgba(255, 94, 94, 0.2);
+      box-shadow: 0 4px 14px rgba(255, 94, 94, 0.25);
     }
-    .cookie-buttons {
-      display: flex;
-      gap: 10px;
-      padding: 4px 26px 22px;
-      justify-content: flex-end;
+    /* 自定义详情面板（Google 风格手风琴） */
+    .cookie-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 0 28px;
       position: relative;
       z-index: 1;
     }
+    .cookie-consent.expanded .cookie-details {
+      max-height: 420px;
+      overflow-y: auto;
+      padding-top: 4px;
+      padding-bottom: 8px;
+    }
+    .cookie-details::-webkit-scrollbar {
+      width: 6px;
+    }
+    .cookie-details::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .cookie-details::-webkit-scrollbar-thumb {
+      background: rgba(0, 212, 255, 0.25);
+      border-radius: 3px;
+    }
+    .cookie-category {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 14px 0;
+    }
+    .cookie-category:last-child {
+      border-bottom: none;
+    }
+    .cookie-category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .cookie-category-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cookie-category-title .cat-badge {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(0, 212, 255, 0.12);
+      color: #5ed5ff;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+    .cookie-category-desc {
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      margin: 6px 0 0;
+    }
+    /* Google 风格开关 */
+    .cookie-switch {
+      position: relative;
+      width: 38px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .cookie-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+    .cookie-switch .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cookie-switch .slider::before {
+      content: '';
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border-radius: 50%;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    .cookie-switch input:checked + .slider {
+      background: linear-gradient(135deg, #00d4ff 0%, #00ff80 100%);
+      border-color: rgba(0, 255, 128, 0.5);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
+    }
+    .cookie-switch input:checked + .slider::before {
+      transform: translate(16px, -50%);
+      background: #0a0e17;
+    }
+    .cookie-switch input:disabled + .slider {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .cookie-switch input:disabled + .slider::before {
+      background: #5ed5ff;
+    }
+    /* 底部按钮区 */
+    .cookie-footer {
+      padding: 14px 28px 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      flex-wrap: wrap;
+    }
+    .cookie-footer .cookie-save {
+      margin-right: auto;
+    }
     .cookie-btn {
-      padding: 10px 30px;
-      border-radius: 11px;
-      font-size: 0.86rem;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -976,6 +1115,7 @@
       position: relative;
       overflow: hidden;
       letter-spacing: 0.3px;
+      font-family: inherit;
     }
     .cookie-btn::before {
       content: '';
@@ -984,43 +1124,91 @@
       width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
       transition: left 0.6s ease;
+      pointer-events: none;
     }
     .cookie-btn:hover::before {
       left: 100%;
     }
+    /* 主按钮 - 接受（Google 蓝色填充） */
     .cookie-btn-accept {
       background: linear-gradient(135deg, #00d4ff 0%, #00ff80 100%);
       color: #0a0e17;
-      box-shadow: 0 4px 18px rgba(0, 212, 255, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+      box-shadow: 0 4px 18px rgba(0, 212, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
     }
     .cookie-btn-accept:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0, 212, 255, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      box-shadow: 0 10px 28px rgba(0, 212, 255, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
       filter: brightness(1.1);
     }
+    /* 次按钮 - 拒绝（Ghost 描边） */
     .cookie-btn-reject {
       background: rgba(255, 255, 255, 0.06);
-      color: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(8px);
     }
     .cookie-btn-reject:hover {
-      background: rgba(255, 255, 255, 0.11);
+      background: rgba(255, 255, 255, 0.12);
       color: #fff;
-      border-color: rgba(0, 212, 255, 0.4);
+      border-color: rgba(0, 212, 255, 0.45);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0, 212, 255, 0.12);
+      box-shadow: 0 6px 18px rgba(0, 212, 255, 0.15);
     }
-    @media (max-width: 560px) {
-      .cookie-consent { bottom: 16px; border-radius: 18px; }
-      .cookie-content { flex-direction: column; gap: 14px; padding: 20px 20px 12px; align-items: center; text-align: center; }
-      .cookie-icon { width: 42px; height: 42px; }
-      .cookie-text { text-align: center; }
+    /* 文本按钮 - 自定义（Google 风格纯文字） */
+    .cookie-btn-customize {
+      background: transparent;
+      color: #5ed5ff;
+      padding: 10px 18px;
+      letter-spacing: 0.3px;
+    }
+    .cookie-btn-customize:hover {
+      color: #00d4ff;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+      transform: translateY(-1px);
+    }
+    .cookie-btn-customize .chevron {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-left: 4px;
+      vertical-align: -2px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cookie-consent.expanded .cookie-btn-customize .chevron {
+      transform: rotate(180deg);
+    }
+    /* 保存按钮 */
+    .cookie-btn-save {
+      background: linear-gradient(135deg, #7b2ff7 0%, #00d4ff 100%);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(123, 47, 247, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+      display: none;
+    }
+    .cookie-consent.expanded .cookie-btn-save {
+      display: inline-block;
+    }
+    .cookie-consent.expanded .cookie-btn-customize {
+      display: none;
+    }
+    .cookie-btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(123, 47, 247, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      filter: brightness(1.1);
+    }
+    /* 响应式 */
+    @media (max-width: 580px) {
+      .cookie-consent { bottom: 16px; border-radius: 20px; width: 100%; }
+      .cookie-consent.expanded { width: 100%; }
+      .cookie-header { padding: 20px 20px 12px; gap: 14px; flex-direction: column; }
+      .cookie-text { padding-right: 0; text-align: center; }
       .cookie-text p { font-size: 0.82rem; }
       .cookie-policy-link { justify-content: center; }
-      .cookie-buttons { justify-content: center; padding-bottom: 18px; gap: 8px; }
-      .cookie-btn { flex: 1; text-align: center; padding: 10px 18px; font-size: 0.82rem; }
-      .cookie-close { top: 10px; right: 10px; width: 28px; height: 28px; }
+      .cookie-close { top: 12px; right: 12px; width: 28px; height: 28px; }
+      .cookie-details { padding: 0 20px; }
+      .cookie-consent.expanded .cookie-details { padding: 0 20px 8px; }
+      .cookie-footer { padding: 12px 20px 18px; justify-content: center; gap: 8px; }
+      .cookie-btn { flex: 1; text-align: center; padding: 10px 14px; font-size: 0.8rem; }
+      .cookie-footer .cookie-save { margin-right: 0; flex: 1 1 100%; }
     }
 
     /* 微信咨询弹窗 */
@@ -1586,33 +1774,80 @@
     }
   </style>
 
-  <div id="cookie-consent" class="cookie-consent">
-    <button class="cookie-close" id="cookieClose" aria-label="关闭">&times;</button>
-    <div class="cookie-content">
-      <div class="cookie-icon">
+  <div id="cookie-consent" class="cookie-consent" role="dialog" aria-modal="false" aria-labelledby="cookieTitle" aria-describedby="cookieDesc">
+    <button class="cookie-close" id="cookieClose" aria-label="关闭" type="button">&times;</button>
+    <div class="cookie-header">
+      <div class="cookie-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2L4 5v6c0 5.5 3.4 10.6 8 12 4.6-1.4 8-6.5 8-12V5l-8-3z"/>
           <path d="M9 12l2 2 4-4"/>
         </svg>
       </div>
       <div class="cookie-text">
-        <h4>隐私偏好</h4>
-        <p>我们使用 Cookie 优化网站体验和分析流量。您的隐私对我们非常重要，我们承诺绝不收集任何个人信息。</p>
-        <a href="javascript:void(0)" class="cookie-policy-link" onclick="alert('隐私政策：我们仅使用 Cookie 优化网站体验，不收集任何个人信息。');return false;">
-          查看隐私政策
+        <h4 id="cookieTitle">隐私偏好中心</h4>
+        <p id="cookieDesc">我们使用 Cookie 优化网站体验与分析流量，绝不收集任何个人信息。请选择您愿意接受的类别，您可随时更改设置。</p>
+        <a href="privacy.html" class="cookie-policy-link" aria-label="阅读完整隐私政策">
+          阅读隐私政策
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18l6-6-6-6"/>
           </svg>
         </a>
       </div>
     </div>
-    <div class="cookie-buttons">
-      <button class="cookie-btn cookie-btn-reject">仅必要</button>
-      <button class="cookie-btn cookie-btn-accept">全部接受</button>
+
+    <div class="cookie-details" id="cookieDetails" aria-hidden="true">
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <div class="cookie-category-title">
+            必要 Cookie <span class="cat-badge">始终开启</span>
+          </div>
+          <label class="cookie-switch">
+            <input type="checkbox" checked disabled data-cat="necessary" aria-label="必要 Cookie 开关">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-desc">保障网站基本功能正常运行，例如安全登录、表单提交、风格偏好记忆。这些 Cookie 不可关闭，否则部分功能可能无法使用。</p>
+      </div>
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <div class="cookie-category-title">
+            功能 Cookie <span class="cat-badge">可选</span>
+          </div>
+          <label class="cookie-switch">
+            <input type="checkbox" data-cat="functional" aria-label="功能 Cookie 开关">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-desc">记住您的偏好选择（如浏览历史、收藏项目），为您提供更个性化的装修案例推荐与浏览体验。</p>
+      </div>
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <div class="cookie-category-title">
+            分析 Cookie <span class="cat-badge">可选</span>
+          </div>
+          <label class="cookie-switch">
+            <input type="checkbox" data-cat="analytics" aria-label="分析 Cookie 开关">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-desc">匿名统计访客使用情况，帮助我们了解哪些装修内容最受欢迎，持续优化网站设计与服务质量。不涉及任何个人身份信息。</p>
+      </div>
+    </div>
+
+    <div class="cookie-footer">
+      <button class="cookie-btn cookie-btn-reject" id="cookieReject" type="button">全部拒绝</button>
+      <button class="cookie-btn cookie-btn-customize" id="cookieCustomize" type="button" aria-expanded="false" aria-controls="cookieDetails">
+        自定义
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <button class="cookie-btn cookie-btn-save" id="cookieSave" type="button">保存偏好设置</button>
+      <button class="cookie-btn cookie-btn-accept" id="cookieAccept" type="button">全部接受</button>
     </div>
   </div>
   
-  <script src="assets/js/main.js?v=12"></script>
+  <script src="assets/js/main.js?v=13"></script>
 
   <!-- 微信咨询弹窗 -->
   <div class="wechat-modal" id="wechatModal">
