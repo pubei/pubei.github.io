@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'trae-api-cn.mchost.guru' },
       { protocol: 'https', hostname: 'pboo.top' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],

@@ -596,8 +596,9 @@ def generate_news():
     # 生成分类
     category = template.get("category", "装修设计")
     
-    # 生成图片：API URL（主图）+ 本地 SVG（fallback）
-    image_url, image_fallback = save_news_image(title, category, news_id)
+    # 生成图片：直接使用本地 SVG 作为主图（零外部依赖，避免外部图床失效）
+    _external_url, image_url = save_news_image(title, category, news_id)
+    image_fallback = image_url
 
     # 生成完整文章内容
     content = generate_article_content(template, title)

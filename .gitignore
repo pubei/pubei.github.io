@@ -12,3 +12,5 @@ build/
 .env*
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+__pycache__/
+*.pyc
