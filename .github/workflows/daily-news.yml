@@ -27,10 +27,19 @@ jobs:
       - name: 生成今日新闻
         run: python generate_news.py
 
+      - name: 同步到 public 目录
+        run: |
+          # 根目录（GitHub Pages）与 public/（Vercel）保持镜像同步
+          mkdir -p public/assets/data
+          cp news.html public/news.html
+          cp assets/data/news-data.json public/assets/data/news-data.json
+          rsync -a --delete assets/images/news/ public/assets/images/news/
+          echo "public/ 同步完成"
+
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add news.html assets/data/news-data.json assets/images/news/
+          git add news.html assets/data/news-data.json assets/images/news/ public/
           git diff --staged --quiet || (git commit -m "📝 自动发布公司新闻 $(date '+%Y-%m-%d')" && git push)
           echo "新闻发布完成！"
